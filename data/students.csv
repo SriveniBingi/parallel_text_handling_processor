@@ -1,0 +1,1001 @@
+student_id,student_name,feedback
+1,Student_1,Nothing special about the sessions
+2,Student_2,It was an average experience
+3,Student_3,I love the teaching style it is great
+4,Student_4,I had a terrible experience
+5,Student_5,It was fine overall
+6,Student_6,I hate the scheduling system
+7,Student_7,Excellent support from faculty
+8,Student_8,I had a terrible experience
+9,Student_9,It was an average experience
+10,Student_10,The course content was awful
+11,Student_11,The course was excellent and amazing
+12,Student_12,I had a terrible experience
+13,Student_13,The sessions were very good and helpful
+14,Student_14,Amazing practical exposure and great learning
+15,Student_15,The course was excellent and amazing
+16,Student_16,Excellent support from faculty
+17,Student_17,Excellent support from faculty
+18,Student_18,I love the teaching style it is great
+19,Student_19,Nothing special about the sessions
+20,Student_20,Amazing practical exposure and great learning
+21,Student_21,The sessions were very good and helpful
+22,Student_22,Excellent support from faculty
+23,Student_23,Bad explanation and poor support
+24,Student_24,The sessions were very good and helpful
+25,Student_25,The course content was awful
+26,Student_26,It was fine overall
+27,Student_27,The sessions were very good and helpful
+28,Student_28,The sessions were very good and helpful
+29,Student_29,Nothing special about the sessions
+30,Student_30,I had a terrible experience
+31,Student_31,I love the teaching style it is great
+32,Student_32,The teaching was poor and bad
+33,Student_33,It was an average experience
+34,Student_34,The course was excellent and amazing
+35,Student_35,It was fine overall
+36,Student_36,Nothing special about the sessions
+37,Student_37,The sessions were very good and helpful
+38,Student_38,Excellent support from faculty
+39,Student_39,The class was normal
+40,Student_40,I love the teaching style it is great
+41,Student_41,I hate the scheduling system
+42,Student_42,I hate the scheduling system
+43,Student_43,Nothing special about the sessions
+44,Student_44,Excellent support from faculty
+45,Student_45,The course was excellent and amazing
+46,Student_46,Bad explanation and poor support
+47,Student_47,The class was normal
+48,Student_48,Bad explanation and poor support
+49,Student_49,The class was normal
+50,Student_50,The teaching was poor and bad
+51,Student_51,Amazing practical exposure and great learning
+52,Student_52,It was an average experience
+53,Student_53,It was an average experience
+54,Student_54,Excellent support from faculty
+55,Student_55,I hate the scheduling system
+56,Student_56,I hate the scheduling system
+57,Student_57,The course was okay
+58,Student_58,Bad explanation and poor support
+59,Student_59,The course was excellent and amazing
+60,Student_60,Bad explanation and poor support
+61,Student_61,The sessions were very good and helpful
+62,Student_62,The teaching was poor and bad
+63,Student_63,The class was normal
+64,Student_64,The class was normal
+65,Student_65,I love the teaching style it is great
+66,Student_66,The course was excellent and amazing
+67,Student_67,I love the teaching style it is great
+68,Student_68,Amazing practical exposure and great learning
+69,Student_69,Bad explanation and poor support
+70,Student_70,The course was okay
+71,Student_71,The teaching was poor and bad
+72,Student_72,The course content was awful
+73,Student_73,Amazing practical exposure and great learning
+74,Student_74,The teaching was poor and bad
+75,Student_75,The sessions were very good and helpful
+76,Student_76,The course was okay
+77,Student_77,The teaching was poor and bad
+78,Student_78,It was fine overall
+79,Student_79,Nothing special about the sessions
+80,Student_80,It was fine overall
+81,Student_81,The class was normal
+82,Student_82,I had a terrible experience
+83,Student_83,The course was excellent and amazing
+84,Student_84,I hate the scheduling system
+85,Student_85,I hate the scheduling system
+86,Student_86,The course was okay
+87,Student_87,I love the teaching style it is great
+88,Student_88,The class was normal
+89,Student_89,The teaching was poor and bad
+90,Student_90,The course content was awful
+91,Student_91,The course content was awful
+92,Student_92,I hate the scheduling system
+93,Student_93,The sessions were very good and helpful
+94,Student_94,The teaching was poor and bad
+95,Student_95,Excellent support from faculty
+96,Student_96,I hate the scheduling system
+97,Student_97,I love the teaching style it is great
+98,Student_98,It was an average experience
+99,Student_99,Bad explanation and poor support
+100,Student_100,Nothing special about the sessions
+101,Student_101,It was fine overall
+102,Student_102,The class was normal
+103,Student_103,Excellent support from faculty
+104,Student_104,I hate the scheduling system
+105,Student_105,I had a terrible experience
+106,Student_106,The teaching was poor and bad
+107,Student_107,I hate the scheduling system
+108,Student_108,Bad explanation and poor support
+109,Student_109,The course content was awful
+110,Student_110,The course was excellent and amazing
+111,Student_111,It was an average experience
+112,Student_112,It was fine overall
+113,Student_113,The class was normal
+114,Student_114,Amazing practical exposure and great learning
+115,Student_115,I had a terrible experience
+116,Student_116,It was an average experience
+117,Student_117,The course was okay
+118,Student_118,I hate the scheduling system
+119,Student_119,I had a terrible experience
+120,Student_120,Nothing special about the sessions
+121,Student_121,The sessions were very good and helpful
+122,Student_122,It was fine overall
+123,Student_123,Bad explanation and poor support
+124,Student_124,The sessions were very good and helpful
+125,Student_125,The course content was awful
+126,Student_126,I had a terrible experience
+127,Student_127,The class was normal
+128,Student_128,It was fine overall
+129,Student_129,The course was excellent and amazing
+130,Student_130,Amazing practical exposure and great learning
+131,Student_131,I had a terrible experience
+132,Student_132,Excellent support from faculty
+133,Student_133,The sessions were very good and helpful
+134,Student_134,Excellent support from faculty
+135,Student_135,I love the teaching style it is great
+136,Student_136,Amazing practical exposure and great learning
+137,Student_137,The course was okay
+138,Student_138,Excellent support from faculty
+139,Student_139,Bad explanation and poor support
+140,Student_140,It was fine overall
+141,Student_141,It was fine overall
+142,Student_142,I hate the scheduling system
+143,Student_143,The course content was awful
+144,Student_144,The course content was awful
+145,Student_145,I hate the scheduling system
+146,Student_146,Nothing special about the sessions
+147,Student_147,It was fine overall
+148,Student_148,The course was okay
+149,Student_149,The class was normal
+150,Student_150,The course was excellent and amazing
+151,Student_151,The course was okay
+152,Student_152,The course was excellent and amazing
+153,Student_153,The sessions were very good and helpful
+154,Student_154,Excellent support from faculty
+155,Student_155,The teaching was poor and bad
+156,Student_156,The course was okay
+157,Student_157,The course was okay
+158,Student_158,It was an average experience
+159,Student_159,Bad explanation and poor support
+160,Student_160,The course content was awful
+161,Student_161,I had a terrible experience
+162,Student_162,The course was okay
+163,Student_163,It was fine overall
+164,Student_164,I had a terrible experience
+165,Student_165,Bad explanation and poor support
+166,Student_166,I had a terrible experience
+167,Student_167,I hate the scheduling system
+168,Student_168,I hate the scheduling system
+169,Student_169,The class was normal
+170,Student_170,The course was okay
+171,Student_171,The course was excellent and amazing
+172,Student_172,Nothing special about the sessions
+173,Student_173,The class was normal
+174,Student_174,The course was excellent and amazing
+175,Student_175,Bad explanation and poor support
+176,Student_176,It was fine overall
+177,Student_177,The sessions were very good and helpful
+178,Student_178,The course was okay
+179,Student_179,It was an average experience
+180,Student_180,The course content was awful
+181,Student_181,The teaching was poor and bad
+182,Student_182,The course content was awful
+183,Student_183,Amazing practical exposure and great learning
+184,Student_184,I had a terrible experience
+185,Student_185,The course was okay
+186,Student_186,I hate the scheduling system
+187,Student_187,Nothing special about the sessions
+188,Student_188,Bad explanation and poor support
+189,Student_189,It was an average experience
+190,Student_190,It was an average experience
+191,Student_191,Amazing practical exposure and great learning
+192,Student_192,Amazing practical exposure and great learning
+193,Student_193,Bad explanation and poor support
+194,Student_194,The course content was awful
+195,Student_195,I love the teaching style it is great
+196,Student_196,The teaching was poor and bad
+197,Student_197,Amazing practical exposure and great learning
+198,Student_198,The course was excellent and amazing
+199,Student_199,I had a terrible experience
+200,Student_200,I had a terrible experience
+201,Student_201,The class was normal
+202,Student_202,I love the teaching style it is great
+203,Student_203,Excellent support from faculty
+204,Student_204,The teaching was poor and bad
+205,Student_205,Nothing special about the sessions
+206,Student_206,The sessions were very good and helpful
+207,Student_207,The course was excellent and amazing
+208,Student_208,The course was okay
+209,Student_209,The sessions were very good and helpful
+210,Student_210,I had a terrible experience
+211,Student_211,The course was okay
+212,Student_212,The class was normal
+213,Student_213,Bad explanation and poor support
+214,Student_214,Bad explanation and poor support
+215,Student_215,It was fine overall
+216,Student_216,The class was normal
+217,Student_217,Amazing practical exposure and great learning
+218,Student_218,Bad explanation and poor support
+219,Student_219,The course content was awful
+220,Student_220,Nothing special about the sessions
+221,Student_221,Excellent support from faculty
+222,Student_222,I hate the scheduling system
+223,Student_223,Nothing special about the sessions
+224,Student_224,The course content was awful
+225,Student_225,Amazing practical exposure and great learning
+226,Student_226,It was fine overall
+227,Student_227,It was fine overall
+228,Student_228,It was fine overall
+229,Student_229,The course was excellent and amazing
+230,Student_230,I hate the scheduling system
+231,Student_231,Bad explanation and poor support
+232,Student_232,The course was okay
+233,Student_233,Amazing practical exposure and great learning
+234,Student_234,I love the teaching style it is great
+235,Student_235,Nothing special about the sessions
+236,Student_236,I love the teaching style it is great
+237,Student_237,I love the teaching style it is great
+238,Student_238,Amazing practical exposure and great learning
+239,Student_239,I had a terrible experience
+240,Student_240,It was an average experience
+241,Student_241,I hate the scheduling system
+242,Student_242,The course was okay
+243,Student_243,The sessions were very good and helpful
+244,Student_244,The class was normal
+245,Student_245,I love the teaching style it is great
+246,Student_246,It was fine overall
+247,Student_247,The course content was awful
+248,Student_248,Bad explanation and poor support
+249,Student_249,Bad explanation and poor support
+250,Student_250,Amazing practical exposure and great learning
+251,Student_251,The course was excellent and amazing
+252,Student_252,I love the teaching style it is great
+253,Student_253,The class was normal
+254,Student_254,The class was normal
+255,Student_255,Nothing special about the sessions
+256,Student_256,Excellent support from faculty
+257,Student_257,I had a terrible experience
+258,Student_258,The sessions were very good and helpful
+259,Student_259,I love the teaching style it is great
+260,Student_260,Excellent support from faculty
+261,Student_261,I love the teaching style it is great
+262,Student_262,Excellent support from faculty
+263,Student_263,I had a terrible experience
+264,Student_264,The course content was awful
+265,Student_265,The sessions were very good and helpful
+266,Student_266,Bad explanation and poor support
+267,Student_267,The course was okay
+268,Student_268,The course was okay
+269,Student_269,The course content was awful
+270,Student_270,I love the teaching style it is great
+271,Student_271,It was an average experience
+272,Student_272,The course was excellent and amazing
+273,Student_273,Bad explanation and poor support
+274,Student_274,It was an average experience
+275,Student_275,Excellent support from faculty
+276,Student_276,Amazing practical exposure and great learning
+277,Student_277,Bad explanation and poor support
+278,Student_278,It was an average experience
+279,Student_279,I had a terrible experience
+280,Student_280,I had a terrible experience
+281,Student_281,The course was okay
+282,Student_282,Excellent support from faculty
+283,Student_283,The sessions were very good and helpful
+284,Student_284,The course was excellent and amazing
+285,Student_285,The course content was awful
+286,Student_286,I had a terrible experience
+287,Student_287,The course content was awful
+288,Student_288,The class was normal
+289,Student_289,I love the teaching style it is great
+290,Student_290,The course was okay
+291,Student_291,Excellent support from faculty
+292,Student_292,Bad explanation and poor support
+293,Student_293,Excellent support from faculty
+294,Student_294,The course was okay
+295,Student_295,The course content was awful
+296,Student_296,I hate the scheduling system
+297,Student_297,The course was okay
+298,Student_298,I hate the scheduling system
+299,Student_299,The sessions were very good and helpful
+300,Student_300,It was an average experience
+301,Student_301,Amazing practical exposure and great learning
+302,Student_302,I hate the scheduling system
+303,Student_303,Amazing practical exposure and great learning
+304,Student_304,Nothing special about the sessions
+305,Student_305,Bad explanation and poor support
+306,Student_306,The class was normal
+307,Student_307,The sessions were very good and helpful
+308,Student_308,I had a terrible experience
+309,Student_309,I love the teaching style it is great
+310,Student_310,The course was okay
+311,Student_311,It was an average experience
+312,Student_312,Excellent support from faculty
+313,Student_313,It was an average experience
+314,Student_314,The teaching was poor and bad
+315,Student_315,The sessions were very good and helpful
+316,Student_316,The course content was awful
+317,Student_317,Amazing practical exposure and great learning
+318,Student_318,Amazing practical exposure and great learning
+319,Student_319,Nothing special about the sessions
+320,Student_320,The course was okay
+321,Student_321,I had a terrible experience
+322,Student_322,It was fine overall
+323,Student_323,It was fine overall
+324,Student_324,I love the teaching style it is great
+325,Student_325,Amazing practical exposure and great learning
+326,Student_326,I love the teaching style it is great
+327,Student_327,I had a terrible experience
+328,Student_328,Excellent support from faculty
+329,Student_329,The course content was awful
+330,Student_330,The course content was awful
+331,Student_331,The teaching was poor and bad
+332,Student_332,The course was okay
+333,Student_333,The sessions were very good and helpful
+334,Student_334,Excellent support from faculty
+335,Student_335,I hate the scheduling system
+336,Student_336,I hate the scheduling system
+337,Student_337,The teaching was poor and bad
+338,Student_338,Nothing special about the sessions
+339,Student_339,The course content was awful
+340,Student_340,The class was normal
+341,Student_341,Excellent support from faculty
+342,Student_342,The teaching was poor and bad
+343,Student_343,Amazing practical exposure and great learning
+344,Student_344,Amazing practical exposure and great learning
+345,Student_345,Excellent support from faculty
+346,Student_346,The sessions were very good and helpful
+347,Student_347,The class was normal
+348,Student_348,I had a terrible experience
+349,Student_349,Amazing practical exposure and great learning
+350,Student_350,I hate the scheduling system
+351,Student_351,Nothing special about the sessions
+352,Student_352,The course was okay
+353,Student_353,I had a terrible experience
+354,Student_354,I love the teaching style it is great
+355,Student_355,I love the teaching style it is great
+356,Student_356,Nothing special about the sessions
+357,Student_357,Amazing practical exposure and great learning
+358,Student_358,I love the teaching style it is great
+359,Student_359,The course content was awful
+360,Student_360,The teaching was poor and bad
+361,Student_361,It was an average experience
+362,Student_362,The course was excellent and amazing
+363,Student_363,The teaching was poor and bad
+364,Student_364,I hate the scheduling system
+365,Student_365,The course was excellent and amazing
+366,Student_366,I had a terrible experience
+367,Student_367,Nothing special about the sessions
+368,Student_368,I love the teaching style it is great
+369,Student_369,The course content was awful
+370,Student_370,Bad explanation and poor support
+371,Student_371,The class was normal
+372,Student_372,The sessions were very good and helpful
+373,Student_373,I had a terrible experience
+374,Student_374,I love the teaching style it is great
+375,Student_375,Excellent support from faculty
+376,Student_376,The sessions were very good and helpful
+377,Student_377,The course was okay
+378,Student_378,Nothing special about the sessions
+379,Student_379,I had a terrible experience
+380,Student_380,Excellent support from faculty
+381,Student_381,It was an average experience
+382,Student_382,Bad explanation and poor support
+383,Student_383,It was an average experience
+384,Student_384,Bad explanation and poor support
+385,Student_385,Nothing special about the sessions
+386,Student_386,I love the teaching style it is great
+387,Student_387,The course was okay
+388,Student_388,The course was okay
+389,Student_389,The class was normal
+390,Student_390,Nothing special about the sessions
+391,Student_391,Excellent support from faculty
+392,Student_392,The course content was awful
+393,Student_393,The course was excellent and amazing
+394,Student_394,It was an average experience
+395,Student_395,The course was excellent and amazing
+396,Student_396,I love the teaching style it is great
+397,Student_397,The teaching was poor and bad
+398,Student_398,The course was excellent and amazing
+399,Student_399,It was an average experience
+400,Student_400,The class was normal
+401,Student_401,I hate the scheduling system
+402,Student_402,I had a terrible experience
+403,Student_403,The sessions were very good and helpful
+404,Student_404,I had a terrible experience
+405,Student_405,The course was excellent and amazing
+406,Student_406,Excellent support from faculty
+407,Student_407,I hate the scheduling system
+408,Student_408,I had a terrible experience
+409,Student_409,I love the teaching style it is great
+410,Student_410,I had a terrible experience
+411,Student_411,It was fine overall
+412,Student_412,It was fine overall
+413,Student_413,It was fine overall
+414,Student_414,Bad explanation and poor support
+415,Student_415,I hate the scheduling system
+416,Student_416,Amazing practical exposure and great learning
+417,Student_417,The class was normal
+418,Student_418,The sessions were very good and helpful
+419,Student_419,The course was excellent and amazing
+420,Student_420,It was an average experience
+421,Student_421,Nothing special about the sessions
+422,Student_422,I love the teaching style it is great
+423,Student_423,I hate the scheduling system
+424,Student_424,The sessions were very good and helpful
+425,Student_425,It was an average experience
+426,Student_426,I love the teaching style it is great
+427,Student_427,It was an average experience
+428,Student_428,The course was okay
+429,Student_429,It was an average experience
+430,Student_430,Bad explanation and poor support
+431,Student_431,The sessions were very good and helpful
+432,Student_432,I love the teaching style it is great
+433,Student_433,It was an average experience
+434,Student_434,Bad explanation and poor support
+435,Student_435,The course was excellent and amazing
+436,Student_436,Nothing special about the sessions
+437,Student_437,The course content was awful
+438,Student_438,It was fine overall
+439,Student_439,The course was excellent and amazing
+440,Student_440,Amazing practical exposure and great learning
+441,Student_441,It was an average experience
+442,Student_442,I hate the scheduling system
+443,Student_443,The course was excellent and amazing
+444,Student_444,The course content was awful
+445,Student_445,Nothing special about the sessions
+446,Student_446,It was fine overall
+447,Student_447,It was an average experience
+448,Student_448,It was fine overall
+449,Student_449,The course was excellent and amazing
+450,Student_450,I had a terrible experience
+451,Student_451,The course was excellent and amazing
+452,Student_452,The course was okay
+453,Student_453,The class was normal
+454,Student_454,Nothing special about the sessions
+455,Student_455,It was an average experience
+456,Student_456,The course content was awful
+457,Student_457,It was an average experience
+458,Student_458,It was fine overall
+459,Student_459,The course was excellent and amazing
+460,Student_460,Bad explanation and poor support
+461,Student_461,It was an average experience
+462,Student_462,Bad explanation and poor support
+463,Student_463,It was an average experience
+464,Student_464,It was fine overall
+465,Student_465,The course content was awful
+466,Student_466,The sessions were very good and helpful
+467,Student_467,I had a terrible experience
+468,Student_468,The sessions were very good and helpful
+469,Student_469,I hate the scheduling system
+470,Student_470,Bad explanation and poor support
+471,Student_471,The class was normal
+472,Student_472,Nothing special about the sessions
+473,Student_473,I love the teaching style it is great
+474,Student_474,Amazing practical exposure and great learning
+475,Student_475,I had a terrible experience
+476,Student_476,Amazing practical exposure and great learning
+477,Student_477,The teaching was poor and bad
+478,Student_478,It was fine overall
+479,Student_479,The teaching was poor and bad
+480,Student_480,The sessions were very good and helpful
+481,Student_481,Nothing special about the sessions
+482,Student_482,Amazing practical exposure and great learning
+483,Student_483,I hate the scheduling system
+484,Student_484,It was an average experience
+485,Student_485,The teaching was poor and bad
+486,Student_486,It was fine overall
+487,Student_487,The teaching was poor and bad
+488,Student_488,Excellent support from faculty
+489,Student_489,The sessions were very good and helpful
+490,Student_490,The course was excellent and amazing
+491,Student_491,I hate the scheduling system
+492,Student_492,I hate the scheduling system
+493,Student_493,The teaching was poor and bad
+494,Student_494,Nothing special about the sessions
+495,Student_495,Amazing practical exposure and great learning
+496,Student_496,Excellent support from faculty
+497,Student_497,The class was normal
+498,Student_498,The course content was awful
+499,Student_499,The teaching was poor and bad
+500,Student_500,The course was excellent and amazing
+501,Student_501,The course content was awful
+502,Student_502,It was an average experience
+503,Student_503,The course was excellent and amazing
+504,Student_504,Excellent support from faculty
+505,Student_505,The course was okay
+506,Student_506,Bad explanation and poor support
+507,Student_507,The sessions were very good and helpful
+508,Student_508,The teaching was poor and bad
+509,Student_509,The sessions were very good and helpful
+510,Student_510,Bad explanation and poor support
+511,Student_511,The sessions were very good and helpful
+512,Student_512,The course was excellent and amazing
+513,Student_513,I had a terrible experience
+514,Student_514,Amazing practical exposure and great learning
+515,Student_515,I had a terrible experience
+516,Student_516,The teaching was poor and bad
+517,Student_517,Bad explanation and poor support
+518,Student_518,I had a terrible experience
+519,Student_519,The sessions were very good and helpful
+520,Student_520,I love the teaching style it is great
+521,Student_521,It was an average experience
+522,Student_522,The class was normal
+523,Student_523,The teaching was poor and bad
+524,Student_524,The sessions were very good and helpful
+525,Student_525,The course was excellent and amazing
+526,Student_526,The course was excellent and amazing
+527,Student_527,The teaching was poor and bad
+528,Student_528,The sessions were very good and helpful
+529,Student_529,I hate the scheduling system
+530,Student_530,I hate the scheduling system
+531,Student_531,Bad explanation and poor support
+532,Student_532,I had a terrible experience
+533,Student_533,It was fine overall
+534,Student_534,The course content was awful
+535,Student_535,Nothing special about the sessions
+536,Student_536,Excellent support from faculty
+537,Student_537,I had a terrible experience
+538,Student_538,I love the teaching style it is great
+539,Student_539,I had a terrible experience
+540,Student_540,Excellent support from faculty
+541,Student_541,I had a terrible experience
+542,Student_542,I had a terrible experience
+543,Student_543,The teaching was poor and bad
+544,Student_544,Amazing practical exposure and great learning
+545,Student_545,It was fine overall
+546,Student_546,It was an average experience
+547,Student_547,The class was normal
+548,Student_548,The course was excellent and amazing
+549,Student_549,Nothing special about the sessions
+550,Student_550,The course was excellent and amazing
+551,Student_551,It was an average experience
+552,Student_552,I love the teaching style it is great
+553,Student_553,The class was normal
+554,Student_554,I hate the scheduling system
+555,Student_555,Nothing special about the sessions
+556,Student_556,Nothing special about the sessions
+557,Student_557,The course was okay
+558,Student_558,Amazing practical exposure and great learning
+559,Student_559,Nothing special about the sessions
+560,Student_560,Amazing practical exposure and great learning
+561,Student_561,The course was okay
+562,Student_562,The class was normal
+563,Student_563,The teaching was poor and bad
+564,Student_564,It was fine overall
+565,Student_565,Excellent support from faculty
+566,Student_566,The course was okay
+567,Student_567,The course was excellent and amazing
+568,Student_568,I hate the scheduling system
+569,Student_569,I hate the scheduling system
+570,Student_570,The course was okay
+571,Student_571,Bad explanation and poor support
+572,Student_572,It was an average experience
+573,Student_573,It was fine overall
+574,Student_574,It was fine overall
+575,Student_575,The sessions were very good and helpful
+576,Student_576,The course content was awful
+577,Student_577,The sessions were very good and helpful
+578,Student_578,The class was normal
+579,Student_579,The class was normal
+580,Student_580,Excellent support from faculty
+581,Student_581,The sessions were very good and helpful
+582,Student_582,I love the teaching style it is great
+583,Student_583,I love the teaching style it is great
+584,Student_584,I had a terrible experience
+585,Student_585,The class was normal
+586,Student_586,Nothing special about the sessions
+587,Student_587,The course was okay
+588,Student_588,I had a terrible experience
+589,Student_589,I had a terrible experience
+590,Student_590,The course content was awful
+591,Student_591,I hate the scheduling system
+592,Student_592,I hate the scheduling system
+593,Student_593,The course was okay
+594,Student_594,Bad explanation and poor support
+595,Student_595,Bad explanation and poor support
+596,Student_596,The teaching was poor and bad
+597,Student_597,The course was excellent and amazing
+598,Student_598,I hate the scheduling system
+599,Student_599,The class was normal
+600,Student_600,Excellent support from faculty
+601,Student_601,The sessions were very good and helpful
+602,Student_602,The course was okay
+603,Student_603,I love the teaching style it is great
+604,Student_604,I had a terrible experience
+605,Student_605,It was an average experience
+606,Student_606,The course was excellent and amazing
+607,Student_607,It was fine overall
+608,Student_608,The sessions were very good and helpful
+609,Student_609,It was an average experience
+610,Student_610,The course was excellent and amazing
+611,Student_611,It was fine overall
+612,Student_612,The sessions were very good and helpful
+613,Student_613,The course was excellent and amazing
+614,Student_614,The course was okay
+615,Student_615,The course content was awful
+616,Student_616,Nothing special about the sessions
+617,Student_617,I hate the scheduling system
+618,Student_618,Excellent support from faculty
+619,Student_619,Nothing special about the sessions
+620,Student_620,The sessions were very good and helpful
+621,Student_621,The sessions were very good and helpful
+622,Student_622,Amazing practical exposure and great learning
+623,Student_623,The teaching was poor and bad
+624,Student_624,I love the teaching style it is great
+625,Student_625,It was an average experience
+626,Student_626,I had a terrible experience
+627,Student_627,I had a terrible experience
+628,Student_628,I love the teaching style it is great
+629,Student_629,I hate the scheduling system
+630,Student_630,Nothing special about the sessions
+631,Student_631,The class was normal
+632,Student_632,The sessions were very good and helpful
+633,Student_633,It was fine overall
+634,Student_634,The class was normal
+635,Student_635,The teaching was poor and bad
+636,Student_636,The class was normal
+637,Student_637,It was an average experience
+638,Student_638,The course was excellent and amazing
+639,Student_639,Amazing practical exposure and great learning
+640,Student_640,I had a terrible experience
+641,Student_641,The sessions were very good and helpful
+642,Student_642,It was an average experience
+643,Student_643,I love the teaching style it is great
+644,Student_644,I love the teaching style it is great
+645,Student_645,I hate the scheduling system
+646,Student_646,Nothing special about the sessions
+647,Student_647,The course was okay
+648,Student_648,I love the teaching style it is great
+649,Student_649,The teaching was poor and bad
+650,Student_650,The course was okay
+651,Student_651,The course was excellent and amazing
+652,Student_652,I hate the scheduling system
+653,Student_653,Amazing practical exposure and great learning
+654,Student_654,Excellent support from faculty
+655,Student_655,It was an average experience
+656,Student_656,Nothing special about the sessions
+657,Student_657,Bad explanation and poor support
+658,Student_658,I love the teaching style it is great
+659,Student_659,Nothing special about the sessions
+660,Student_660,It was an average experience
+661,Student_661,The course content was awful
+662,Student_662,Excellent support from faculty
+663,Student_663,I love the teaching style it is great
+664,Student_664,The course was okay
+665,Student_665,The course content was awful
+666,Student_666,I had a terrible experience
+667,Student_667,Nothing special about the sessions
+668,Student_668,It was an average experience
+669,Student_669,The teaching was poor and bad
+670,Student_670,Excellent support from faculty
+671,Student_671,I had a terrible experience
+672,Student_672,Nothing special about the sessions
+673,Student_673,I love the teaching style it is great
+674,Student_674,The class was normal
+675,Student_675,Nothing special about the sessions
+676,Student_676,I love the teaching style it is great
+677,Student_677,Nothing special about the sessions
+678,Student_678,The sessions were very good and helpful
+679,Student_679,I had a terrible experience
+680,Student_680,The class was normal
+681,Student_681,The sessions were very good and helpful
+682,Student_682,The course was okay
+683,Student_683,I hate the scheduling system
+684,Student_684,The teaching was poor and bad
+685,Student_685,It was an average experience
+686,Student_686,The course was excellent and amazing
+687,Student_687,I had a terrible experience
+688,Student_688,Amazing practical exposure and great learning
+689,Student_689,The course content was awful
+690,Student_690,Bad explanation and poor support
+691,Student_691,Nothing special about the sessions
+692,Student_692,I hate the scheduling system
+693,Student_693,The class was normal
+694,Student_694,Bad explanation and poor support
+695,Student_695,The class was normal
+696,Student_696,The course was okay
+697,Student_697,The teaching was poor and bad
+698,Student_698,The course content was awful
+699,Student_699,It was an average experience
+700,Student_700,Excellent support from faculty
+701,Student_701,I hate the scheduling system
+702,Student_702,The course content was awful
+703,Student_703,The sessions were very good and helpful
+704,Student_704,I hate the scheduling system
+705,Student_705,The course was okay
+706,Student_706,Nothing special about the sessions
+707,Student_707,I love the teaching style it is great
+708,Student_708,The teaching was poor and bad
+709,Student_709,The sessions were very good and helpful
+710,Student_710,I had a terrible experience
+711,Student_711,The course was excellent and amazing
+712,Student_712,I love the teaching style it is great
+713,Student_713,Amazing practical exposure and great learning
+714,Student_714,The course content was awful
+715,Student_715,I hate the scheduling system
+716,Student_716,It was an average experience
+717,Student_717,Nothing special about the sessions
+718,Student_718,The teaching was poor and bad
+719,Student_719,The class was normal
+720,Student_720,I had a terrible experience
+721,Student_721,The course was excellent and amazing
+722,Student_722,Excellent support from faculty
+723,Student_723,Bad explanation and poor support
+724,Student_724,The course was excellent and amazing
+725,Student_725,The class was normal
+726,Student_726,It was fine overall
+727,Student_727,I hate the scheduling system
+728,Student_728,The course was okay
+729,Student_729,The teaching was poor and bad
+730,Student_730,I hate the scheduling system
+731,Student_731,The course was excellent and amazing
+732,Student_732,It was an average experience
+733,Student_733,The sessions were very good and helpful
+734,Student_734,The course was okay
+735,Student_735,Amazing practical exposure and great learning
+736,Student_736,Amazing practical exposure and great learning
+737,Student_737,Bad explanation and poor support
+738,Student_738,Bad explanation and poor support
+739,Student_739,The class was normal
+740,Student_740,The sessions were very good and helpful
+741,Student_741,I love the teaching style it is great
+742,Student_742,The sessions were very good and helpful
+743,Student_743,The course content was awful
+744,Student_744,The class was normal
+745,Student_745,Amazing practical exposure and great learning
+746,Student_746,The course was excellent and amazing
+747,Student_747,The class was normal
+748,Student_748,The sessions were very good and helpful
+749,Student_749,Bad explanation and poor support
+750,Student_750,The course content was awful
+751,Student_751,The class was normal
+752,Student_752,It was an average experience
+753,Student_753,The course was okay
+754,Student_754,The course was excellent and amazing
+755,Student_755,Nothing special about the sessions
+756,Student_756,The course was excellent and amazing
+757,Student_757,It was an average experience
+758,Student_758,The course was okay
+759,Student_759,The course was okay
+760,Student_760,The course was excellent and amazing
+761,Student_761,The sessions were very good and helpful
+762,Student_762,I had a terrible experience
+763,Student_763,Amazing practical exposure and great learning
+764,Student_764,The course was okay
+765,Student_765,Amazing practical exposure and great learning
+766,Student_766,It was an average experience
+767,Student_767,The sessions were very good and helpful
+768,Student_768,It was fine overall
+769,Student_769,The sessions were very good and helpful
+770,Student_770,Nothing special about the sessions
+771,Student_771,I love the teaching style it is great
+772,Student_772,The course was excellent and amazing
+773,Student_773,Nothing special about the sessions
+774,Student_774,The course content was awful
+775,Student_775,It was an average experience
+776,Student_776,Amazing practical exposure and great learning
+777,Student_777,I love the teaching style it is great
+778,Student_778,The course content was awful
+779,Student_779,Bad explanation and poor support
+780,Student_780,The course was excellent and amazing
+781,Student_781,Nothing special about the sessions
+782,Student_782,It was an average experience
+783,Student_783,Excellent support from faculty
+784,Student_784,It was an average experience
+785,Student_785,I love the teaching style it is great
+786,Student_786,The course was okay
+787,Student_787,It was an average experience
+788,Student_788,I had a terrible experience
+789,Student_789,I hate the scheduling system
+790,Student_790,The course was okay
+791,Student_791,The teaching was poor and bad
+792,Student_792,The course was excellent and amazing
+793,Student_793,I had a terrible experience
+794,Student_794,It was fine overall
+795,Student_795,I love the teaching style it is great
+796,Student_796,It was an average experience
+797,Student_797,Amazing practical exposure and great learning
+798,Student_798,The course was excellent and amazing
+799,Student_799,It was fine overall
+800,Student_800,The course was excellent and amazing
+801,Student_801,It was fine overall
+802,Student_802,The course was okay
+803,Student_803,Excellent support from faculty
+804,Student_804,The class was normal
+805,Student_805,Excellent support from faculty
+806,Student_806,The course was okay
+807,Student_807,The sessions were very good and helpful
+808,Student_808,Bad explanation and poor support
+809,Student_809,The teaching was poor and bad
+810,Student_810,I hate the scheduling system
+811,Student_811,Bad explanation and poor support
+812,Student_812,It was fine overall
+813,Student_813,I hate the scheduling system
+814,Student_814,I hate the scheduling system
+815,Student_815,It was fine overall
+816,Student_816,It was fine overall
+817,Student_817,It was an average experience
+818,Student_818,The course content was awful
+819,Student_819,The course was okay
+820,Student_820,I hate the scheduling system
+821,Student_821,I love the teaching style it is great
+822,Student_822,Nothing special about the sessions
+823,Student_823,I hate the scheduling system
+824,Student_824,I had a terrible experience
+825,Student_825,The course was okay
+826,Student_826,Excellent support from faculty
+827,Student_827,Excellent support from faculty
+828,Student_828,Bad explanation and poor support
+829,Student_829,Nothing special about the sessions
+830,Student_830,It was an average experience
+831,Student_831,It was an average experience
+832,Student_832,The course content was awful
+833,Student_833,The course content was awful
+834,Student_834,I had a terrible experience
+835,Student_835,I had a terrible experience
+836,Student_836,Excellent support from faculty
+837,Student_837,The teaching was poor and bad
+838,Student_838,The course content was awful
+839,Student_839,Amazing practical exposure and great learning
+840,Student_840,Amazing practical exposure and great learning
+841,Student_841,It was fine overall
+842,Student_842,Nothing special about the sessions
+843,Student_843,It was fine overall
+844,Student_844,Excellent support from faculty
+845,Student_845,Excellent support from faculty
+846,Student_846,The course was okay
+847,Student_847,The course content was awful
+848,Student_848,I had a terrible experience
+849,Student_849,The course was okay
+850,Student_850,I hate the scheduling system
+851,Student_851,It was fine overall
+852,Student_852,It was fine overall
+853,Student_853,Excellent support from faculty
+854,Student_854,The course was okay
+855,Student_855,I had a terrible experience
+856,Student_856,I hate the scheduling system
+857,Student_857,The course content was awful
+858,Student_858,The class was normal
+859,Student_859,I hate the scheduling system
+860,Student_860,Excellent support from faculty
+861,Student_861,The course content was awful
+862,Student_862,I had a terrible experience
+863,Student_863,The sessions were very good and helpful
+864,Student_864,The course was excellent and amazing
+865,Student_865,Excellent support from faculty
+866,Student_866,The course content was awful
+867,Student_867,Excellent support from faculty
+868,Student_868,I love the teaching style it is great
+869,Student_869,I love the teaching style it is great
+870,Student_870,The course was excellent and amazing
+871,Student_871,I hate the scheduling system
+872,Student_872,The course was excellent and amazing
+873,Student_873,The teaching was poor and bad
+874,Student_874,The teaching was poor and bad
+875,Student_875,The class was normal
+876,Student_876,Excellent support from faculty
+877,Student_877,The course was excellent and amazing
+878,Student_878,I love the teaching style it is great
+879,Student_879,Nothing special about the sessions
+880,Student_880,Bad explanation and poor support
+881,Student_881,The course was excellent and amazing
+882,Student_882,The class was normal
+883,Student_883,Nothing special about the sessions
+884,Student_884,It was an average experience
+885,Student_885,Bad explanation and poor support
+886,Student_886,I had a terrible experience
+887,Student_887,It was fine overall
+888,Student_888,Excellent support from faculty
+889,Student_889,Excellent support from faculty
+890,Student_890,It was fine overall
+891,Student_891,Bad explanation and poor support
+892,Student_892,I hate the scheduling system
+893,Student_893,The class was normal
+894,Student_894,The sessions were very good and helpful
+895,Student_895,I love the teaching style it is great
+896,Student_896,Excellent support from faculty
+897,Student_897,The course content was awful
+898,Student_898,Excellent support from faculty
+899,Student_899,Nothing special about the sessions
+900,Student_900,Amazing practical exposure and great learning
+901,Student_901,I had a terrible experience
+902,Student_902,The teaching was poor and bad
+903,Student_903,I had a terrible experience
+904,Student_904,I love the teaching style it is great
+905,Student_905,I had a terrible experience
+906,Student_906,It was an average experience
+907,Student_907,The class was normal
+908,Student_908,The course was okay
+909,Student_909,I love the teaching style it is great
+910,Student_910,Bad explanation and poor support
+911,Student_911,The class was normal
+912,Student_912,It was fine overall
+913,Student_913,It was fine overall
+914,Student_914,The course was okay
+915,Student_915,The course was okay
+916,Student_916,The course was okay
+917,Student_917,I had a terrible experience
+918,Student_918,It was an average experience
+919,Student_919,The course was okay
+920,Student_920,I had a terrible experience
+921,Student_921,The class was normal
+922,Student_922,The course was excellent and amazing
+923,Student_923,The sessions were very good and helpful
+924,Student_924,The class was normal
+925,Student_925,It was fine overall
+926,Student_926,Nothing special about the sessions
+927,Student_927,The teaching was poor and bad
+928,Student_928,I had a terrible experience
+929,Student_929,The course content was awful
+930,Student_930,Excellent support from faculty
+931,Student_931,Amazing practical exposure and great learning
+932,Student_932,The sessions were very good and helpful
+933,Student_933,I hate the scheduling system
+934,Student_934,Nothing special about the sessions
+935,Student_935,I hate the scheduling system
+936,Student_936,The class was normal
+937,Student_937,The course content was awful
+938,Student_938,The course was excellent and amazing
+939,Student_939,The class was normal
+940,Student_940,Excellent support from faculty
+941,Student_941,The teaching was poor and bad
+942,Student_942,The class was normal
+943,Student_943,The course was excellent and amazing
+944,Student_944,Excellent support from faculty
+945,Student_945,It was an average experience
+946,Student_946,Excellent support from faculty
+947,Student_947,I had a terrible experience
+948,Student_948,Excellent support from faculty
+949,Student_949,The course was excellent and amazing
+950,Student_950,Nothing special about the sessions
+951,Student_951,The course was excellent and amazing
+952,Student_952,The sessions were very good and helpful
+953,Student_953,I had a terrible experience
+954,Student_954,Nothing special about the sessions
+955,Student_955,The teaching was poor and bad
+956,Student_956,The course was okay
+957,Student_957,Bad explanation and poor support
+958,Student_958,The course content was awful
+959,Student_959,Nothing special about the sessions
+960,Student_960,The teaching was poor and bad
+961,Student_961,The course content was awful
+962,Student_962,Bad explanation and poor support
+963,Student_963,Nothing special about the sessions
+964,Student_964,The teaching was poor and bad
+965,Student_965,The course content was awful
+966,Student_966,I love the teaching style it is great
+967,Student_967,It was an average experience
+968,Student_968,It was fine overall
+969,Student_969,The class was normal
+970,Student_970,Excellent support from faculty
+971,Student_971,Nothing special about the sessions
+972,Student_972,I hate the scheduling system
+973,Student_973,The course was okay
+974,Student_974,The teaching was poor and bad
+975,Student_975,It was an average experience
+976,Student_976,The teaching was poor and bad
+977,Student_977,I hate the scheduling system
+978,Student_978,It was fine overall
+979,Student_979,The course content was awful
+980,Student_980,It was fine overall
+981,Student_981,The sessions were very good and helpful
+982,Student_982,Nothing special about the sessions
+983,Student_983,The sessions were very good and helpful
+984,Student_984,Nothing special about the sessions
+985,Student_985,It was an average experience
+986,Student_986,The course content was awful
+987,Student_987,I had a terrible experience
+988,Student_988,I had a terrible experience
+989,Student_989,I love the teaching style it is great
+990,Student_990,Bad explanation and poor support
+991,Student_991,I had a terrible experience
+992,Student_992,The course was excellent and amazing
+993,Student_993,The sessions were very good and helpful
+994,Student_994,The course was okay
+995,Student_995,The class was normal
+996,Student_996,Amazing practical exposure and great learning
+997,Student_997,The sessions were very good and helpful
+998,Student_998,The course content was awful
+999,Student_999,Amazing practical exposure and great learning
+1000,Student_1000,The course was okay

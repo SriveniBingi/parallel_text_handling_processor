@@ -7,13 +7,13 @@ The system reads feedback data from a dataset, splits it into chunks, processes 
 
 **Key Features**
 
-Parallel text processing using Python multiprocessing
-Chunk-based dataset handling for large datasets
-Regex-based sentiment scoring
-SQLite database integration
-CSV export functionality
-Modular and scalable architecture
-Logging system for monitoring execution
+* Parallel text processing using Python multiprocessing
+* Chunk-based dataset handling for large datasets
+* Regex-based sentiment scoring
+* SQLite database integration
+* CSV export functionality
+* Modular and scalable architecture
+* Logging system for monitoring execution
 
 **Project Architecture**
 

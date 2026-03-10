@@ -36,11 +36,10 @@ def insert_results(results):
     conn = create_connection()
     cursor = conn.cursor()
 
-    cursor.executemany("""
-        INSERT INTO student_feedback
-        (student_id, student_name, feedback, score, sentiment)
-        VALUES (?, ?, ?, ?, ?)
-    """, results)
+    cursor.executemany(
+    "INSERT INTO student_feedback VALUES (?, ?, ?, ?, ?)",
+    results
+)
 
     conn.commit()
     conn.close()

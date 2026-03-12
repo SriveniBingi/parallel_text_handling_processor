@@ -30,7 +30,7 @@ neutral_feedback = [
 
 all_feedback = positive_feedback + negative_feedback + neutral_feedback
 
-NUMBER_OF_RECORDS = 5000
+NUMBER_OF_RECORDS = 10000
 
 with open("data/students.csv", "w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)

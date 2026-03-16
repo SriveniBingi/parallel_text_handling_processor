@@ -1,8 +1,10 @@
-# config.py
+POSITIVE_WORDS = [
+    "good","great","excellent","amazing","helpful","love","support"
+]
 
-DB_NAME = "student_data.db"
+NEGATIVE_WORDS = [
+    "bad","poor","terrible","awful","boring","hate","problem"
+]
 
-POSITIVE_WORDS = ["good", "great", "excellent", "amazing", "happy", "love"]
-NEGATIVE_WORDS = ["bad", "poor", "terrible", "awful", "sad", "hate"]
-
-CHUNK_SIZE = 500  # Good for 1000+ rows
+CHUNK_SIZE = 500
+DB_NAME = "student_feedback.db"

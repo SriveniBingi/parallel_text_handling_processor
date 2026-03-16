@@ -1,17 +1,17 @@
 import sqlite3
 from config import DB_NAME
 
-
-def create_connection():
+def get_connection():
     return sqlite3.connect(DB_NAME)
 
 
 def create_table():
-    conn = create_connection()
+
+    conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS student_feedback (
+    CREATE TABLE IF NOT EXISTS student_feedback(
         student_id INTEGER,
         student_name TEXT,
         feedback TEXT,
@@ -25,42 +25,70 @@ def create_table():
 
 
 def clear_table():
-    conn = create_connection()
+
+    conn = get_connection()
     cursor = conn.cursor()
+
     cursor.execute("DELETE FROM student_feedback")
+
     conn.commit()
     conn.close()
 
 
 def insert_results(results):
-    conn = create_connection()
+
+    conn = get_connection()
     cursor = conn.cursor()
 
-    cursor.executemany(
-    "INSERT INTO student_feedback VALUES (?, ?, ?, ?, ?)",
-    results
-)
+    cursor.executemany("""
+    INSERT INTO student_feedback
+    VALUES (?, ?, ?, ?, ?)
+    """, results)
 
     conn.commit()
     conn.close()
 
 
 def fetch_all():
-    conn = create_connection()
+
+    conn = get_connection()
     cursor = conn.cursor()
+
     cursor.execute("SELECT * FROM student_feedback")
-    rows = cursor.fetchall()
+    data = cursor.fetchall()
+
     conn.close()
-    return rows
+
+    return data
 
 
 def search_by_name(name):
-    conn = create_connection()
+
+    conn = get_connection()
     cursor = conn.cursor()
+
     cursor.execute(
-        "SELECT * FROM student_feedback WHERE LOWER(student_name)=LOWER(?)",
-        (name,)
+        "SELECT * FROM student_feedback WHERE student_name LIKE ?",
+        ('%' + name + '%',)
     )
-    rows = cursor.fetchall()
+
+    data = cursor.fetchall()
     conn.close()
-    return rows
+
+    return data
+
+
+def search_by_sentiment(sentiment):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT * FROM student_feedback WHERE sentiment = ?",
+        (sentiment,)
+    )
+
+    data = cursor.fetchall()
+    conn.close()
+
+    return data

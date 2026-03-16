@@ -29,7 +29,7 @@ neutral_feedback = [
 ]
 
 all_feedback = positive_feedback + negative_feedback + neutral_feedback
-
+feedback = random.choice(positive_feedback*3 + negative_feedback*2 + neutral_feedback*2)
 NUMBER_OF_RECORDS = 10000
 
 with open("data/students.csv", "w", newline="", encoding="utf-8") as file:

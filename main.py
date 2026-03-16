@@ -2,16 +2,21 @@ from multiprocessing import Pool
 import os
 import time
 import logging
+
 from text_loader import read_csv, chunk_data
 from scorer import process_chunk
+
 from database import (
     create_table,
     clear_table,
     insert_results,
     fetch_all,
-    search_by_name
+    search_by_name,
+    search_by_sentiment
 )
+
 from search_module import export_to_csv
+
 
 # Logging Configuration
 logging.basicConfig(
@@ -21,8 +26,9 @@ logging.basicConfig(
 
 
 def main():
+
     logging.info("===== Student Feedback Processing System Started =====")
-    
+
     start_time = time.time()
 
     file_path = "data/students.csv"
@@ -44,7 +50,6 @@ def main():
         return
 
 
-
     # Step 3: Parallel Processing
     logging.info("Processing feedback in parallel...")
 
@@ -59,6 +64,7 @@ def main():
         logging.error(f"Multiprocessing error: {e}")
         return
 
+
     # Flatten results
     flat_results = [item for sublist in results for item in sublist]
 
@@ -72,27 +78,73 @@ def main():
     except Exception as e:
         logging.error(f"Database error: {e}")
         return
-    
-    
 
-    # Step 5: Show total records
+
+    # Step 5: Fetch All Records
     try:
         all_data = fetch_all()
         logging.info(f"Total records processed: {len(all_data)}")
     except Exception as e:
         logging.error(f"Error fetching data: {e}")
         return
-    
+
+
+    # Step 6: Summary Report
+    positive = sum(1 for row in all_data if row[4] == "Positive")
+    negative = sum(1 for row in all_data if row[4] == "Negative")
+    neutral = sum(1 for row in all_data if row[4] == "Neutral")
+
+    print("\n===== Summary Report =====")
+    print(f"Total Records : {len(all_data)}")
+    print(f"Positive      : {positive}")
+    print(f"Negative      : {negative}")
+    print(f"Neutral       : {neutral}")
+
+
+    # Step 7: Alert System for Negative Feedback
+    print("\n⚠ Negative Feedback Alerts")
+
+    alert_count = 0
+
+    for row in all_data:
+        if row[4] == "Negative":
+            print(f"ALERT -> {row[1]} : {row[2]}")
+            alert_count += 1
+
+        if alert_count == 5:   # show only first 5 alerts
+            break
+
+
     # Stop timer after processing (before user input)
     processing_end = time.time()
-    logging.info(f"Processing completed in {round(processing_end - start_time, 2)} seconds.")
+
+    logging.info(
+        f"Processing completed in {round(processing_end - start_time, 2)} seconds."
+    )
 
 
-    # Step 6: Search Option
-    search_name = input("\nEnter student name to search (or press Enter to skip): ")
+    # Step 8: Performance Report
+    print("\n===== Performance Report =====")
+    print(f"Dataset Size : {len(data)}")
+    print(f"Chunks Created : {len(chunks)}")
+    print(f"CPU Cores Used : {num_processes}")
+
+
+    # Step 9: Search Options
+    print("\nSearch Options")
+    print("1 → Search by Student Name")
+    print("2 → Search by Sentiment")
+    print("Press Enter to skip search")
+
+    search_option = input("\nSelect option: ")
+
 
     try:
-        if search_name:
+
+        if search_option == "1":
+
+            search_name = input("Enter student name: ")
+
             search_results = search_by_name(search_name)
 
             for row in search_results:
@@ -101,14 +153,32 @@ def main():
             export_to_csv(search_results, "search_results.csv")
             logging.info("Search results exported to CSV.")
 
+
+        elif search_option == "2":
+
+            sentiment = input("Enter sentiment (Positive/Negative/Neutral): ")
+
+            results = search_by_sentiment(sentiment)
+
+            for row in results:
+                print(row)
+
+            export_to_csv(results, "sentiment_results.csv")
+            logging.info("Sentiment results exported to CSV.")
+
+
         else:
+
             export_to_csv(all_data)
             logging.info("All data exported to CSV.")
+
 
     except Exception as e:
         logging.error(f"CSV export error: {e}")
 
+
     logging.info("===== Program Finished Successfully =====")
+
 
 if __name__ == "__main__":
     main()

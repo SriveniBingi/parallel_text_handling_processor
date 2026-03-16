@@ -68,8 +68,8 @@ def search_by_name(name):
     cursor = conn.cursor()
 
     cursor.execute(
-        "SELECT * FROM student_feedback WHERE student_name LIKE ?",
-        ('%' + name + '%',)
+        "SELECT * FROM student_feedback WHERE LOWER(student_name) =LOWER(?)",
+        ( name,)
     )
 
     data = cursor.fetchall()
@@ -90,5 +90,34 @@ def search_by_sentiment(sentiment):
 
     data = cursor.fetchall()
     conn.close()
-
+    
     return data
+
+# Search by Keyword in Feedback
+def search_by_keyword(keyword):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT * FROM student_feedback WHERE feedback LIKE ?",
+        ('%' + keyword + '%',)
+    )
+
+    data = cursor.fetchall()
+    conn.close()
+
+def search_by_score(score):
+
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT * FROM student_feedback WHERE score <= ?",
+        (score,)
+    )
+
+    results = cursor.fetchall()
+    conn.close()
+
+    return results

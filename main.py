@@ -134,6 +134,8 @@ def main():
     print("\nSearch Options")
     print("1 → Search by Student Name")
     print("2 → Search by Sentiment")
+    print("3 → Search by Keyword")
+    print("4 → Filter by Score")
     print("Press Enter to skip search")
 
     search_option = input("\nSelect option: ")
@@ -141,23 +143,29 @@ def main():
 
     try:
 
+        # Search by Name
         if search_option == "1":
 
-            search_name = input("Enter student name: ")
+            name = input("Enter student name: ")
+            results = search_by_name(name)
+            if results:
+                 print("\nSearch Results:\n")
 
-            search_results = search_by_name(search_name)
+                 for row in results:
+                     print(row)
 
-            for row in search_results:
-                print(row)
+            else:
+              print("No student found.")
 
-            export_to_csv(search_results, "search_results.csv")
+            export_to_csv(results, "search_results.csv")
             logging.info("Search results exported to CSV.")
+            
 
 
+        # Search by Sentiment
         elif search_option == "2":
 
             sentiment = input("Enter sentiment (Positive/Negative/Neutral): ")
-
             results = search_by_sentiment(sentiment)
 
             for row in results:
@@ -167,14 +175,40 @@ def main():
             logging.info("Sentiment results exported to CSV.")
 
 
+        # Search by Keyword
+        elif search_option == "3":
+
+            keyword = input("Enter keyword: ")
+            results = search_by_keyword(keyword)
+
+            for row in results:
+                print(row)
+
+            export_to_csv(results, "keyword_results.csv")
+            logging.info("Keyword search results exported to CSV.")
+
+
+        # Filter by Score
+        elif search_option == "4":
+
+            score = int(input("Enter maximum score (example: 0 or -1): "))
+            results = search_by_score(score)
+
+            for row in results:
+                print(row)
+
+            export_to_csv(results, "score_filtered_results.csv")
+            logging.info("Score filtered results exported to CSV.")
+
+
         else:
 
-            export_to_csv(all_data)
-            logging.info("All data exported to CSV.")
+            export_to_csv(all_data, "all_results.csv")
+            logging.info("All results exported to CSV.")
 
 
     except Exception as e:
-        logging.error(f"CSV export error: {e}")
+        logging.error(f"Search or CSV export error: {e}")
 
 
     logging.info("===== Program Finished Successfully =====")
@@ -182,3 +216,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

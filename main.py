@@ -12,7 +12,9 @@ from database import (
     insert_results,
     fetch_all,
     search_by_name,
-    search_by_sentiment
+    search_by_sentiment,
+    search_by_keyword,
+    search_by_score
 )
 
 from search_module import export_to_csv

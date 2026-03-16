@@ -1,0 +1,1308 @@
+Student ID,Student Name,Feedback,Score,Sentiment
+10,Student_10,The teaching was poor and bad,-2,Negative
+27,Student_27,The teaching was poor and bad,-2,Negative
+36,Student_36,The teaching was poor and bad,-2,Negative
+39,Student_39,Bad explanation and poor support,-1,Negative
+44,Student_44,The teaching was poor and bad,-2,Negative
+50,Student_50,Bad explanation and poor support,-1,Negative
+62,Student_62,The teaching was poor and bad,-2,Negative
+91,Student_91,The teaching was poor and bad,-2,Negative
+94,Student_94,The teaching was poor and bad,-2,Negative
+99,Student_99,Bad explanation and poor support,-1,Negative
+114,Student_114,The teaching was poor and bad,-2,Negative
+121,Student_121,The teaching was poor and bad,-2,Negative
+125,Student_125,The teaching was poor and bad,-2,Negative
+126,Student_126,Bad explanation and poor support,-1,Negative
+144,Student_144,Bad explanation and poor support,-1,Negative
+147,Student_147,The teaching was poor and bad,-2,Negative
+156,Student_156,The teaching was poor and bad,-2,Negative
+163,Student_163,Bad explanation and poor support,-1,Negative
+179,Student_179,Bad explanation and poor support,-1,Negative
+184,Student_184,The teaching was poor and bad,-2,Negative
+190,Student_190,The teaching was poor and bad,-2,Negative
+198,Student_198,Bad explanation and poor support,-1,Negative
+199,Student_199,The teaching was poor and bad,-2,Negative
+206,Student_206,The teaching was poor and bad,-2,Negative
+210,Student_210,The teaching was poor and bad,-2,Negative
+217,Student_217,Bad explanation and poor support,-1,Negative
+220,Student_220,The teaching was poor and bad,-2,Negative
+234,Student_234,The teaching was poor and bad,-2,Negative
+244,Student_244,Bad explanation and poor support,-1,Negative
+248,Student_248,The teaching was poor and bad,-2,Negative
+253,Student_253,Bad explanation and poor support,-1,Negative
+256,Student_256,The teaching was poor and bad,-2,Negative
+262,Student_262,Bad explanation and poor support,-1,Negative
+268,Student_268,Bad explanation and poor support,-1,Negative
+271,Student_271,The teaching was poor and bad,-2,Negative
+274,Student_274,Bad explanation and poor support,-1,Negative
+276,Student_276,The teaching was poor and bad,-2,Negative
+283,Student_283,Bad explanation and poor support,-1,Negative
+288,Student_288,The teaching was poor and bad,-2,Negative
+289,Student_289,Bad explanation and poor support,-1,Negative
+292,Student_292,Bad explanation and poor support,-1,Negative
+304,Student_304,Bad explanation and poor support,-1,Negative
+306,Student_306,Bad explanation and poor support,-1,Negative
+307,Student_307,The teaching was poor and bad,-2,Negative
+317,Student_317,The teaching was poor and bad,-2,Negative
+322,Student_322,The teaching was poor and bad,-2,Negative
+325,Student_325,Bad explanation and poor support,-1,Negative
+326,Student_326,Bad explanation and poor support,-1,Negative
+333,Student_333,Bad explanation and poor support,-1,Negative
+334,Student_334,Bad explanation and poor support,-1,Negative
+335,Student_335,The teaching was poor and bad,-2,Negative
+338,Student_338,Bad explanation and poor support,-1,Negative
+339,Student_339,The teaching was poor and bad,-2,Negative
+340,Student_340,Bad explanation and poor support,-1,Negative
+343,Student_343,Bad explanation and poor support,-1,Negative
+353,Student_353,The teaching was poor and bad,-2,Negative
+357,Student_357,Bad explanation and poor support,-1,Negative
+359,Student_359,Bad explanation and poor support,-1,Negative
+361,Student_361,Bad explanation and poor support,-1,Negative
+366,Student_366,The teaching was poor and bad,-2,Negative
+367,Student_367,Bad explanation and poor support,-1,Negative
+370,Student_370,The teaching was poor and bad,-2,Negative
+371,Student_371,Bad explanation and poor support,-1,Negative
+374,Student_374,Bad explanation and poor support,-1,Negative
+377,Student_377,The teaching was poor and bad,-2,Negative
+395,Student_395,The teaching was poor and bad,-2,Negative
+396,Student_396,The teaching was poor and bad,-2,Negative
+400,Student_400,Bad explanation and poor support,-1,Negative
+408,Student_408,The teaching was poor and bad,-2,Negative
+418,Student_418,The teaching was poor and bad,-2,Negative
+431,Student_431,The teaching was poor and bad,-2,Negative
+447,Student_447,Bad explanation and poor support,-1,Negative
+449,Student_449,The teaching was poor and bad,-2,Negative
+450,Student_450,The teaching was poor and bad,-2,Negative
+454,Student_454,The teaching was poor and bad,-2,Negative
+458,Student_458,Bad explanation and poor support,-1,Negative
+464,Student_464,The teaching was poor and bad,-2,Negative
+470,Student_470,The teaching was poor and bad,-2,Negative
+477,Student_477,Bad explanation and poor support,-1,Negative
+479,Student_479,The teaching was poor and bad,-2,Negative
+482,Student_482,The teaching was poor and bad,-2,Negative
+487,Student_487,The teaching was poor and bad,-2,Negative
+490,Student_490,Bad explanation and poor support,-1,Negative
+491,Student_491,The teaching was poor and bad,-2,Negative
+495,Student_495,Bad explanation and poor support,-1,Negative
+498,Student_498,The teaching was poor and bad,-2,Negative
+504,Student_504,The teaching was poor and bad,-2,Negative
+516,Student_516,The teaching was poor and bad,-2,Negative
+520,Student_520,Bad explanation and poor support,-1,Negative
+530,Student_530,The teaching was poor and bad,-2,Negative
+536,Student_536,The teaching was poor and bad,-2,Negative
+577,Student_577,Bad explanation and poor support,-1,Negative
+580,Student_580,Bad explanation and poor support,-1,Negative
+585,Student_585,The teaching was poor and bad,-2,Negative
+591,Student_591,Bad explanation and poor support,-1,Negative
+607,Student_607,Bad explanation and poor support,-1,Negative
+609,Student_609,The teaching was poor and bad,-2,Negative
+617,Student_617,The teaching was poor and bad,-2,Negative
+638,Student_638,The teaching was poor and bad,-2,Negative
+641,Student_641,The teaching was poor and bad,-2,Negative
+645,Student_645,The teaching was poor and bad,-2,Negative
+648,Student_648,Bad explanation and poor support,-1,Negative
+666,Student_666,Bad explanation and poor support,-1,Negative
+673,Student_673,Bad explanation and poor support,-1,Negative
+674,Student_674,Bad explanation and poor support,-1,Negative
+679,Student_679,Bad explanation and poor support,-1,Negative
+696,Student_696,The teaching was poor and bad,-2,Negative
+699,Student_699,Bad explanation and poor support,-1,Negative
+703,Student_703,Bad explanation and poor support,-1,Negative
+707,Student_707,The teaching was poor and bad,-2,Negative
+708,Student_708,Bad explanation and poor support,-1,Negative
+713,Student_713,Bad explanation and poor support,-1,Negative
+719,Student_719,The teaching was poor and bad,-2,Negative
+729,Student_729,Bad explanation and poor support,-1,Negative
+730,Student_730,The teaching was poor and bad,-2,Negative
+787,Student_787,The teaching was poor and bad,-2,Negative
+791,Student_791,Bad explanation and poor support,-1,Negative
+792,Student_792,Bad explanation and poor support,-1,Negative
+795,Student_795,Bad explanation and poor support,-1,Negative
+800,Student_800,Bad explanation and poor support,-1,Negative
+802,Student_802,The teaching was poor and bad,-2,Negative
+804,Student_804,The teaching was poor and bad,-2,Negative
+805,Student_805,The teaching was poor and bad,-2,Negative
+817,Student_817,The teaching was poor and bad,-2,Negative
+823,Student_823,Bad explanation and poor support,-1,Negative
+833,Student_833,The teaching was poor and bad,-2,Negative
+838,Student_838,The teaching was poor and bad,-2,Negative
+840,Student_840,Bad explanation and poor support,-1,Negative
+845,Student_845,Bad explanation and poor support,-1,Negative
+852,Student_852,Bad explanation and poor support,-1,Negative
+858,Student_858,The teaching was poor and bad,-2,Negative
+862,Student_862,Bad explanation and poor support,-1,Negative
+876,Student_876,The teaching was poor and bad,-2,Negative
+881,Student_881,The teaching was poor and bad,-2,Negative
+882,Student_882,The teaching was poor and bad,-2,Negative
+902,Student_902,Bad explanation and poor support,-1,Negative
+907,Student_907,The teaching was poor and bad,-2,Negative
+912,Student_912,The teaching was poor and bad,-2,Negative
+913,Student_913,Bad explanation and poor support,-1,Negative
+918,Student_918,Bad explanation and poor support,-1,Negative
+920,Student_920,The teaching was poor and bad,-2,Negative
+929,Student_929,Bad explanation and poor support,-1,Negative
+932,Student_932,The teaching was poor and bad,-2,Negative
+944,Student_944,The teaching was poor and bad,-2,Negative
+952,Student_952,Bad explanation and poor support,-1,Negative
+955,Student_955,The teaching was poor and bad,-2,Negative
+956,Student_956,Bad explanation and poor support,-1,Negative
+978,Student_978,Bad explanation and poor support,-1,Negative
+981,Student_981,The teaching was poor and bad,-2,Negative
+990,Student_990,The teaching was poor and bad,-2,Negative
+1000,Student_1000,The teaching was poor and bad,-2,Negative
+1009,Student_1009,Bad explanation and poor support,-1,Negative
+1016,Student_1016,Bad explanation and poor support,-1,Negative
+1017,Student_1017,Bad explanation and poor support,-1,Negative
+1020,Student_1020,Bad explanation and poor support,-1,Negative
+1021,Student_1021,Bad explanation and poor support,-1,Negative
+1022,Student_1022,Bad explanation and poor support,-1,Negative
+1029,Student_1029,The teaching was poor and bad,-2,Negative
+1036,Student_1036,The teaching was poor and bad,-2,Negative
+1038,Student_1038,Bad explanation and poor support,-1,Negative
+1046,Student_1046,The teaching was poor and bad,-2,Negative
+1049,Student_1049,The teaching was poor and bad,-2,Negative
+1063,Student_1063,The teaching was poor and bad,-2,Negative
+1064,Student_1064,The teaching was poor and bad,-2,Negative
+1076,Student_1076,Bad explanation and poor support,-1,Negative
+1097,Student_1097,The teaching was poor and bad,-2,Negative
+1100,Student_1100,Bad explanation and poor support,-1,Negative
+1103,Student_1103,Bad explanation and poor support,-1,Negative
+1111,Student_1111,The teaching was poor and bad,-2,Negative
+1112,Student_1112,Bad explanation and poor support,-1,Negative
+1113,Student_1113,Bad explanation and poor support,-1,Negative
+1129,Student_1129,The teaching was poor and bad,-2,Negative
+1136,Student_1136,The teaching was poor and bad,-2,Negative
+1139,Student_1139,Bad explanation and poor support,-1,Negative
+1144,Student_1144,Bad explanation and poor support,-1,Negative
+1149,Student_1149,Bad explanation and poor support,-1,Negative
+1155,Student_1155,Bad explanation and poor support,-1,Negative
+1157,Student_1157,Bad explanation and poor support,-1,Negative
+1159,Student_1159,Bad explanation and poor support,-1,Negative
+1163,Student_1163,Bad explanation and poor support,-1,Negative
+1176,Student_1176,The teaching was poor and bad,-2,Negative
+1183,Student_1183,The teaching was poor and bad,-2,Negative
+1185,Student_1185,Bad explanation and poor support,-1,Negative
+1187,Student_1187,The teaching was poor and bad,-2,Negative
+1193,Student_1193,Bad explanation and poor support,-1,Negative
+1199,Student_1199,Bad explanation and poor support,-1,Negative
+1202,Student_1202,The teaching was poor and bad,-2,Negative
+1213,Student_1213,The teaching was poor and bad,-2,Negative
+1232,Student_1232,Bad explanation and poor support,-1,Negative
+1243,Student_1243,The teaching was poor and bad,-2,Negative
+1249,Student_1249,Bad explanation and poor support,-1,Negative
+1268,Student_1268,Bad explanation and poor support,-1,Negative
+1276,Student_1276,The teaching was poor and bad,-2,Negative
+1277,Student_1277,Bad explanation and poor support,-1,Negative
+1278,Student_1278,The teaching was poor and bad,-2,Negative
+1282,Student_1282,Bad explanation and poor support,-1,Negative
+1289,Student_1289,Bad explanation and poor support,-1,Negative
+1291,Student_1291,The teaching was poor and bad,-2,Negative
+1304,Student_1304,The teaching was poor and bad,-2,Negative
+1313,Student_1313,Bad explanation and poor support,-1,Negative
+1323,Student_1323,The teaching was poor and bad,-2,Negative
+1335,Student_1335,The teaching was poor and bad,-2,Negative
+1338,Student_1338,The teaching was poor and bad,-2,Negative
+1361,Student_1361,Bad explanation and poor support,-1,Negative
+1364,Student_1364,The teaching was poor and bad,-2,Negative
+1367,Student_1367,Bad explanation and poor support,-1,Negative
+1383,Student_1383,Bad explanation and poor support,-1,Negative
+1398,Student_1398,The teaching was poor and bad,-2,Negative
+1402,Student_1402,The teaching was poor and bad,-2,Negative
+1404,Student_1404,The teaching was poor and bad,-2,Negative
+1414,Student_1414,The teaching was poor and bad,-2,Negative
+1421,Student_1421,Bad explanation and poor support,-1,Negative
+1432,Student_1432,Bad explanation and poor support,-1,Negative
+1434,Student_1434,Bad explanation and poor support,-1,Negative
+1445,Student_1445,Bad explanation and poor support,-1,Negative
+1446,Student_1446,The teaching was poor and bad,-2,Negative
+1452,Student_1452,Bad explanation and poor support,-1,Negative
+1458,Student_1458,Bad explanation and poor support,-1,Negative
+1460,Student_1460,Bad explanation and poor support,-1,Negative
+1471,Student_1471,Bad explanation and poor support,-1,Negative
+1472,Student_1472,The teaching was poor and bad,-2,Negative
+1476,Student_1476,Bad explanation and poor support,-1,Negative
+1480,Student_1480,The teaching was poor and bad,-2,Negative
+1485,Student_1485,Bad explanation and poor support,-1,Negative
+1488,Student_1488,The teaching was poor and bad,-2,Negative
+1507,Student_1507,The teaching was poor and bad,-2,Negative
+1511,Student_1511,The teaching was poor and bad,-2,Negative
+1521,Student_1521,Bad explanation and poor support,-1,Negative
+1528,Student_1528,Bad explanation and poor support,-1,Negative
+1532,Student_1532,Bad explanation and poor support,-1,Negative
+1541,Student_1541,Bad explanation and poor support,-1,Negative
+1559,Student_1559,Bad explanation and poor support,-1,Negative
+1583,Student_1583,The teaching was poor and bad,-2,Negative
+1596,Student_1596,The teaching was poor and bad,-2,Negative
+1599,Student_1599,Bad explanation and poor support,-1,Negative
+1607,Student_1607,The teaching was poor and bad,-2,Negative
+1608,Student_1608,The teaching was poor and bad,-2,Negative
+1611,Student_1611,Bad explanation and poor support,-1,Negative
+1617,Student_1617,The teaching was poor and bad,-2,Negative
+1623,Student_1623,Bad explanation and poor support,-1,Negative
+1630,Student_1630,Bad explanation and poor support,-1,Negative
+1636,Student_1636,The teaching was poor and bad,-2,Negative
+1641,Student_1641,The teaching was poor and bad,-2,Negative
+1642,Student_1642,Bad explanation and poor support,-1,Negative
+1653,Student_1653,Bad explanation and poor support,-1,Negative
+1658,Student_1658,The teaching was poor and bad,-2,Negative
+1669,Student_1669,Bad explanation and poor support,-1,Negative
+1673,Student_1673,Bad explanation and poor support,-1,Negative
+1683,Student_1683,Bad explanation and poor support,-1,Negative
+1699,Student_1699,Bad explanation and poor support,-1,Negative
+1710,Student_1710,The teaching was poor and bad,-2,Negative
+1713,Student_1713,The teaching was poor and bad,-2,Negative
+1722,Student_1722,The teaching was poor and bad,-2,Negative
+1734,Student_1734,The teaching was poor and bad,-2,Negative
+1747,Student_1747,Bad explanation and poor support,-1,Negative
+1749,Student_1749,Bad explanation and poor support,-1,Negative
+1760,Student_1760,The teaching was poor and bad,-2,Negative
+1765,Student_1765,Bad explanation and poor support,-1,Negative
+1781,Student_1781,The teaching was poor and bad,-2,Negative
+1793,Student_1793,Bad explanation and poor support,-1,Negative
+1794,Student_1794,The teaching was poor and bad,-2,Negative
+1795,Student_1795,Bad explanation and poor support,-1,Negative
+1797,Student_1797,Bad explanation and poor support,-1,Negative
+1812,Student_1812,The teaching was poor and bad,-2,Negative
+1825,Student_1825,The teaching was poor and bad,-2,Negative
+1846,Student_1846,Bad explanation and poor support,-1,Negative
+1855,Student_1855,The teaching was poor and bad,-2,Negative
+1862,Student_1862,Bad explanation and poor support,-1,Negative
+1869,Student_1869,The teaching was poor and bad,-2,Negative
+1871,Student_1871,Bad explanation and poor support,-1,Negative
+1884,Student_1884,The teaching was poor and bad,-2,Negative
+1887,Student_1887,Bad explanation and poor support,-1,Negative
+1892,Student_1892,Bad explanation and poor support,-1,Negative
+1898,Student_1898,The teaching was poor and bad,-2,Negative
+1901,Student_1901,Bad explanation and poor support,-1,Negative
+1916,Student_1916,The teaching was poor and bad,-2,Negative
+1942,Student_1942,The teaching was poor and bad,-2,Negative
+1948,Student_1948,Bad explanation and poor support,-1,Negative
+1955,Student_1955,The teaching was poor and bad,-2,Negative
+1967,Student_1967,The teaching was poor and bad,-2,Negative
+1968,Student_1968,The teaching was poor and bad,-2,Negative
+1981,Student_1981,Bad explanation and poor support,-1,Negative
+1983,Student_1983,The teaching was poor and bad,-2,Negative
+1989,Student_1989,The teaching was poor and bad,-2,Negative
+1992,Student_1992,The teaching was poor and bad,-2,Negative
+1999,Student_1999,The teaching was poor and bad,-2,Negative
+2004,Student_2004,Bad explanation and poor support,-1,Negative
+2018,Student_2018,The teaching was poor and bad,-2,Negative
+2022,Student_2022,Bad explanation and poor support,-1,Negative
+2024,Student_2024,Bad explanation and poor support,-1,Negative
+2028,Student_2028,The teaching was poor and bad,-2,Negative
+2035,Student_2035,The teaching was poor and bad,-2,Negative
+2041,Student_2041,The teaching was poor and bad,-2,Negative
+2043,Student_2043,Bad explanation and poor support,-1,Negative
+2047,Student_2047,Bad explanation and poor support,-1,Negative
+2049,Student_2049,The teaching was poor and bad,-2,Negative
+2051,Student_2051,The teaching was poor and bad,-2,Negative
+2052,Student_2052,The teaching was poor and bad,-2,Negative
+2055,Student_2055,Bad explanation and poor support,-1,Negative
+2056,Student_2056,Bad explanation and poor support,-1,Negative
+2059,Student_2059,Bad explanation and poor support,-1,Negative
+2064,Student_2064,The teaching was poor and bad,-2,Negative
+2076,Student_2076,Bad explanation and poor support,-1,Negative
+2102,Student_2102,The teaching was poor and bad,-2,Negative
+2109,Student_2109,The teaching was poor and bad,-2,Negative
+2113,Student_2113,The teaching was poor and bad,-2,Negative
+2114,Student_2114,Bad explanation and poor support,-1,Negative
+2115,Student_2115,The teaching was poor and bad,-2,Negative
+2154,Student_2154,The teaching was poor and bad,-2,Negative
+2160,Student_2160,Bad explanation and poor support,-1,Negative
+2188,Student_2188,The teaching was poor and bad,-2,Negative
+2196,Student_2196,The teaching was poor and bad,-2,Negative
+2200,Student_2200,Bad explanation and poor support,-1,Negative
+2201,Student_2201,The teaching was poor and bad,-2,Negative
+2205,Student_2205,The teaching was poor and bad,-2,Negative
+2212,Student_2212,The teaching was poor and bad,-2,Negative
+2214,Student_2214,The teaching was poor and bad,-2,Negative
+2215,Student_2215,Bad explanation and poor support,-1,Negative
+2227,Student_2227,Bad explanation and poor support,-1,Negative
+2230,Student_2230,Bad explanation and poor support,-1,Negative
+2231,Student_2231,The teaching was poor and bad,-2,Negative
+2238,Student_2238,The teaching was poor and bad,-2,Negative
+2242,Student_2242,Bad explanation and poor support,-1,Negative
+2263,Student_2263,The teaching was poor and bad,-2,Negative
+2276,Student_2276,The teaching was poor and bad,-2,Negative
+2288,Student_2288,The teaching was poor and bad,-2,Negative
+2289,Student_2289,The teaching was poor and bad,-2,Negative
+2290,Student_2290,Bad explanation and poor support,-1,Negative
+2301,Student_2301,The teaching was poor and bad,-2,Negative
+2307,Student_2307,The teaching was poor and bad,-2,Negative
+2326,Student_2326,The teaching was poor and bad,-2,Negative
+2328,Student_2328,The teaching was poor and bad,-2,Negative
+2330,Student_2330,The teaching was poor and bad,-2,Negative
+2336,Student_2336,Bad explanation and poor support,-1,Negative
+2349,Student_2349,The teaching was poor and bad,-2,Negative
+2350,Student_2350,Bad explanation and poor support,-1,Negative
+2354,Student_2354,The teaching was poor and bad,-2,Negative
+2357,Student_2357,The teaching was poor and bad,-2,Negative
+2379,Student_2379,The teaching was poor and bad,-2,Negative
+2403,Student_2403,Bad explanation and poor support,-1,Negative
+2406,Student_2406,The teaching was poor and bad,-2,Negative
+2414,Student_2414,Bad explanation and poor support,-1,Negative
+2435,Student_2435,Bad explanation and poor support,-1,Negative
+2444,Student_2444,The teaching was poor and bad,-2,Negative
+2446,Student_2446,Bad explanation and poor support,-1,Negative
+2449,Student_2449,The teaching was poor and bad,-2,Negative
+2456,Student_2456,Bad explanation and poor support,-1,Negative
+2457,Student_2457,The teaching was poor and bad,-2,Negative
+2469,Student_2469,The teaching was poor and bad,-2,Negative
+2480,Student_2480,Bad explanation and poor support,-1,Negative
+2500,Student_2500,Bad explanation and poor support,-1,Negative
+2510,Student_2510,The teaching was poor and bad,-2,Negative
+2513,Student_2513,The teaching was poor and bad,-2,Negative
+2517,Student_2517,Bad explanation and poor support,-1,Negative
+2518,Student_2518,The teaching was poor and bad,-2,Negative
+2523,Student_2523,The teaching was poor and bad,-2,Negative
+2526,Student_2526,Bad explanation and poor support,-1,Negative
+2527,Student_2527,The teaching was poor and bad,-2,Negative
+2530,Student_2530,The teaching was poor and bad,-2,Negative
+2555,Student_2555,The teaching was poor and bad,-2,Negative
+2556,Student_2556,Bad explanation and poor support,-1,Negative
+2559,Student_2559,Bad explanation and poor support,-1,Negative
+2563,Student_2563,Bad explanation and poor support,-1,Negative
+2564,Student_2564,The teaching was poor and bad,-2,Negative
+2565,Student_2565,The teaching was poor and bad,-2,Negative
+2568,Student_2568,The teaching was poor and bad,-2,Negative
+2573,Student_2573,The teaching was poor and bad,-2,Negative
+2575,Student_2575,The teaching was poor and bad,-2,Negative
+2592,Student_2592,Bad explanation and poor support,-1,Negative
+2600,Student_2600,The teaching was poor and bad,-2,Negative
+2605,Student_2605,Bad explanation and poor support,-1,Negative
+2608,Student_2608,Bad explanation and poor support,-1,Negative
+2612,Student_2612,The teaching was poor and bad,-2,Negative
+2622,Student_2622,The teaching was poor and bad,-2,Negative
+2632,Student_2632,The teaching was poor and bad,-2,Negative
+2641,Student_2641,The teaching was poor and bad,-2,Negative
+2649,Student_2649,The teaching was poor and bad,-2,Negative
+2660,Student_2660,The teaching was poor and bad,-2,Negative
+2664,Student_2664,The teaching was poor and bad,-2,Negative
+2679,Student_2679,The teaching was poor and bad,-2,Negative
+2686,Student_2686,Bad explanation and poor support,-1,Negative
+2697,Student_2697,The teaching was poor and bad,-2,Negative
+2710,Student_2710,The teaching was poor and bad,-2,Negative
+2717,Student_2717,The teaching was poor and bad,-2,Negative
+2725,Student_2725,Bad explanation and poor support,-1,Negative
+2730,Student_2730,Bad explanation and poor support,-1,Negative
+2735,Student_2735,The teaching was poor and bad,-2,Negative
+2745,Student_2745,Bad explanation and poor support,-1,Negative
+2750,Student_2750,Bad explanation and poor support,-1,Negative
+2756,Student_2756,The teaching was poor and bad,-2,Negative
+2758,Student_2758,Bad explanation and poor support,-1,Negative
+2768,Student_2768,The teaching was poor and bad,-2,Negative
+2770,Student_2770,Bad explanation and poor support,-1,Negative
+2772,Student_2772,The teaching was poor and bad,-2,Negative
+2795,Student_2795,Bad explanation and poor support,-1,Negative
+2803,Student_2803,The teaching was poor and bad,-2,Negative
+2807,Student_2807,Bad explanation and poor support,-1,Negative
+2810,Student_2810,Bad explanation and poor support,-1,Negative
+2821,Student_2821,Bad explanation and poor support,-1,Negative
+2829,Student_2829,Bad explanation and poor support,-1,Negative
+2832,Student_2832,The teaching was poor and bad,-2,Negative
+2833,Student_2833,The teaching was poor and bad,-2,Negative
+2842,Student_2842,The teaching was poor and bad,-2,Negative
+2843,Student_2843,The teaching was poor and bad,-2,Negative
+2850,Student_2850,The teaching was poor and bad,-2,Negative
+2854,Student_2854,The teaching was poor and bad,-2,Negative
+2858,Student_2858,The teaching was poor and bad,-2,Negative
+2875,Student_2875,Bad explanation and poor support,-1,Negative
+2876,Student_2876,Bad explanation and poor support,-1,Negative
+2893,Student_2893,The teaching was poor and bad,-2,Negative
+2895,Student_2895,The teaching was poor and bad,-2,Negative
+2901,Student_2901,The teaching was poor and bad,-2,Negative
+2903,Student_2903,Bad explanation and poor support,-1,Negative
+2908,Student_2908,Bad explanation and poor support,-1,Negative
+2910,Student_2910,The teaching was poor and bad,-2,Negative
+2930,Student_2930,Bad explanation and poor support,-1,Negative
+2931,Student_2931,Bad explanation and poor support,-1,Negative
+2937,Student_2937,The teaching was poor and bad,-2,Negative
+2954,Student_2954,The teaching was poor and bad,-2,Negative
+2971,Student_2971,The teaching was poor and bad,-2,Negative
+2988,Student_2988,The teaching was poor and bad,-2,Negative
+3005,Student_3005,The teaching was poor and bad,-2,Negative
+3025,Student_3025,The teaching was poor and bad,-2,Negative
+3030,Student_3030,Bad explanation and poor support,-1,Negative
+3049,Student_3049,Bad explanation and poor support,-1,Negative
+3054,Student_3054,The teaching was poor and bad,-2,Negative
+3056,Student_3056,Bad explanation and poor support,-1,Negative
+3058,Student_3058,Bad explanation and poor support,-1,Negative
+3059,Student_3059,The teaching was poor and bad,-2,Negative
+3065,Student_3065,Bad explanation and poor support,-1,Negative
+3080,Student_3080,The teaching was poor and bad,-2,Negative
+3081,Student_3081,Bad explanation and poor support,-1,Negative
+3083,Student_3083,The teaching was poor and bad,-2,Negative
+3086,Student_3086,The teaching was poor and bad,-2,Negative
+3087,Student_3087,The teaching was poor and bad,-2,Negative
+3089,Student_3089,Bad explanation and poor support,-1,Negative
+3092,Student_3092,Bad explanation and poor support,-1,Negative
+3105,Student_3105,Bad explanation and poor support,-1,Negative
+3109,Student_3109,The teaching was poor and bad,-2,Negative
+3119,Student_3119,Bad explanation and poor support,-1,Negative
+3123,Student_3123,Bad explanation and poor support,-1,Negative
+3125,Student_3125,The teaching was poor and bad,-2,Negative
+3126,Student_3126,The teaching was poor and bad,-2,Negative
+3141,Student_3141,The teaching was poor and bad,-2,Negative
+3148,Student_3148,The teaching was poor and bad,-2,Negative
+3155,Student_3155,The teaching was poor and bad,-2,Negative
+3157,Student_3157,The teaching was poor and bad,-2,Negative
+3168,Student_3168,The teaching was poor and bad,-2,Negative
+3179,Student_3179,The teaching was poor and bad,-2,Negative
+3183,Student_3183,The teaching was poor and bad,-2,Negative
+3208,Student_3208,Bad explanation and poor support,-1,Negative
+3211,Student_3211,Bad explanation and poor support,-1,Negative
+3216,Student_3216,Bad explanation and poor support,-1,Negative
+3219,Student_3219,The teaching was poor and bad,-2,Negative
+3220,Student_3220,Bad explanation and poor support,-1,Negative
+3225,Student_3225,Bad explanation and poor support,-1,Negative
+3227,Student_3227,The teaching was poor and bad,-2,Negative
+3236,Student_3236,The teaching was poor and bad,-2,Negative
+3238,Student_3238,The teaching was poor and bad,-2,Negative
+3256,Student_3256,Bad explanation and poor support,-1,Negative
+3260,Student_3260,Bad explanation and poor support,-1,Negative
+3263,Student_3263,The teaching was poor and bad,-2,Negative
+3264,Student_3264,Bad explanation and poor support,-1,Negative
+3269,Student_3269,Bad explanation and poor support,-1,Negative
+3283,Student_3283,Bad explanation and poor support,-1,Negative
+3287,Student_3287,The teaching was poor and bad,-2,Negative
+3299,Student_3299,Bad explanation and poor support,-1,Negative
+3305,Student_3305,The teaching was poor and bad,-2,Negative
+3314,Student_3314,The teaching was poor and bad,-2,Negative
+3324,Student_3324,Bad explanation and poor support,-1,Negative
+3326,Student_3326,Bad explanation and poor support,-1,Negative
+3330,Student_3330,Bad explanation and poor support,-1,Negative
+3332,Student_3332,Bad explanation and poor support,-1,Negative
+3339,Student_3339,The teaching was poor and bad,-2,Negative
+3353,Student_3353,The teaching was poor and bad,-2,Negative
+3356,Student_3356,Bad explanation and poor support,-1,Negative
+3367,Student_3367,The teaching was poor and bad,-2,Negative
+3372,Student_3372,Bad explanation and poor support,-1,Negative
+3376,Student_3376,Bad explanation and poor support,-1,Negative
+3389,Student_3389,The teaching was poor and bad,-2,Negative
+3398,Student_3398,Bad explanation and poor support,-1,Negative
+3399,Student_3399,The teaching was poor and bad,-2,Negative
+3402,Student_3402,Bad explanation and poor support,-1,Negative
+3426,Student_3426,Bad explanation and poor support,-1,Negative
+3447,Student_3447,The teaching was poor and bad,-2,Negative
+3456,Student_3456,Bad explanation and poor support,-1,Negative
+3464,Student_3464,The teaching was poor and bad,-2,Negative
+3472,Student_3472,The teaching was poor and bad,-2,Negative
+3476,Student_3476,Bad explanation and poor support,-1,Negative
+3492,Student_3492,The teaching was poor and bad,-2,Negative
+3501,Student_3501,The teaching was poor and bad,-2,Negative
+3504,Student_3504,The teaching was poor and bad,-2,Negative
+3509,Student_3509,The teaching was poor and bad,-2,Negative
+3518,Student_3518,Bad explanation and poor support,-1,Negative
+3522,Student_3522,Bad explanation and poor support,-1,Negative
+3530,Student_3530,The teaching was poor and bad,-2,Negative
+3541,Student_3541,Bad explanation and poor support,-1,Negative
+3545,Student_3545,The teaching was poor and bad,-2,Negative
+3560,Student_3560,Bad explanation and poor support,-1,Negative
+3561,Student_3561,Bad explanation and poor support,-1,Negative
+3562,Student_3562,Bad explanation and poor support,-1,Negative
+3565,Student_3565,The teaching was poor and bad,-2,Negative
+3576,Student_3576,The teaching was poor and bad,-2,Negative
+3579,Student_3579,The teaching was poor and bad,-2,Negative
+3598,Student_3598,The teaching was poor and bad,-2,Negative
+3620,Student_3620,The teaching was poor and bad,-2,Negative
+3625,Student_3625,The teaching was poor and bad,-2,Negative
+3629,Student_3629,The teaching was poor and bad,-2,Negative
+3633,Student_3633,Bad explanation and poor support,-1,Negative
+3639,Student_3639,Bad explanation and poor support,-1,Negative
+3658,Student_3658,The teaching was poor and bad,-2,Negative
+3676,Student_3676,Bad explanation and poor support,-1,Negative
+3690,Student_3690,The teaching was poor and bad,-2,Negative
+3698,Student_3698,The teaching was poor and bad,-2,Negative
+3699,Student_3699,The teaching was poor and bad,-2,Negative
+3701,Student_3701,The teaching was poor and bad,-2,Negative
+3707,Student_3707,The teaching was poor and bad,-2,Negative
+3729,Student_3729,The teaching was poor and bad,-2,Negative
+3738,Student_3738,Bad explanation and poor support,-1,Negative
+3746,Student_3746,The teaching was poor and bad,-2,Negative
+3749,Student_3749,Bad explanation and poor support,-1,Negative
+3775,Student_3775,The teaching was poor and bad,-2,Negative
+3787,Student_3787,Bad explanation and poor support,-1,Negative
+3792,Student_3792,Bad explanation and poor support,-1,Negative
+3794,Student_3794,The teaching was poor and bad,-2,Negative
+3795,Student_3795,The teaching was poor and bad,-2,Negative
+3801,Student_3801,Bad explanation and poor support,-1,Negative
+3802,Student_3802,The teaching was poor and bad,-2,Negative
+3811,Student_3811,The teaching was poor and bad,-2,Negative
+3821,Student_3821,The teaching was poor and bad,-2,Negative
+3826,Student_3826,Bad explanation and poor support,-1,Negative
+3829,Student_3829,Bad explanation and poor support,-1,Negative
+3830,Student_3830,The teaching was poor and bad,-2,Negative
+3831,Student_3831,The teaching was poor and bad,-2,Negative
+3841,Student_3841,Bad explanation and poor support,-1,Negative
+3847,Student_3847,Bad explanation and poor support,-1,Negative
+3853,Student_3853,The teaching was poor and bad,-2,Negative
+3889,Student_3889,Bad explanation and poor support,-1,Negative
+3893,Student_3893,Bad explanation and poor support,-1,Negative
+3900,Student_3900,Bad explanation and poor support,-1,Negative
+3907,Student_3907,Bad explanation and poor support,-1,Negative
+3911,Student_3911,Bad explanation and poor support,-1,Negative
+3920,Student_3920,The teaching was poor and bad,-2,Negative
+3948,Student_3948,The teaching was poor and bad,-2,Negative
+3961,Student_3961,The teaching was poor and bad,-2,Negative
+3963,Student_3963,The teaching was poor and bad,-2,Negative
+3969,Student_3969,Bad explanation and poor support,-1,Negative
+3984,Student_3984,The teaching was poor and bad,-2,Negative
+3987,Student_3987,The teaching was poor and bad,-2,Negative
+3988,Student_3988,The teaching was poor and bad,-2,Negative
+3994,Student_3994,The teaching was poor and bad,-2,Negative
+4006,Student_4006,Bad explanation and poor support,-1,Negative
+4008,Student_4008,The teaching was poor and bad,-2,Negative
+4010,Student_4010,Bad explanation and poor support,-1,Negative
+4033,Student_4033,Bad explanation and poor support,-1,Negative
+4046,Student_4046,Bad explanation and poor support,-1,Negative
+4051,Student_4051,The teaching was poor and bad,-2,Negative
+4064,Student_4064,Bad explanation and poor support,-1,Negative
+4072,Student_4072,The teaching was poor and bad,-2,Negative
+4077,Student_4077,The teaching was poor and bad,-2,Negative
+4080,Student_4080,Bad explanation and poor support,-1,Negative
+4087,Student_4087,The teaching was poor and bad,-2,Negative
+4088,Student_4088,The teaching was poor and bad,-2,Negative
+4099,Student_4099,The teaching was poor and bad,-2,Negative
+4104,Student_4104,The teaching was poor and bad,-2,Negative
+4119,Student_4119,Bad explanation and poor support,-1,Negative
+4120,Student_4120,The teaching was poor and bad,-2,Negative
+4122,Student_4122,Bad explanation and poor support,-1,Negative
+4128,Student_4128,Bad explanation and poor support,-1,Negative
+4129,Student_4129,The teaching was poor and bad,-2,Negative
+4131,Student_4131,The teaching was poor and bad,-2,Negative
+4132,Student_4132,Bad explanation and poor support,-1,Negative
+4144,Student_4144,The teaching was poor and bad,-2,Negative
+4146,Student_4146,The teaching was poor and bad,-2,Negative
+4184,Student_4184,Bad explanation and poor support,-1,Negative
+4193,Student_4193,Bad explanation and poor support,-1,Negative
+4213,Student_4213,The teaching was poor and bad,-2,Negative
+4220,Student_4220,The teaching was poor and bad,-2,Negative
+4222,Student_4222,Bad explanation and poor support,-1,Negative
+4233,Student_4233,Bad explanation and poor support,-1,Negative
+4248,Student_4248,The teaching was poor and bad,-2,Negative
+4252,Student_4252,The teaching was poor and bad,-2,Negative
+4260,Student_4260,The teaching was poor and bad,-2,Negative
+4261,Student_4261,The teaching was poor and bad,-2,Negative
+4282,Student_4282,The teaching was poor and bad,-2,Negative
+4290,Student_4290,Bad explanation and poor support,-1,Negative
+4294,Student_4294,Bad explanation and poor support,-1,Negative
+4295,Student_4295,Bad explanation and poor support,-1,Negative
+4296,Student_4296,The teaching was poor and bad,-2,Negative
+4297,Student_4297,The teaching was poor and bad,-2,Negative
+4308,Student_4308,The teaching was poor and bad,-2,Negative
+4318,Student_4318,The teaching was poor and bad,-2,Negative
+4324,Student_4324,The teaching was poor and bad,-2,Negative
+4330,Student_4330,The teaching was poor and bad,-2,Negative
+4336,Student_4336,Bad explanation and poor support,-1,Negative
+4354,Student_4354,Bad explanation and poor support,-1,Negative
+4362,Student_4362,The teaching was poor and bad,-2,Negative
+4381,Student_4381,The teaching was poor and bad,-2,Negative
+4387,Student_4387,Bad explanation and poor support,-1,Negative
+4388,Student_4388,The teaching was poor and bad,-2,Negative
+4389,Student_4389,Bad explanation and poor support,-1,Negative
+4391,Student_4391,Bad explanation and poor support,-1,Negative
+4422,Student_4422,The teaching was poor and bad,-2,Negative
+4452,Student_4452,Bad explanation and poor support,-1,Negative
+4460,Student_4460,Bad explanation and poor support,-1,Negative
+4471,Student_4471,The teaching was poor and bad,-2,Negative
+4482,Student_4482,The teaching was poor and bad,-2,Negative
+4484,Student_4484,Bad explanation and poor support,-1,Negative
+4485,Student_4485,The teaching was poor and bad,-2,Negative
+4489,Student_4489,Bad explanation and poor support,-1,Negative
+4501,Student_4501,The teaching was poor and bad,-2,Negative
+4503,Student_4503,The teaching was poor and bad,-2,Negative
+4512,Student_4512,Bad explanation and poor support,-1,Negative
+4514,Student_4514,The teaching was poor and bad,-2,Negative
+4520,Student_4520,The teaching was poor and bad,-2,Negative
+4525,Student_4525,Bad explanation and poor support,-1,Negative
+4529,Student_4529,The teaching was poor and bad,-2,Negative
+4534,Student_4534,The teaching was poor and bad,-2,Negative
+4537,Student_4537,The teaching was poor and bad,-2,Negative
+4549,Student_4549,Bad explanation and poor support,-1,Negative
+4570,Student_4570,Bad explanation and poor support,-1,Negative
+4575,Student_4575,The teaching was poor and bad,-2,Negative
+4602,Student_4602,Bad explanation and poor support,-1,Negative
+4612,Student_4612,Bad explanation and poor support,-1,Negative
+4615,Student_4615,Bad explanation and poor support,-1,Negative
+4623,Student_4623,Bad explanation and poor support,-1,Negative
+4660,Student_4660,Bad explanation and poor support,-1,Negative
+4662,Student_4662,Bad explanation and poor support,-1,Negative
+4668,Student_4668,The teaching was poor and bad,-2,Negative
+4672,Student_4672,Bad explanation and poor support,-1,Negative
+4678,Student_4678,The teaching was poor and bad,-2,Negative
+4686,Student_4686,The teaching was poor and bad,-2,Negative
+4693,Student_4693,The teaching was poor and bad,-2,Negative
+4695,Student_4695,Bad explanation and poor support,-1,Negative
+4699,Student_4699,The teaching was poor and bad,-2,Negative
+4707,Student_4707,The teaching was poor and bad,-2,Negative
+4708,Student_4708,Bad explanation and poor support,-1,Negative
+4725,Student_4725,Bad explanation and poor support,-1,Negative
+4726,Student_4726,Bad explanation and poor support,-1,Negative
+4759,Student_4759,The teaching was poor and bad,-2,Negative
+4765,Student_4765,Bad explanation and poor support,-1,Negative
+4766,Student_4766,Bad explanation and poor support,-1,Negative
+4767,Student_4767,The teaching was poor and bad,-2,Negative
+4771,Student_4771,Bad explanation and poor support,-1,Negative
+4773,Student_4773,Bad explanation and poor support,-1,Negative
+4785,Student_4785,The teaching was poor and bad,-2,Negative
+4800,Student_4800,Bad explanation and poor support,-1,Negative
+4803,Student_4803,The teaching was poor and bad,-2,Negative
+4820,Student_4820,The teaching was poor and bad,-2,Negative
+4827,Student_4827,Bad explanation and poor support,-1,Negative
+4834,Student_4834,The teaching was poor and bad,-2,Negative
+4835,Student_4835,Bad explanation and poor support,-1,Negative
+4841,Student_4841,Bad explanation and poor support,-1,Negative
+4855,Student_4855,The teaching was poor and bad,-2,Negative
+4859,Student_4859,Bad explanation and poor support,-1,Negative
+4862,Student_4862,The teaching was poor and bad,-2,Negative
+4864,Student_4864,Bad explanation and poor support,-1,Negative
+4874,Student_4874,The teaching was poor and bad,-2,Negative
+4878,Student_4878,Bad explanation and poor support,-1,Negative
+4882,Student_4882,Bad explanation and poor support,-1,Negative
+4884,Student_4884,The teaching was poor and bad,-2,Negative
+4885,Student_4885,The teaching was poor and bad,-2,Negative
+4902,Student_4902,Bad explanation and poor support,-1,Negative
+4910,Student_4910,Bad explanation and poor support,-1,Negative
+4916,Student_4916,Bad explanation and poor support,-1,Negative
+4920,Student_4920,Bad explanation and poor support,-1,Negative
+4932,Student_4932,Bad explanation and poor support,-1,Negative
+4953,Student_4953,Bad explanation and poor support,-1,Negative
+4957,Student_4957,The teaching was poor and bad,-2,Negative
+4964,Student_4964,The teaching was poor and bad,-2,Negative
+4988,Student_4988,Bad explanation and poor support,-1,Negative
+4989,Student_4989,Bad explanation and poor support,-1,Negative
+4996,Student_4996,The teaching was poor and bad,-2,Negative
+5005,Student_5005,The teaching was poor and bad,-2,Negative
+5025,Student_5025,The teaching was poor and bad,-2,Negative
+5039,Student_5039,Bad explanation and poor support,-1,Negative
+5062,Student_5062,The teaching was poor and bad,-2,Negative
+5087,Student_5087,Bad explanation and poor support,-1,Negative
+5089,Student_5089,Bad explanation and poor support,-1,Negative
+5093,Student_5093,The teaching was poor and bad,-2,Negative
+5094,Student_5094,The teaching was poor and bad,-2,Negative
+5103,Student_5103,Bad explanation and poor support,-1,Negative
+5127,Student_5127,The teaching was poor and bad,-2,Negative
+5129,Student_5129,The teaching was poor and bad,-2,Negative
+5136,Student_5136,Bad explanation and poor support,-1,Negative
+5139,Student_5139,The teaching was poor and bad,-2,Negative
+5146,Student_5146,Bad explanation and poor support,-1,Negative
+5151,Student_5151,Bad explanation and poor support,-1,Negative
+5156,Student_5156,The teaching was poor and bad,-2,Negative
+5172,Student_5172,Bad explanation and poor support,-1,Negative
+5178,Student_5178,The teaching was poor and bad,-2,Negative
+5182,Student_5182,The teaching was poor and bad,-2,Negative
+5187,Student_5187,Bad explanation and poor support,-1,Negative
+5191,Student_5191,Bad explanation and poor support,-1,Negative
+5208,Student_5208,The teaching was poor and bad,-2,Negative
+5218,Student_5218,The teaching was poor and bad,-2,Negative
+5219,Student_5219,Bad explanation and poor support,-1,Negative
+5227,Student_5227,The teaching was poor and bad,-2,Negative
+5238,Student_5238,The teaching was poor and bad,-2,Negative
+5247,Student_5247,The teaching was poor and bad,-2,Negative
+5257,Student_5257,Bad explanation and poor support,-1,Negative
+5270,Student_5270,The teaching was poor and bad,-2,Negative
+5274,Student_5274,The teaching was poor and bad,-2,Negative
+5277,Student_5277,Bad explanation and poor support,-1,Negative
+5281,Student_5281,The teaching was poor and bad,-2,Negative
+5284,Student_5284,The teaching was poor and bad,-2,Negative
+5287,Student_5287,The teaching was poor and bad,-2,Negative
+5293,Student_5293,The teaching was poor and bad,-2,Negative
+5310,Student_5310,Bad explanation and poor support,-1,Negative
+5318,Student_5318,The teaching was poor and bad,-2,Negative
+5323,Student_5323,The teaching was poor and bad,-2,Negative
+5327,Student_5327,The teaching was poor and bad,-2,Negative
+5340,Student_5340,The teaching was poor and bad,-2,Negative
+5354,Student_5354,The teaching was poor and bad,-2,Negative
+5355,Student_5355,The teaching was poor and bad,-2,Negative
+5356,Student_5356,The teaching was poor and bad,-2,Negative
+5359,Student_5359,Bad explanation and poor support,-1,Negative
+5368,Student_5368,Bad explanation and poor support,-1,Negative
+5374,Student_5374,The teaching was poor and bad,-2,Negative
+5386,Student_5386,The teaching was poor and bad,-2,Negative
+5387,Student_5387,The teaching was poor and bad,-2,Negative
+5422,Student_5422,Bad explanation and poor support,-1,Negative
+5445,Student_5445,Bad explanation and poor support,-1,Negative
+5452,Student_5452,Bad explanation and poor support,-1,Negative
+5458,Student_5458,Bad explanation and poor support,-1,Negative
+5467,Student_5467,Bad explanation and poor support,-1,Negative
+5474,Student_5474,The teaching was poor and bad,-2,Negative
+5476,Student_5476,The teaching was poor and bad,-2,Negative
+5487,Student_5487,Bad explanation and poor support,-1,Negative
+5493,Student_5493,Bad explanation and poor support,-1,Negative
+5494,Student_5494,Bad explanation and poor support,-1,Negative
+5517,Student_5517,Bad explanation and poor support,-1,Negative
+5526,Student_5526,The teaching was poor and bad,-2,Negative
+5528,Student_5528,The teaching was poor and bad,-2,Negative
+5532,Student_5532,Bad explanation and poor support,-1,Negative
+5537,Student_5537,The teaching was poor and bad,-2,Negative
+5539,Student_5539,Bad explanation and poor support,-1,Negative
+5550,Student_5550,The teaching was poor and bad,-2,Negative
+5559,Student_5559,Bad explanation and poor support,-1,Negative
+5560,Student_5560,The teaching was poor and bad,-2,Negative
+5563,Student_5563,Bad explanation and poor support,-1,Negative
+5565,Student_5565,Bad explanation and poor support,-1,Negative
+5575,Student_5575,Bad explanation and poor support,-1,Negative
+5576,Student_5576,The teaching was poor and bad,-2,Negative
+5580,Student_5580,The teaching was poor and bad,-2,Negative
+5588,Student_5588,Bad explanation and poor support,-1,Negative
+5593,Student_5593,The teaching was poor and bad,-2,Negative
+5623,Student_5623,Bad explanation and poor support,-1,Negative
+5627,Student_5627,The teaching was poor and bad,-2,Negative
+5631,Student_5631,Bad explanation and poor support,-1,Negative
+5634,Student_5634,Bad explanation and poor support,-1,Negative
+5644,Student_5644,The teaching was poor and bad,-2,Negative
+5655,Student_5655,Bad explanation and poor support,-1,Negative
+5656,Student_5656,The teaching was poor and bad,-2,Negative
+5661,Student_5661,The teaching was poor and bad,-2,Negative
+5667,Student_5667,Bad explanation and poor support,-1,Negative
+5672,Student_5672,The teaching was poor and bad,-2,Negative
+5680,Student_5680,Bad explanation and poor support,-1,Negative
+5684,Student_5684,Bad explanation and poor support,-1,Negative
+5699,Student_5699,The teaching was poor and bad,-2,Negative
+5701,Student_5701,Bad explanation and poor support,-1,Negative
+5703,Student_5703,The teaching was poor and bad,-2,Negative
+5707,Student_5707,The teaching was poor and bad,-2,Negative
+5712,Student_5712,The teaching was poor and bad,-2,Negative
+5724,Student_5724,Bad explanation and poor support,-1,Negative
+5728,Student_5728,Bad explanation and poor support,-1,Negative
+5742,Student_5742,The teaching was poor and bad,-2,Negative
+5743,Student_5743,Bad explanation and poor support,-1,Negative
+5744,Student_5744,Bad explanation and poor support,-1,Negative
+5757,Student_5757,Bad explanation and poor support,-1,Negative
+5758,Student_5758,Bad explanation and poor support,-1,Negative
+5761,Student_5761,Bad explanation and poor support,-1,Negative
+5763,Student_5763,The teaching was poor and bad,-2,Negative
+5768,Student_5768,The teaching was poor and bad,-2,Negative
+5773,Student_5773,The teaching was poor and bad,-2,Negative
+5774,Student_5774,The teaching was poor and bad,-2,Negative
+5777,Student_5777,Bad explanation and poor support,-1,Negative
+5799,Student_5799,Bad explanation and poor support,-1,Negative
+5806,Student_5806,The teaching was poor and bad,-2,Negative
+5818,Student_5818,The teaching was poor and bad,-2,Negative
+5825,Student_5825,Bad explanation and poor support,-1,Negative
+5838,Student_5838,Bad explanation and poor support,-1,Negative
+5841,Student_5841,The teaching was poor and bad,-2,Negative
+5850,Student_5850,Bad explanation and poor support,-1,Negative
+5858,Student_5858,The teaching was poor and bad,-2,Negative
+5879,Student_5879,Bad explanation and poor support,-1,Negative
+5880,Student_5880,Bad explanation and poor support,-1,Negative
+5884,Student_5884,Bad explanation and poor support,-1,Negative
+5887,Student_5887,The teaching was poor and bad,-2,Negative
+5906,Student_5906,Bad explanation and poor support,-1,Negative
+5910,Student_5910,Bad explanation and poor support,-1,Negative
+5928,Student_5928,Bad explanation and poor support,-1,Negative
+5935,Student_5935,Bad explanation and poor support,-1,Negative
+5943,Student_5943,The teaching was poor and bad,-2,Negative
+5947,Student_5947,The teaching was poor and bad,-2,Negative
+5962,Student_5962,The teaching was poor and bad,-2,Negative
+5970,Student_5970,The teaching was poor and bad,-2,Negative
+5975,Student_5975,Bad explanation and poor support,-1,Negative
+5982,Student_5982,The teaching was poor and bad,-2,Negative
+6002,Student_6002,Bad explanation and poor support,-1,Negative
+6007,Student_6007,The teaching was poor and bad,-2,Negative
+6017,Student_6017,Bad explanation and poor support,-1,Negative
+6027,Student_6027,Bad explanation and poor support,-1,Negative
+6032,Student_6032,The teaching was poor and bad,-2,Negative
+6049,Student_6049,Bad explanation and poor support,-1,Negative
+6067,Student_6067,Bad explanation and poor support,-1,Negative
+6075,Student_6075,Bad explanation and poor support,-1,Negative
+6076,Student_6076,Bad explanation and poor support,-1,Negative
+6077,Student_6077,The teaching was poor and bad,-2,Negative
+6078,Student_6078,The teaching was poor and bad,-2,Negative
+6084,Student_6084,Bad explanation and poor support,-1,Negative
+6087,Student_6087,Bad explanation and poor support,-1,Negative
+6088,Student_6088,The teaching was poor and bad,-2,Negative
+6099,Student_6099,The teaching was poor and bad,-2,Negative
+6138,Student_6138,Bad explanation and poor support,-1,Negative
+6148,Student_6148,The teaching was poor and bad,-2,Negative
+6161,Student_6161,Bad explanation and poor support,-1,Negative
+6163,Student_6163,Bad explanation and poor support,-1,Negative
+6166,Student_6166,The teaching was poor and bad,-2,Negative
+6168,Student_6168,Bad explanation and poor support,-1,Negative
+6184,Student_6184,The teaching was poor and bad,-2,Negative
+6189,Student_6189,Bad explanation and poor support,-1,Negative
+6193,Student_6193,The teaching was poor and bad,-2,Negative
+6203,Student_6203,Bad explanation and poor support,-1,Negative
+6213,Student_6213,Bad explanation and poor support,-1,Negative
+6221,Student_6221,The teaching was poor and bad,-2,Negative
+6242,Student_6242,Bad explanation and poor support,-1,Negative
+6256,Student_6256,Bad explanation and poor support,-1,Negative
+6260,Student_6260,The teaching was poor and bad,-2,Negative
+6266,Student_6266,The teaching was poor and bad,-2,Negative
+6279,Student_6279,Bad explanation and poor support,-1,Negative
+6289,Student_6289,Bad explanation and poor support,-1,Negative
+6296,Student_6296,Bad explanation and poor support,-1,Negative
+6311,Student_6311,Bad explanation and poor support,-1,Negative
+6335,Student_6335,The teaching was poor and bad,-2,Negative
+6338,Student_6338,The teaching was poor and bad,-2,Negative
+6341,Student_6341,Bad explanation and poor support,-1,Negative
+6347,Student_6347,The teaching was poor and bad,-2,Negative
+6349,Student_6349,The teaching was poor and bad,-2,Negative
+6350,Student_6350,Bad explanation and poor support,-1,Negative
+6352,Student_6352,The teaching was poor and bad,-2,Negative
+6360,Student_6360,The teaching was poor and bad,-2,Negative
+6370,Student_6370,The teaching was poor and bad,-2,Negative
+6375,Student_6375,Bad explanation and poor support,-1,Negative
+6377,Student_6377,The teaching was poor and bad,-2,Negative
+6393,Student_6393,Bad explanation and poor support,-1,Negative
+6401,Student_6401,The teaching was poor and bad,-2,Negative
+6414,Student_6414,Bad explanation and poor support,-1,Negative
+6423,Student_6423,The teaching was poor and bad,-2,Negative
+6427,Student_6427,The teaching was poor and bad,-2,Negative
+6429,Student_6429,The teaching was poor and bad,-2,Negative
+6430,Student_6430,Bad explanation and poor support,-1,Negative
+6435,Student_6435,Bad explanation and poor support,-1,Negative
+6455,Student_6455,Bad explanation and poor support,-1,Negative
+6458,Student_6458,The teaching was poor and bad,-2,Negative
+6459,Student_6459,The teaching was poor and bad,-2,Negative
+6460,Student_6460,The teaching was poor and bad,-2,Negative
+6472,Student_6472,Bad explanation and poor support,-1,Negative
+6484,Student_6484,Bad explanation and poor support,-1,Negative
+6492,Student_6492,The teaching was poor and bad,-2,Negative
+6500,Student_6500,Bad explanation and poor support,-1,Negative
+6505,Student_6505,Bad explanation and poor support,-1,Negative
+6507,Student_6507,Bad explanation and poor support,-1,Negative
+6509,Student_6509,Bad explanation and poor support,-1,Negative
+6527,Student_6527,Bad explanation and poor support,-1,Negative
+6532,Student_6532,Bad explanation and poor support,-1,Negative
+6535,Student_6535,Bad explanation and poor support,-1,Negative
+6541,Student_6541,The teaching was poor and bad,-2,Negative
+6544,Student_6544,The teaching was poor and bad,-2,Negative
+6548,Student_6548,The teaching was poor and bad,-2,Negative
+6551,Student_6551,The teaching was poor and bad,-2,Negative
+6553,Student_6553,The teaching was poor and bad,-2,Negative
+6554,Student_6554,The teaching was poor and bad,-2,Negative
+6557,Student_6557,The teaching was poor and bad,-2,Negative
+6568,Student_6568,The teaching was poor and bad,-2,Negative
+6592,Student_6592,Bad explanation and poor support,-1,Negative
+6594,Student_6594,Bad explanation and poor support,-1,Negative
+6599,Student_6599,Bad explanation and poor support,-1,Negative
+6616,Student_6616,Bad explanation and poor support,-1,Negative
+6619,Student_6619,The teaching was poor and bad,-2,Negative
+6620,Student_6620,Bad explanation and poor support,-1,Negative
+6630,Student_6630,Bad explanation and poor support,-1,Negative
+6631,Student_6631,Bad explanation and poor support,-1,Negative
+6632,Student_6632,The teaching was poor and bad,-2,Negative
+6642,Student_6642,Bad explanation and poor support,-1,Negative
+6643,Student_6643,The teaching was poor and bad,-2,Negative
+6645,Student_6645,The teaching was poor and bad,-2,Negative
+6647,Student_6647,Bad explanation and poor support,-1,Negative
+6654,Student_6654,The teaching was poor and bad,-2,Negative
+6656,Student_6656,Bad explanation and poor support,-1,Negative
+6658,Student_6658,Bad explanation and poor support,-1,Negative
+6663,Student_6663,Bad explanation and poor support,-1,Negative
+6669,Student_6669,The teaching was poor and bad,-2,Negative
+6671,Student_6671,The teaching was poor and bad,-2,Negative
+6672,Student_6672,The teaching was poor and bad,-2,Negative
+6673,Student_6673,Bad explanation and poor support,-1,Negative
+6679,Student_6679,The teaching was poor and bad,-2,Negative
+6682,Student_6682,Bad explanation and poor support,-1,Negative
+6685,Student_6685,The teaching was poor and bad,-2,Negative
+6689,Student_6689,The teaching was poor and bad,-2,Negative
+6693,Student_6693,Bad explanation and poor support,-1,Negative
+6705,Student_6705,Bad explanation and poor support,-1,Negative
+6709,Student_6709,The teaching was poor and bad,-2,Negative
+6721,Student_6721,Bad explanation and poor support,-1,Negative
+6738,Student_6738,The teaching was poor and bad,-2,Negative
+6747,Student_6747,The teaching was poor and bad,-2,Negative
+6752,Student_6752,The teaching was poor and bad,-2,Negative
+6766,Student_6766,The teaching was poor and bad,-2,Negative
+6770,Student_6770,The teaching was poor and bad,-2,Negative
+6797,Student_6797,The teaching was poor and bad,-2,Negative
+6800,Student_6800,Bad explanation and poor support,-1,Negative
+6804,Student_6804,The teaching was poor and bad,-2,Negative
+6814,Student_6814,The teaching was poor and bad,-2,Negative
+6844,Student_6844,The teaching was poor and bad,-2,Negative
+6846,Student_6846,Bad explanation and poor support,-1,Negative
+6850,Student_6850,The teaching was poor and bad,-2,Negative
+6857,Student_6857,Bad explanation and poor support,-1,Negative
+6868,Student_6868,Bad explanation and poor support,-1,Negative
+6871,Student_6871,Bad explanation and poor support,-1,Negative
+6887,Student_6887,The teaching was poor and bad,-2,Negative
+6889,Student_6889,The teaching was poor and bad,-2,Negative
+6905,Student_6905,The teaching was poor and bad,-2,Negative
+6934,Student_6934,The teaching was poor and bad,-2,Negative
+6974,Student_6974,Bad explanation and poor support,-1,Negative
+6987,Student_6987,Bad explanation and poor support,-1,Negative
+6993,Student_6993,The teaching was poor and bad,-2,Negative
+6998,Student_6998,The teaching was poor and bad,-2,Negative
+7008,Student_7008,The teaching was poor and bad,-2,Negative
+7010,Student_7010,Bad explanation and poor support,-1,Negative
+7027,Student_7027,Bad explanation and poor support,-1,Negative
+7034,Student_7034,Bad explanation and poor support,-1,Negative
+7036,Student_7036,Bad explanation and poor support,-1,Negative
+7046,Student_7046,The teaching was poor and bad,-2,Negative
+7049,Student_7049,Bad explanation and poor support,-1,Negative
+7058,Student_7058,Bad explanation and poor support,-1,Negative
+7064,Student_7064,The teaching was poor and bad,-2,Negative
+7068,Student_7068,Bad explanation and poor support,-1,Negative
+7082,Student_7082,Bad explanation and poor support,-1,Negative
+7089,Student_7089,Bad explanation and poor support,-1,Negative
+7090,Student_7090,The teaching was poor and bad,-2,Negative
+7100,Student_7100,Bad explanation and poor support,-1,Negative
+7103,Student_7103,The teaching was poor and bad,-2,Negative
+7118,Student_7118,The teaching was poor and bad,-2,Negative
+7125,Student_7125,The teaching was poor and bad,-2,Negative
+7129,Student_7129,Bad explanation and poor support,-1,Negative
+7133,Student_7133,The teaching was poor and bad,-2,Negative
+7144,Student_7144,Bad explanation and poor support,-1,Negative
+7164,Student_7164,The teaching was poor and bad,-2,Negative
+7175,Student_7175,The teaching was poor and bad,-2,Negative
+7181,Student_7181,Bad explanation and poor support,-1,Negative
+7184,Student_7184,The teaching was poor and bad,-2,Negative
+7186,Student_7186,The teaching was poor and bad,-2,Negative
+7190,Student_7190,Bad explanation and poor support,-1,Negative
+7220,Student_7220,The teaching was poor and bad,-2,Negative
+7222,Student_7222,The teaching was poor and bad,-2,Negative
+7224,Student_7224,The teaching was poor and bad,-2,Negative
+7241,Student_7241,Bad explanation and poor support,-1,Negative
+7258,Student_7258,The teaching was poor and bad,-2,Negative
+7266,Student_7266,The teaching was poor and bad,-2,Negative
+7267,Student_7267,Bad explanation and poor support,-1,Negative
+7274,Student_7274,Bad explanation and poor support,-1,Negative
+7278,Student_7278,Bad explanation and poor support,-1,Negative
+7280,Student_7280,Bad explanation and poor support,-1,Negative
+7286,Student_7286,Bad explanation and poor support,-1,Negative
+7297,Student_7297,The teaching was poor and bad,-2,Negative
+7309,Student_7309,Bad explanation and poor support,-1,Negative
+7311,Student_7311,Bad explanation and poor support,-1,Negative
+7340,Student_7340,Bad explanation and poor support,-1,Negative
+7354,Student_7354,The teaching was poor and bad,-2,Negative
+7357,Student_7357,The teaching was poor and bad,-2,Negative
+7365,Student_7365,The teaching was poor and bad,-2,Negative
+7373,Student_7373,The teaching was poor and bad,-2,Negative
+7374,Student_7374,The teaching was poor and bad,-2,Negative
+7377,Student_7377,Bad explanation and poor support,-1,Negative
+7387,Student_7387,The teaching was poor and bad,-2,Negative
+7389,Student_7389,The teaching was poor and bad,-2,Negative
+7398,Student_7398,Bad explanation and poor support,-1,Negative
+7405,Student_7405,The teaching was poor and bad,-2,Negative
+7408,Student_7408,The teaching was poor and bad,-2,Negative
+7422,Student_7422,The teaching was poor and bad,-2,Negative
+7427,Student_7427,Bad explanation and poor support,-1,Negative
+7432,Student_7432,The teaching was poor and bad,-2,Negative
+7438,Student_7438,Bad explanation and poor support,-1,Negative
+7440,Student_7440,The teaching was poor and bad,-2,Negative
+7441,Student_7441,The teaching was poor and bad,-2,Negative
+7443,Student_7443,The teaching was poor and bad,-2,Negative
+7473,Student_7473,Bad explanation and poor support,-1,Negative
+7495,Student_7495,The teaching was poor and bad,-2,Negative
+7506,Student_7506,Bad explanation and poor support,-1,Negative
+7509,Student_7509,The teaching was poor and bad,-2,Negative
+7510,Student_7510,The teaching was poor and bad,-2,Negative
+7532,Student_7532,Bad explanation and poor support,-1,Negative
+7539,Student_7539,Bad explanation and poor support,-1,Negative
+7545,Student_7545,The teaching was poor and bad,-2,Negative
+7546,Student_7546,Bad explanation and poor support,-1,Negative
+7550,Student_7550,Bad explanation and poor support,-1,Negative
+7559,Student_7559,Bad explanation and poor support,-1,Negative
+7566,Student_7566,Bad explanation and poor support,-1,Negative
+7570,Student_7570,Bad explanation and poor support,-1,Negative
+7572,Student_7572,Bad explanation and poor support,-1,Negative
+7585,Student_7585,The teaching was poor and bad,-2,Negative
+7590,Student_7590,Bad explanation and poor support,-1,Negative
+7610,Student_7610,The teaching was poor and bad,-2,Negative
+7613,Student_7613,The teaching was poor and bad,-2,Negative
+7618,Student_7618,The teaching was poor and bad,-2,Negative
+7624,Student_7624,The teaching was poor and bad,-2,Negative
+7640,Student_7640,Bad explanation and poor support,-1,Negative
+7642,Student_7642,Bad explanation and poor support,-1,Negative
+7645,Student_7645,Bad explanation and poor support,-1,Negative
+7652,Student_7652,Bad explanation and poor support,-1,Negative
+7656,Student_7656,Bad explanation and poor support,-1,Negative
+7676,Student_7676,The teaching was poor and bad,-2,Negative
+7682,Student_7682,Bad explanation and poor support,-1,Negative
+7695,Student_7695,Bad explanation and poor support,-1,Negative
+7702,Student_7702,Bad explanation and poor support,-1,Negative
+7713,Student_7713,The teaching was poor and bad,-2,Negative
+7730,Student_7730,The teaching was poor and bad,-2,Negative
+7733,Student_7733,The teaching was poor and bad,-2,Negative
+7735,Student_7735,Bad explanation and poor support,-1,Negative
+7745,Student_7745,Bad explanation and poor support,-1,Negative
+7751,Student_7751,The teaching was poor and bad,-2,Negative
+7764,Student_7764,The teaching was poor and bad,-2,Negative
+7766,Student_7766,Bad explanation and poor support,-1,Negative
+7770,Student_7770,The teaching was poor and bad,-2,Negative
+7772,Student_7772,Bad explanation and poor support,-1,Negative
+7779,Student_7779,Bad explanation and poor support,-1,Negative
+7786,Student_7786,The teaching was poor and bad,-2,Negative
+7799,Student_7799,The teaching was poor and bad,-2,Negative
+7803,Student_7803,The teaching was poor and bad,-2,Negative
+7818,Student_7818,The teaching was poor and bad,-2,Negative
+7822,Student_7822,Bad explanation and poor support,-1,Negative
+7830,Student_7830,Bad explanation and poor support,-1,Negative
+7831,Student_7831,The teaching was poor and bad,-2,Negative
+7847,Student_7847,The teaching was poor and bad,-2,Negative
+7852,Student_7852,Bad explanation and poor support,-1,Negative
+7859,Student_7859,The teaching was poor and bad,-2,Negative
+7871,Student_7871,Bad explanation and poor support,-1,Negative
+7880,Student_7880,Bad explanation and poor support,-1,Negative
+7893,Student_7893,The teaching was poor and bad,-2,Negative
+7894,Student_7894,Bad explanation and poor support,-1,Negative
+7907,Student_7907,Bad explanation and poor support,-1,Negative
+7908,Student_7908,Bad explanation and poor support,-1,Negative
+7926,Student_7926,Bad explanation and poor support,-1,Negative
+7937,Student_7937,Bad explanation and poor support,-1,Negative
+7941,Student_7941,Bad explanation and poor support,-1,Negative
+7945,Student_7945,The teaching was poor and bad,-2,Negative
+7947,Student_7947,The teaching was poor and bad,-2,Negative
+7959,Student_7959,The teaching was poor and bad,-2,Negative
+7965,Student_7965,The teaching was poor and bad,-2,Negative
+7975,Student_7975,Bad explanation and poor support,-1,Negative
+7997,Student_7997,The teaching was poor and bad,-2,Negative
+8006,Student_8006,Bad explanation and poor support,-1,Negative
+8012,Student_8012,Bad explanation and poor support,-1,Negative
+8013,Student_8013,Bad explanation and poor support,-1,Negative
+8015,Student_8015,Bad explanation and poor support,-1,Negative
+8024,Student_8024,Bad explanation and poor support,-1,Negative
+8034,Student_8034,Bad explanation and poor support,-1,Negative
+8035,Student_8035,The teaching was poor and bad,-2,Negative
+8036,Student_8036,Bad explanation and poor support,-1,Negative
+8041,Student_8041,Bad explanation and poor support,-1,Negative
+8044,Student_8044,Bad explanation and poor support,-1,Negative
+8045,Student_8045,The teaching was poor and bad,-2,Negative
+8071,Student_8071,The teaching was poor and bad,-2,Negative
+8077,Student_8077,Bad explanation and poor support,-1,Negative
+8083,Student_8083,Bad explanation and poor support,-1,Negative
+8095,Student_8095,The teaching was poor and bad,-2,Negative
+8110,Student_8110,The teaching was poor and bad,-2,Negative
+8129,Student_8129,The teaching was poor and bad,-2,Negative
+8130,Student_8130,Bad explanation and poor support,-1,Negative
+8131,Student_8131,The teaching was poor and bad,-2,Negative
+8136,Student_8136,Bad explanation and poor support,-1,Negative
+8137,Student_8137,Bad explanation and poor support,-1,Negative
+8142,Student_8142,The teaching was poor and bad,-2,Negative
+8143,Student_8143,The teaching was poor and bad,-2,Negative
+8151,Student_8151,The teaching was poor and bad,-2,Negative
+8155,Student_8155,The teaching was poor and bad,-2,Negative
+8160,Student_8160,The teaching was poor and bad,-2,Negative
+8162,Student_8162,The teaching was poor and bad,-2,Negative
+8163,Student_8163,Bad explanation and poor support,-1,Negative
+8198,Student_8198,The teaching was poor and bad,-2,Negative
+8204,Student_8204,Bad explanation and poor support,-1,Negative
+8208,Student_8208,Bad explanation and poor support,-1,Negative
+8212,Student_8212,Bad explanation and poor support,-1,Negative
+8224,Student_8224,Bad explanation and poor support,-1,Negative
+8242,Student_8242,The teaching was poor and bad,-2,Negative
+8244,Student_8244,The teaching was poor and bad,-2,Negative
+8263,Student_8263,Bad explanation and poor support,-1,Negative
+8264,Student_8264,Bad explanation and poor support,-1,Negative
+8274,Student_8274,The teaching was poor and bad,-2,Negative
+8275,Student_8275,The teaching was poor and bad,-2,Negative
+8283,Student_8283,Bad explanation and poor support,-1,Negative
+8302,Student_8302,The teaching was poor and bad,-2,Negative
+8308,Student_8308,The teaching was poor and bad,-2,Negative
+8315,Student_8315,The teaching was poor and bad,-2,Negative
+8327,Student_8327,The teaching was poor and bad,-2,Negative
+8329,Student_8329,The teaching was poor and bad,-2,Negative
+8331,Student_8331,Bad explanation and poor support,-1,Negative
+8340,Student_8340,The teaching was poor and bad,-2,Negative
+8342,Student_8342,Bad explanation and poor support,-1,Negative
+8356,Student_8356,Bad explanation and poor support,-1,Negative
+8367,Student_8367,Bad explanation and poor support,-1,Negative
+8369,Student_8369,Bad explanation and poor support,-1,Negative
+8406,Student_8406,Bad explanation and poor support,-1,Negative
+8412,Student_8412,The teaching was poor and bad,-2,Negative
+8415,Student_8415,Bad explanation and poor support,-1,Negative
+8423,Student_8423,The teaching was poor and bad,-2,Negative
+8425,Student_8425,The teaching was poor and bad,-2,Negative
+8426,Student_8426,Bad explanation and poor support,-1,Negative
+8429,Student_8429,The teaching was poor and bad,-2,Negative
+8430,Student_8430,The teaching was poor and bad,-2,Negative
+8431,Student_8431,The teaching was poor and bad,-2,Negative
+8440,Student_8440,Bad explanation and poor support,-1,Negative
+8449,Student_8449,The teaching was poor and bad,-2,Negative
+8455,Student_8455,The teaching was poor and bad,-2,Negative
+8464,Student_8464,Bad explanation and poor support,-1,Negative
+8469,Student_8469,Bad explanation and poor support,-1,Negative
+8479,Student_8479,The teaching was poor and bad,-2,Negative
+8496,Student_8496,Bad explanation and poor support,-1,Negative
+8509,Student_8509,Bad explanation and poor support,-1,Negative
+8514,Student_8514,The teaching was poor and bad,-2,Negative
+8518,Student_8518,The teaching was poor and bad,-2,Negative
+8520,Student_8520,The teaching was poor and bad,-2,Negative
+8526,Student_8526,Bad explanation and poor support,-1,Negative
+8583,Student_8583,The teaching was poor and bad,-2,Negative
+8597,Student_8597,The teaching was poor and bad,-2,Negative
+8617,Student_8617,The teaching was poor and bad,-2,Negative
+8633,Student_8633,Bad explanation and poor support,-1,Negative
+8635,Student_8635,Bad explanation and poor support,-1,Negative
+8645,Student_8645,Bad explanation and poor support,-1,Negative
+8647,Student_8647,The teaching was poor and bad,-2,Negative
+8656,Student_8656,The teaching was poor and bad,-2,Negative
+8663,Student_8663,The teaching was poor and bad,-2,Negative
+8664,Student_8664,The teaching was poor and bad,-2,Negative
+8698,Student_8698,Bad explanation and poor support,-1,Negative
+8714,Student_8714,The teaching was poor and bad,-2,Negative
+8716,Student_8716,The teaching was poor and bad,-2,Negative
+8733,Student_8733,Bad explanation and poor support,-1,Negative
+8734,Student_8734,Bad explanation and poor support,-1,Negative
+8737,Student_8737,Bad explanation and poor support,-1,Negative
+8740,Student_8740,Bad explanation and poor support,-1,Negative
+8749,Student_8749,The teaching was poor and bad,-2,Negative
+8759,Student_8759,Bad explanation and poor support,-1,Negative
+8765,Student_8765,Bad explanation and poor support,-1,Negative
+8801,Student_8801,Bad explanation and poor support,-1,Negative
+8802,Student_8802,Bad explanation and poor support,-1,Negative
+8810,Student_8810,Bad explanation and poor support,-1,Negative
+8830,Student_8830,The teaching was poor and bad,-2,Negative
+8845,Student_8845,The teaching was poor and bad,-2,Negative
+8852,Student_8852,The teaching was poor and bad,-2,Negative
+8866,Student_8866,Bad explanation and poor support,-1,Negative
+8867,Student_8867,The teaching was poor and bad,-2,Negative
+8881,Student_8881,Bad explanation and poor support,-1,Negative
+8888,Student_8888,The teaching was poor and bad,-2,Negative
+8902,Student_8902,Bad explanation and poor support,-1,Negative
+8904,Student_8904,The teaching was poor and bad,-2,Negative
+8906,Student_8906,The teaching was poor and bad,-2,Negative
+8909,Student_8909,The teaching was poor and bad,-2,Negative
+8926,Student_8926,Bad explanation and poor support,-1,Negative
+8937,Student_8937,The teaching was poor and bad,-2,Negative
+8939,Student_8939,Bad explanation and poor support,-1,Negative
+8941,Student_8941,The teaching was poor and bad,-2,Negative
+8943,Student_8943,Bad explanation and poor support,-1,Negative
+8962,Student_8962,Bad explanation and poor support,-1,Negative
+8969,Student_8969,The teaching was poor and bad,-2,Negative
+8982,Student_8982,Bad explanation and poor support,-1,Negative
+8983,Student_8983,The teaching was poor and bad,-2,Negative
+8991,Student_8991,The teaching was poor and bad,-2,Negative
+8995,Student_8995,The teaching was poor and bad,-2,Negative
+8998,Student_8998,The teaching was poor and bad,-2,Negative
+9005,Student_9005,Bad explanation and poor support,-1,Negative
+9013,Student_9013,The teaching was poor and bad,-2,Negative
+9014,Student_9014,Bad explanation and poor support,-1,Negative
+9042,Student_9042,The teaching was poor and bad,-2,Negative
+9048,Student_9048,Bad explanation and poor support,-1,Negative
+9062,Student_9062,Bad explanation and poor support,-1,Negative
+9064,Student_9064,The teaching was poor and bad,-2,Negative
+9069,Student_9069,Bad explanation and poor support,-1,Negative
+9070,Student_9070,Bad explanation and poor support,-1,Negative
+9074,Student_9074,The teaching was poor and bad,-2,Negative
+9095,Student_9095,Bad explanation and poor support,-1,Negative
+9099,Student_9099,Bad explanation and poor support,-1,Negative
+9111,Student_9111,The teaching was poor and bad,-2,Negative
+9125,Student_9125,Bad explanation and poor support,-1,Negative
+9134,Student_9134,Bad explanation and poor support,-1,Negative
+9139,Student_9139,Bad explanation and poor support,-1,Negative
+9142,Student_9142,The teaching was poor and bad,-2,Negative
+9148,Student_9148,Bad explanation and poor support,-1,Negative
+9152,Student_9152,The teaching was poor and bad,-2,Negative
+9154,Student_9154,The teaching was poor and bad,-2,Negative
+9159,Student_9159,Bad explanation and poor support,-1,Negative
+9160,Student_9160,Bad explanation and poor support,-1,Negative
+9167,Student_9167,The teaching was poor and bad,-2,Negative
+9169,Student_9169,Bad explanation and poor support,-1,Negative
+9182,Student_9182,The teaching was poor and bad,-2,Negative
+9190,Student_9190,Bad explanation and poor support,-1,Negative
+9193,Student_9193,Bad explanation and poor support,-1,Negative
+9206,Student_9206,The teaching was poor and bad,-2,Negative
+9211,Student_9211,Bad explanation and poor support,-1,Negative
+9223,Student_9223,The teaching was poor and bad,-2,Negative
+9232,Student_9232,The teaching was poor and bad,-2,Negative
+9239,Student_9239,The teaching was poor and bad,-2,Negative
+9241,Student_9241,Bad explanation and poor support,-1,Negative
+9245,Student_9245,Bad explanation and poor support,-1,Negative
+9251,Student_9251,The teaching was poor and bad,-2,Negative
+9256,Student_9256,The teaching was poor and bad,-2,Negative
+9258,Student_9258,The teaching was poor and bad,-2,Negative
+9260,Student_9260,Bad explanation and poor support,-1,Negative
+9263,Student_9263,Bad explanation and poor support,-1,Negative
+9267,Student_9267,Bad explanation and poor support,-1,Negative
+9280,Student_9280,The teaching was poor and bad,-2,Negative
+9285,Student_9285,Bad explanation and poor support,-1,Negative
+9296,Student_9296,The teaching was poor and bad,-2,Negative
+9299,Student_9299,Bad explanation and poor support,-1,Negative
+9304,Student_9304,The teaching was poor and bad,-2,Negative
+9321,Student_9321,The teaching was poor and bad,-2,Negative
+9332,Student_9332,The teaching was poor and bad,-2,Negative
+9333,Student_9333,Bad explanation and poor support,-1,Negative
+9351,Student_9351,Bad explanation and poor support,-1,Negative
+9367,Student_9367,Bad explanation and poor support,-1,Negative
+9379,Student_9379,Bad explanation and poor support,-1,Negative
+9384,Student_9384,Bad explanation and poor support,-1,Negative
+9389,Student_9389,The teaching was poor and bad,-2,Negative
+9415,Student_9415,Bad explanation and poor support,-1,Negative
+9417,Student_9417,Bad explanation and poor support,-1,Negative
+9418,Student_9418,Bad explanation and poor support,-1,Negative
+9432,Student_9432,Bad explanation and poor support,-1,Negative
+9444,Student_9444,Bad explanation and poor support,-1,Negative
+9457,Student_9457,The teaching was poor and bad,-2,Negative
+9463,Student_9463,Bad explanation and poor support,-1,Negative
+9468,Student_9468,The teaching was poor and bad,-2,Negative
+9479,Student_9479,Bad explanation and poor support,-1,Negative
+9485,Student_9485,Bad explanation and poor support,-1,Negative
+9487,Student_9487,The teaching was poor and bad,-2,Negative
+9499,Student_9499,Bad explanation and poor support,-1,Negative
+9500,Student_9500,The teaching was poor and bad,-2,Negative
+9505,Student_9505,Bad explanation and poor support,-1,Negative
+9515,Student_9515,Bad explanation and poor support,-1,Negative
+9516,Student_9516,Bad explanation and poor support,-1,Negative
+9528,Student_9528,The teaching was poor and bad,-2,Negative
+9535,Student_9535,The teaching was poor and bad,-2,Negative
+9537,Student_9537,Bad explanation and poor support,-1,Negative
+9538,Student_9538,Bad explanation and poor support,-1,Negative
+9555,Student_9555,The teaching was poor and bad,-2,Negative
+9561,Student_9561,Bad explanation and poor support,-1,Negative
+9566,Student_9566,The teaching was poor and bad,-2,Negative
+9570,Student_9570,The teaching was poor and bad,-2,Negative
+9593,Student_9593,Bad explanation and poor support,-1,Negative
+9594,Student_9594,Bad explanation and poor support,-1,Negative
+9597,Student_9597,Bad explanation and poor support,-1,Negative
+9599,Student_9599,The teaching was poor and bad,-2,Negative
+9613,Student_9613,The teaching was poor and bad,-2,Negative
+9617,Student_9617,The teaching was poor and bad,-2,Negative
+9618,Student_9618,Bad explanation and poor support,-1,Negative
+9621,Student_9621,Bad explanation and poor support,-1,Negative
+9626,Student_9626,The teaching was poor and bad,-2,Negative
+9655,Student_9655,The teaching was poor and bad,-2,Negative
+9668,Student_9668,The teaching was poor and bad,-2,Negative
+9672,Student_9672,Bad explanation and poor support,-1,Negative
+9674,Student_9674,The teaching was poor and bad,-2,Negative
+9676,Student_9676,Bad explanation and poor support,-1,Negative
+9678,Student_9678,Bad explanation and poor support,-1,Negative
+9683,Student_9683,Bad explanation and poor support,-1,Negative
+9685,Student_9685,The teaching was poor and bad,-2,Negative
+9692,Student_9692,Bad explanation and poor support,-1,Negative
+9715,Student_9715,The teaching was poor and bad,-2,Negative
+9723,Student_9723,The teaching was poor and bad,-2,Negative
+9727,Student_9727,The teaching was poor and bad,-2,Negative
+9749,Student_9749,The teaching was poor and bad,-2,Negative
+9750,Student_9750,The teaching was poor and bad,-2,Negative
+9753,Student_9753,Bad explanation and poor support,-1,Negative
+9762,Student_9762,Bad explanation and poor support,-1,Negative
+9764,Student_9764,Bad explanation and poor support,-1,Negative
+9773,Student_9773,Bad explanation and poor support,-1,Negative
+9777,Student_9777,Bad explanation and poor support,-1,Negative
+9781,Student_9781,The teaching was poor and bad,-2,Negative
+9784,Student_9784,Bad explanation and poor support,-1,Negative
+9785,Student_9785,Bad explanation and poor support,-1,Negative
+9787,Student_9787,Bad explanation and poor support,-1,Negative
+9789,Student_9789,Bad explanation and poor support,-1,Negative
+9791,Student_9791,The teaching was poor and bad,-2,Negative
+9795,Student_9795,Bad explanation and poor support,-1,Negative
+9802,Student_9802,The teaching was poor and bad,-2,Negative
+9809,Student_9809,The teaching was poor and bad,-2,Negative
+9813,Student_9813,Bad explanation and poor support,-1,Negative
+9815,Student_9815,The teaching was poor and bad,-2,Negative
+9817,Student_9817,Bad explanation and poor support,-1,Negative
+9819,Student_9819,The teaching was poor and bad,-2,Negative
+9837,Student_9837,Bad explanation and poor support,-1,Negative
+9838,Student_9838,The teaching was poor and bad,-2,Negative
+9851,Student_9851,The teaching was poor and bad,-2,Negative
+9858,Student_9858,The teaching was poor and bad,-2,Negative
+9861,Student_9861,Bad explanation and poor support,-1,Negative
+9863,Student_9863,Bad explanation and poor support,-1,Negative
+9866,Student_9866,Bad explanation and poor support,-1,Negative
+9877,Student_9877,The teaching was poor and bad,-2,Negative
+9906,Student_9906,Bad explanation and poor support,-1,Negative
+9913,Student_9913,Bad explanation and poor support,-1,Negative
+9921,Student_9921,The teaching was poor and bad,-2,Negative
+9923,Student_9923,The teaching was poor and bad,-2,Negative
+9924,Student_9924,The teaching was poor and bad,-2,Negative
+9929,Student_9929,Bad explanation and poor support,-1,Negative
+9931,Student_9931,Bad explanation and poor support,-1,Negative
+9971,Student_9971,The teaching was poor and bad,-2,Negative
+9972,Student_9972,Bad explanation and poor support,-1,Negative
+9977,Student_9977,The teaching was poor and bad,-2,Negative
+9983,Student_9983,Bad explanation and poor support,-1,Negative
+9987,Student_9987,Bad explanation and poor support,-1,Negative

@@ -104,8 +104,10 @@ def search_by_keyword(keyword):
         ('%' + keyword + '%',)
     )
 
-    data = cursor.fetchall()
+    results = cursor.fetchall()
     conn.close()
+    
+    return results
 
 def search_by_score(score):
 

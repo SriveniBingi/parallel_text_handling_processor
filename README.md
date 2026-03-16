@@ -1,320 +1,235 @@
-# 🚀 Parallel Text Handling Processor
+## 🚀 Parallel Text Handling Processor
 
-Parallel Text Handling Processor using Python multiprocessing to efficiently analyze large student feedback datasets with regex-based sentiment scoring and SQLite storage.
-A Python-based parallel text processing system designed to efficiently analyze large volumes of student feedback using multiprocessing, regex-based sentiment scoring, and database storage.
+A Python-based parallel text processing system designed to efficiently analyze large volumes of student feedback using multiprocessing, regex sentiment scoring, and SQLite database storage.
 
-The system reads feedback data from a dataset, splits it into chunks, processes the data in parallel using multiple CPU cores, and stores the analyzed results in a database for further search and export.
+The system reads a dataset, divides it into chunks, processes the chunks in parallel using CPU cores, and stores the results for search and export.
 
-**Key Features**
+## 📌 Project Overview
 
-* Parallel text processing using Python multiprocessing
-* Chunk-based dataset handling for large datasets
-* Regex-based sentiment scoring
-* SQLite database integration
-* CSV export functionality
-* Modular and scalable architecture
-* Logging system for monitoring execution
+| Feature | Description |
+|--------|-------------|
+| Language | Python |
+| Processing | Parallel processing using multiprocessing |
+| Text Analysis | Regex-based sentiment scoring |
+| Database | SQLite |
+| Dataset | Student feedback records |
+| Output | Database storage + CSV export |
 
-**Project Architecture**
+🏗 System Architecture
 
- Dataset (students.csv)
-        │
-        ▼
-Text Loader
-(load dataset)
-        │
-        ▼
-Chunk Generator
-(split dataset into chunks)
-        │
-        ▼
-Multiprocessing Pool
-(using CPU cores)
-        │
-        ▼
-Parallel Workers
-(process chunks)
-        │
-        ▼
-Regex Sentiment Scoring
-        │
-        ▼
-Database Storage (SQLite)
-        │
-        ▼
-Search & CSV Export
+                +----------------------+
+                |   students.csv       |
+                | (Feedback Dataset)   |
+                +----------+-----------+
+                           |
+                           v
+                +----------------------+
+                |    text_loader.py    |
+                | Load & Chunk Data    |
+                +----------+-----------+
+                           |
+                           v
+                +----------------------+
+                |   Multiprocessing    |
+                |   Pool (CPU cores)   |
+                +----+-----------+-----+
+                     |           |
+                     v           v
+              +-----------+ +-----------+
+              | Worker 1  | | Worker 2  |
+              |Chunk Proc.| |Chunk Proc.|
+              +-----+-----+ +-----+-----+
+                    |             |
+                    +------v------+
+                           |
+                           v
+                +----------------------+
+                |      scorer.py       |
+                | Sentiment Analysis   |
+                +----------+-----------+
+                           |
+                           v
+                +----------------------+
+                |     database.py      |
+                | SQLite Storage       |
+                +----------+-----------+
+                           |
+                           v
+                +----------------------+
+                |    search_module     |
+                | Search & CSV Export  |
+                +----------------------+
 
-**Project Architecture**
+                +----------------------+
+                |   students.csv       |
+                | (Feedback Dataset)   |
+                +----------+-----------+
+                           |
+                           v
+                +----------------------+
+                |    text_loader.py    |
+                | Load & Chunk Data    |
+                +----------+-----------+
+                           |
+                           v
+                +----------------------+
+                |   Multiprocessing    |
+                |   Pool (CPU cores)   |
+                +----+-----------+-----+
+                     |           |
+                     v           v
+              +-----------+ +-----------+
+              | Worker 1  | | Worker 2  |
+              |Chunk Proc.| |Chunk Proc.|
+              +-----+-----+ +-----+-----+
+                    |             |
+                    +------v------+
+                           |
+                           v
+                +----------------------+
+                |      scorer.py       |
+                | Sentiment Analysis   |
+                +----------+-----------+
+                           |
+                           v
+                +----------------------+
+                |     database.py      |
+                | SQLite Storage       |
+                +----------+-----------+
+                           |
+                           v
+                +----------------------+
+                |    search_module     |
+                | Search & CSV Export  |
+                +----------------------+
 
-parallel_text_handling_processor/
-│
-├── main.py
-├── text_loader.py
-├── scorer.py
-├── database.py
-├── search_module.py
-├── students.csv
-├── feedback.db
-├── requirements.txt
-└── README.md
+## 📂 Project Structure
 
-**Dataset**
+| File / Folder | Description |
+|---------------|-------------|
+| `main.py` | Main program that runs the entire workflow including loading data, parallel processing, database storage, and search/export |
+| `generate_students.py` | Script used to generate student feedback dataset |
+| `config.py` | Contains configuration settings such as chunk size and other constants |
+| `database.py` | Handles SQLite database operations like creating tables, inserting data, and searching records |
+| `scorer.py` | Performs sentiment scoring using regex-based rules |
+| `text_loader.py` | Loads CSV data and divides it into chunks for parallel processing |
+| `search_module.py` | Handles searching records and exporting results to CSV |
+| `data/` | Folder that stores dataset files |
+| `data/students.csv` | CSV file containing student feedback dataset |
 
-The dataset contains student feedback records used to test the system's ability to process large amounts of text data.
+## ⚙️ System Workflow
 
-Example dataset format:
+| Step | Process | Description |
+|-----|--------|-------------|
+| 1 | Load Data | Read student feedback data from CSV file |
+| 2 | Chunk Data | Split the dataset into smaller chunks |
+| 3 | Parallel Processing | Process chunks simultaneously using multiprocessing |
+| 4 | Sentiment Scoring | Apply regex rules to analyze feedback sentiment |
+| 5 | Store Results | Save processed results into SQLite database |
+| 6 | Search Records | Allow user to search feedback by student name |
+| 7 | Export Results | Export results to CSV file |
 
-Student ID	Feedback
-1	      The class was very helpful
-2	      The lecture was boring
-3	      The teacher explained clearly
+## ⚡ Parallel Processing
 
-For scalability testing, the dataset was expanded to 5000 feedback records.
+The system uses Python's multiprocessing module to process chunks in parallel.
 
-Parallel Processing Strategy
+Example configuration:
 
-The dataset is divided into smaller chunks before processing.
+| Parameter | Value |
+|----------|-------------|
+| Dataset Size| 5000 records |
+| Chunk Size | 250 |
+| Total Chunks | 20 |
+| CPU Cores Used | 2|
 
-Example:
+Each CPU core processes different chunks simultaneously, improving performamce.
 
-Total Records: 5000
-Chunk Size: 250
-Total Chunks: 20
-CPU Cores Used: 2
+## 🧠 Sentiment Scoring (Regex)
 
-Each CPU core processes different chunks simultaneously, which significantly improves processing speed compared to sequential execution.
+Sentiment scoring is performed using keyword-based regex matching.
 
-**Sentiment Scoring**
+| Sentiment Type | Example Words |
+|---------------|---------------|
+| Positive | good, excellent, amazing, helpful |
+| Negative | bad, poor, terrible, boring |
+| Neutral | feedback without positive or negative keywords |
 
-Sentiment scoring is performed using regular expressions to detect positive and negative keywords in feedback text.
+| Score Condition | Sentiment Result |
+|----------------|------------------|
+| Score > 0 | Positive |
+| Score = 0 | Neutral |
+| Score < 0 | Negative |
 
-Example keywords:
+## 💾 Database Integration
 
-Positive words:
+| Column  | Description |
+|----------|-------------|
+| student_id|Unique student ID |
+|student_name|Name of student |
+| feedback | Feedback text |
+| score | sentiment score |
+| sentiment | sentiment label |
 
-good
-excellent
-great
-amazing
-helpful
-
-Negative words:
-
-bad
-poor
-slow
-boring
-confusing
-
-Each feedback entry receives a sentiment classification based on keyword matches.
-
-**Database Integration**
-
-Processed results are stored in a SQLite database.
-
-Database fields include:
-
-Student ID
-
-Feedback text
-
-Sentiment score
-
-Processing timestamp
-
-Database file:
-
-feedback.db
-
-**Logging System**
-
-The system uses Python logging to track program execution.
-
-Example log output:
-
-2026-03-08 23:27:06 - INFO - Total records loaded: 5000
-2026-03-08 23:27:06 - INFO - Total chunks created: 20
-2026-03-08 23:27:06 - INFO - Processing feedback in parallel
-2026-03-08 23:27:06 - INFO - Using 2 CPU cores
-
-Logging helps with debugging, monitoring performance, and tracking system behavior.
-
-**Installation**
-
-Clone the repository:
-
-git clone https://github.com/yourusername/parallel_text_handling_processor.git
-
-Navigate to the project directory:
-
-cd parallel_text_handling_processor
-
-Install required dependencies:
-
-pip install -r requirements.txt
-
-**Running the Project**
-
-Run the main program:
-python main.py
-
-Expected output:
-===== Student Feedback Processing System Started =====
+## 📊 Example Output
+```
+===== Student Feedback Processing System =====
 
 Total records loaded: 5000
 Total chunks created: 20
 Processing feedback in parallel...
 Using 2 CPU cores
 
-Processing completed successfully
-Results stored in database
+Data stored in database successfully.
+Total records processed: 5000
+Processing completed in 2.1 seconds
+```
 
-**Performance and Scalability**
-
-Parallel processing improves system efficiency when handling large datasets.
-
-Example comparison:
-
-Dataset Size	Sequential Processing	Parallel Processing
-1000 records	slower	            faster
-5000 records	slower	            significantly faster
-
-The chunk-based multiprocessing approach allows the system to scale effectively as dataset size increases.
-
-**Future Improvements**
-
-Possible enhancements for the system include:
-Machine learning-based sentiment analysis
-Web dashboard for visualization
-Support for larger distributed datasets
-Use of advanced databases like PostgreSQL
-Dynamic CPU core allocation
-
-**Conclusion**
-
-The Parallel Text Handling Processor demonstrates how parallel computing techniques can be applied to large-scale text analysis problems. By combining multiprocessing, chunk-based processing, sentiment analysis, and database storage, the system provides an efficient and scalable solution for analyzing large datasets.
-
-Database Integration
-
-Processed results are stored in a SQLite database.
-
-Database fields include:
-
-Student ID
-
-Feedback text
-
-Sentiment score
-
-Processing timestamp
-
-Database file:
-
-feedback.db
-Logging System
-
-The system uses Python logging to track program execution.
-
-Example log output:
-
-2026-03-08 23:27:06 - INFO - Total records loaded: 5000
-2026-03-08 23:27:06 - INFO - Total chunks created: 20
-2026-03-08 23:27:06 - INFO - Processing feedback in parallel
-2026-03-08 23:27:06 - INFO - Using 2 CPU cores
-
-Logging helps with debugging, monitoring performance, and tracking system behavior.
-
-Installation
+##  🛠 Installation
 
 Clone the repository:
-
-git clone https://github.com/yourusername/parallel_text_handling_processor.git
-
-Navigate to the project directory:
-
+```
+git clone https://github.com/SriveniBingi/parallel_text_handling_processor
+```
+Navigate to project folder:
+```
 cd parallel_text_handling_processor
-
-Install required dependencies:
-
-pip install -r requirements.txt
-Running the Project
-
-Run the main program:
-
+```
+Run the program:
+```
 python main.py
+```
 
-Expected output:
+## 📈 Performance and Scalability
 
-===== Student Feedback Processing System Started =====
+| Feature | Explanation |
+|-------|-------------|
+| Parallel Processing | Multiple CPU cores process data simultaneously |
+| Chunking Strategy | Large datasets divided into smaller chunks |
+| Dataset Tested | 5000 student feedback records |
+| Performance Benefit | Reduced processing time |
+| Scalability | System can handle larger datasets efficiently |
 
-Total records loaded: 5000
-Total chunks created: 20
-Processing feedback in parallel...
-Using 2 CPU cores
+## 🗺 Milestone Implementation
+#Milestone 1
 
-Processing completed successfully
-Results stored in database
-Performance and Scalability
+* Built modular project structure
 
-Parallel processing improves system efficiency when handling large datasets.
+* Implemented dataset loading
 
-Example comparison:
+* Developed regex sentiment scoring
 
-Dataset Size	Sequential Processing	Parallel Processing
-1000 records	slower	faster
-5000 records	slower	significantly faster
+* Added SQLite database integration
 
-The chunk-based multiprocessing approach allows the system to scale effectively as dataset size increases.
+#Milestone 2
 
-Future Improvements
+* Implemented chunk-based processing
 
-Possible enhancements for the system include:
+* Added multiprocessing support
 
-Machine learning-based sentiment analysis
+* Tested with 5000 feedback records
 
-Web dashboard for visualization
+* Improved processing performance
 
-Support for larger distributed datasets
+## 👩‍💻 Author
 
-Use of advanced databases like PostgreSQL
-
-Dynamic CPU core allocation
-
-**Conclusion**
-
-The Parallel Text Handling Processor demonstrates how parallel computing techniques can be applied to large-scale text analysis problems. By combining multiprocessing, chunk-based processing, sentiment analysis, and database storage, the system provides an efficient and scalable solution for analyzing large datasets.
-
-**Milestone Implementation**
-
-This project was developed following a milestone-based approach to ensure structured development and gradual improvement of the system.
-
-**Milestone 1: System Setup and Basic Processing (Weeks 1–2)**
-
-Goal: Build the basic text processing system.
-
-Tasks completed:
-
-Created the project structure
-Implemented dataset loading from CSV
-Developed regex-based sentiment scoring
-Built database module for storing feedback
-Added logging for tracking system execution
-Successfully processed small datasets
-
-**Milestone 2: Text Breaker and Loader (Weeks 3–4)**
-
-Goal: Improve system performance using parallel processing.
-Tasks completed:
-Implemented data chunking to divide the dataset into smaller groups
-Built a text loader module for handling large datasets
-Implemented multiprocessing using CPU cores
-Tested system with large datasets (5000 records)
-Measured performance improvements
-Example processing configuration:
-
-Total records: 5000
-Chunk size: 250
-Total chunks: 20
-CPU cores used: 2
-
-This milestone improved the speed, efficiency, and scalability of the system.
+Sriveni Bingi

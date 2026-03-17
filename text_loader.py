@@ -4,16 +4,18 @@ from config import CHUNK_SIZE
 
 def read_csv(file_path):
     rows = []
-
-    with open(file_path, "r", encoding="utf-8") as file:
-        reader = csv.DictReader(file)
-        for row in reader:
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+         reader = csv.DictReader(file)
+         for row in reader:
             rows.append((
                 int(row["student_id"]),
                 row["student_name"],
                 row["feedback"]
             ))
-
+    except Exception as e:
+        print("Error reading CSV:",e)
+        
     return rows
 
 

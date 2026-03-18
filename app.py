@@ -1,144 +1,214 @@
-import streamlit as st
+import os
+import json
+import datetime
+from collections import Counter
+
 import pandas as pd
-from processor import run_processing
+import streamlit as st
+import plotly.express as px
 
-# ---------- PAGE CONFIG ----------
-st.set_page_config(page_title="Feedback Dashboard", layout="wide")
+from app.storage.storage import Storage
+from app.search_export.search_save import search_in_storage
+from app.text_processing.parallel_break_loader import pipeline_from_folder
+from app.utils import get_env, ensure_dir
 
-# ---------- TITLE ----------
-st.title("📊 Student Feedback Analytics")
-st.caption("Parallel Processing + Sentiment Insights 🚀")
+# ---------------- CONFIG ----------------
+DB_PATH = get_env("DB_PATH", "checks.db")
+TEXT_FOLDER = get_env("TEXT_FOLDER", "data/support_text_files")
+RULES_PATH = get_env("RULES_PATH", "data/rules1.json")
 
-# ---------- SIDEBAR ----------
-st.sidebar.header("⚙️ Controls")
+ensure_dir(TEXT_FOLDER)
+storage = Storage(DB_PATH)
 
-uploaded_file = st.sidebar.file_uploader(
-    "📂 Upload CSV File",
-    type=["csv"]
-)
+# ---------------- PAGE CONFIG ----------------
+st.set_page_config(page_title="AI Text Processor", layout="wide")
 
-start_button = st.sidebar.button("🚀 Start Processing")
+# ---------------- PREMIUM UI ----------------
+st.markdown("""
+<style>
+body { background-color: #0e1117; }
 
-# ---------- FILE PREVIEW ----------
-if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
+.card {
+    background: linear-gradient(135deg, #1f2937, #111827);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+}
 
-    st.subheader("📂 File Preview")
-    st.dataframe(df.head(), use_container_width=True)
+.section-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 20px;
+}
 
-# ---------- PROCESSING ----------
-if uploaded_file is not None and start_button:
+.highlight {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #111827;
+    border-left: 5px solid #3b82f6;
+    margin-bottom: 10px;
+}
 
-    st.subheader("⚙️ Processing Status")
+.alert-red {
+    background-color: #2a0f0f;
+    padding: 12px;
+    border-radius: 10px;
+    border-left: 5px solid red;
+    margin-bottom: 8px;
+}
+</style>
+""", unsafe_allow_html=True)
 
-    progress_bar = st.progress(0)
-    for i in range(100):
-        progress_bar.progress(i + 1)
+st.title("🚀 Parallel Text Intelligence System")
 
-    # Convert dataframe → list of tuples
-    data = list(df.itertuples(index=False, name=None))
+# ---------------- LOAD DATA ----------------
+@st.cache_data
+def load_data():
+    rows = storage.query_checks(limit=10000)
+    return pd.DataFrame(rows) if rows else pd.DataFrame()
 
-    results = run_processing(data)
+# ---------------- SIDEBAR ----------------
+menu = st.sidebar.radio("Navigation", [
+    "Overview",
+    "Upload Files",
+    "Run Pipeline",
+    "Search",
+    "Analytics"
+])
 
-    st.success("✅ Processing Completed")
+# ---------------- OVERVIEW ----------------
+if menu == "Overview":
+    df = load_data()
 
-    # Convert results → DataFrame
-    results_df = pd.DataFrame(
-        results,
-        columns=["ID", "Name", "Feedback", "Score", "Sentiment"]
-    )
+    st.markdown('<div class="section-title">📊 System Overview</div>', unsafe_allow_html=True)
 
-    # ---------- METRICS ----------
-    total = len(results_df)
-    positive = (results_df["Sentiment"] == "Positive").sum()
-    negative = (results_df["Sentiment"] == "Negative").sum()
-    neutral = (results_df["Sentiment"] == "Neutral").sum()
+    st.markdown("""
+    <div class="highlight">
+    1️⃣ Upload text files  
+    2️⃣ Run pipeline  
+    3️⃣ Search results  
+    4️⃣ Analyze insights  
+    </div>
+    """, unsafe_allow_html=True)
 
     col1, col2, col3, col4 = st.columns(4)
 
-    col1.metric("📁 Total", total)
-    col2.metric("😊 Positive", positive)
-    col3.metric("😡 Negative", negative)
-    col4.metric("😐 Neutral", neutral)
+    col1.markdown(f'<div class="card">📄 Total<br><h2>{len(df)}</h2></div>', unsafe_allow_html=True)
+    col2.markdown(f'<div class="card">📊 Avg Score<br><h2>{round(df["score"].mean(),2) if not df.empty else 0}</h2></div>', unsafe_allow_html=True)
+    col3.markdown(f'<div class="card">🆔 Unique<br><h2>{df["uid"].nunique() if not df.empty else 0}</h2></div>', unsafe_allow_html=True)
+    col4.markdown(f'<div class="card">⚠️ Alerts<br><h2>{len(df[df["score"]>70]) if not df.empty else 0}</h2></div>', unsafe_allow_html=True)
 
-    # ---------- TABS ----------
-    tab1, tab2, tab3 = st.tabs(["📊 Dashboard", "🔍 Search & Filter", "⬇ Export"])
+    # Alerts
+    st.markdown('<div class="section-title">⚠️ Critical Alerts</div>', unsafe_allow_html=True)
 
-    # ===== TAB 1: DASHBOARD =====
-    with tab1:
-        st.subheader("📊 Results Overview")
-
-        st.dataframe(results_df, use_container_width=True)
-
-        # Charts
-        chart_data = pd.DataFrame({
-            "Sentiment": ["Positive", "Negative", "Neutral"],
-            "Count": [positive, negative, neutral]
-        })
-
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.bar_chart(chart_data.set_index("Sentiment"))
-
-        with col2:
-            st.write("### 🥧 Sentiment Distribution")
-            st.pyplot(chart_data.set_index("Sentiment").plot.pie(
-                y="Count", autopct='%1.1f%%'
-            ).figure)
-
-    # ===== TAB 2: SEARCH =====
-    with tab2:
-        st.subheader("🔍 Search & Filter")
-
-        keyword = st.text_input("Search by keyword")
-
-        sentiment_filter = st.selectbox(
-            "Filter by Sentiment",
-            ["All", "Positive", "Negative", "Neutral"]
-        )
-
-        filtered = results_df.copy()
-
-        if sentiment_filter != "All":
-            filtered = filtered[
-                filtered["Sentiment"] == sentiment_filter
-            ]
-
-        if keyword:
-            filtered = filtered[
-                filtered["Feedback"].str.contains(keyword, case=False)
-            ]
-
-        st.dataframe(filtered, use_container_width=True)
-
-    # ===== TAB 3: EXPORT =====
-    with tab3:
-        st.subheader("⬇ Export Data")
-
-        # Full data
-        csv_all = results_df.to_csv(index=False).encode("utf-8")
-        st.download_button(
-            "Download Full Data",
-            csv_all,
-            "all_results.csv"
-        )
-
-        # Filtered data
-        csv_filtered = filtered.to_csv(index=False).encode("utf-8")
-        st.download_button(
-            "Download Filtered Data",
-            csv_filtered,
-            "filtered_results.csv"
-        )
-
-    # ---------- ALERTS ----------
-    st.subheader("⚠️ Negative Feedback Alerts")
-
-    alerts = results_df[results_df["Sentiment"] == "Negative"]
+    alerts = df[df["score"] > 70] if not df.empty else pd.DataFrame()
 
     if not alerts.empty:
         for _, row in alerts.head(5).iterrows():
-            st.warning(f"{row['Name']} → {row['Feedback']}")
+            st.markdown(f"""
+            <div class="alert-red">
+            🚨 Score: {row['score']}<br>
+            {row['text'][:150]}...
+            </div>
+            """, unsafe_allow_html=True)
     else:
-        st.success("No negative feedback 🎉")
+        st.success("No critical issues 🎉")
+
+# ---------------- UPLOAD ----------------
+elif menu == "Upload Files":
+    st.header("📂 Upload Text Files")
+
+    uploaded_files = st.file_uploader("Upload .txt files", accept_multiple_files=True)
+
+    if uploaded_files:
+        for file in uploaded_files:
+            path = os.path.join(TEXT_FOLDER, file.name)
+            with open(path, "wb") as f:
+                f.write(file.getbuffer())
+        st.success("Files uploaded successfully!")
+
+# ---------------- PIPELINE ----------------
+elif menu == "Run Pipeline":
+    st.header("⚙️ Run Pipeline")
+
+    workers = st.slider("Workers", 1, 16, 4)
+    group_size = st.slider("Chunk Size", 100, 2000, 500)
+
+    if st.button("🚀 Start Processing"):
+        with st.spinner("Processing..."):
+            progress = st.progress(0)
+
+            for i in range(100):
+                progress.progress(i + 1)
+
+            results = pipeline_from_folder(
+                folder_path=TEXT_FOLDER,
+                rules_path=RULES_PATH,
+                group_size=group_size,
+                storage=storage,
+                max_workers=workers,
+                save=True
+            )
+
+        st.success(f"✅ Processed {len(results)} chunks")
+
+# ---------------- SEARCH ----------------
+elif menu == "Search":
+    st.header("🔍 Smart Search")
+
+    query = st.text_input("Enter keyword")
+    df = load_data()
+
+    if st.button("Search"):
+        if query:
+            results = search_in_storage(storage, query=query, limit=100)
+
+            if results:
+                df = pd.DataFrame(results)
+
+                for _, row in df.head(10).iterrows():
+                    color = "red" if row["score"] > 70 else "#22c55e"
+
+                    st.markdown(f"""
+                    <div class="highlight">
+                    <b>Score:</b> <span style="color:{color}">{row['score']}</span><br>
+                    {row['text'][:200]}...
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.warning("No results found")
+
+# ---------------- ANALYTICS ----------------
+elif menu == "Analytics":
+    st.header("📊 Analytics Dashboard")
+
+    df = load_data()
+
+    if df.empty:
+        st.warning("No data available")
+    else:
+        fig = px.histogram(df, x="score", nbins=40)
+        fig.update_layout(template="plotly_dark")
+
+        st.plotly_chart(fig, use_container_width=True)
+
+        # Top rules
+        st.subheader("Top Rule Hits")
+
+        counter = Counter()
+        for d in df["details"]:
+            try:
+                items = json.loads(d) if isinstance(d, str) else d
+                for r in items:
+                    counter[r.get("rule_id")] += 1
+            except:
+                pass
+
+        if counter:
+            rule_df = pd.DataFrame(counter.items(), columns=["Rule", "Hits"])
+            fig2 = px.bar(rule_df.head(10), x="Rule", y="Hits")
+            fig2.update_layout(template="plotly_dark")
+
+            st.plotly_chart(fig2, use_container_width=True)

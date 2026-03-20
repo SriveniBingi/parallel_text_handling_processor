@@ -15,7 +15,7 @@ st.caption("Parallel Processing • Sentiment Analysis • Insights")
 start_button = False  # Prevent undefined error
 
 # ================= SIDEBAR =================
-st.sidebar.header("Controls")
+
 uploaded_file = st.sidebar.file_uploader(
     "Upload File",
     type=["csv", "txt", "xlsx"]
@@ -36,12 +36,24 @@ if uploaded_file:
 
     # ---------- TXT ----------
     elif file_type == "txt":
-        text = uploaded_file.read().decode("utf-8").split("\n")
+        text = uploaded_file.read().decode("utf-8").splitlines()
         df = pd.DataFrame({"text": text})
+        
+        # Remove empty rows
+        df["text"] = df["text"].astype(str).str.strip()
+        df = df[df["text"] != ""]
+
+    if len(df) > 50000:
+        st.warning("⚠️ Processing 50K+ records. This may take some time.")
 
     # Preview
     st.subheader("📄 Data Preview")
-    st.dataframe(df)
+    
+    if len(df) > 1000:
+        st.warning("⚠️ Large dataset detected. Showing first 100 rows only.")
+        st.dataframe(df.head(100))
+    else:
+        st.dataframe(df)
 
     st.divider()
 
@@ -68,24 +80,42 @@ if uploaded_file:
 
     # ================= PROCESSING =================
     if start_button:
-
         progress = st.progress(0)
         progress.progress(20)
 
         if "text" not in df.columns:
             st.error("No text column found ❌")
             st.stop()
+            
+        df["text"] = df["text"].astype(str).str.strip()
+        df = df[df["text"] != ""]
+
+        if df.empty:
+            st.error("❌ No valid text data found in selected column.")
+            st.stop()
 
         if "id" not in df.columns:
             df["id"] = range(len(df))
 
+            # Convert to list
+    
         data = list(df[["id", "text"]].itertuples(index=False, name=None))
+        
+        if len(data) == 0:
+           st.error("❌ No data available to process. Please upload a valid file.")
+           st.stop()
+        # ================= AUTO CHUNK SIZE =================
+        data_size = len(data)
+        cores = multiprocessing.cpu_count()
 
+        chunk_size = max(50, data_size // (cores * 2))
+
+        st.info(f"📦 Auto Chunk Size: {chunk_size} | Data Size: {data_size}")
         start_time = time.time()
 
         # ✅ Spinner added
         with st.spinner("Processing data... please wait ⏳"):
-            results = run_processing(data)
+            results = run_processing(data, chunk_size)
 
         progress.progress(80)
 
@@ -104,6 +134,7 @@ if uploaded_file:
         )
 
         st.session_state["results_df"] = results_df
+        st.info(f"Processed {len(results_df)} records successfully 🚀")
 
 # ================= LOAD RESULTS =================
 if "results_df" in st.session_state:

@@ -1,6 +1,4 @@
 import csv
-from config import CHUNK_SIZE
-
 
 def read_csv(file_path):
     rows = []
@@ -19,8 +17,8 @@ def read_csv(file_path):
     return rows
 
 
-def chunk_data(data):
+def chunk_data(data, chunk_size):
     chunks = []
-    for i in range(0, len(data), CHUNK_SIZE):
-        chunks.append(data[i:i + CHUNK_SIZE])
+    for i in range(0, len(data), chunk_size):
+        chunks.append(data[i:i + chunk_size])
     return chunks

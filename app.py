@@ -3,130 +3,154 @@ import pandas as pd
 import time
 import multiprocessing
 import matplotlib.pyplot as plt
-from processor import run_processing
+import re
 
-# ================= CONFIG =================
+# Backend modules
+from processor import run_processing
+from database import clear_table
+
+
+# ================= PAGE CONFIG =================
 st.set_page_config(page_title="Text Analysis Dashboard", layout="wide")
 
-# Title
+
+# ================= DARK THEME =================
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: #0e1117;
+        color: white;
+    }
+
+    section[data-testid="stSidebar"] {
+        background-color: #161a23;
+        color: white;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: white !important;
+    }
+
+    .stMetric label, .stMetric div {
+        color: white !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
+# ================= SESSION STATE =================
+if "active_tab" not in st.session_state:
+    st.session_state["active_tab"] = "Dashboard"
+
+
+# ================= TITLE =================
 st.title("📊 Text Analysis Dashboard")
 st.caption("Parallel Processing • Sentiment Analysis • Insights")
 
-start_button = False  # Prevent undefined error
 
-# ================= SIDEBAR =================
+# ================= FILE UPLOAD =================
+st.sidebar.markdown("🚀 Start by uploading your data file")
 
 uploaded_file = st.sidebar.file_uploader(
     "Upload File",
     type=["csv", "txt", "xlsx"]
 )
 
+
+# ================= SENTIMENT SCORER =================
+def calculate_score(text):
+    positive_words = ["good", "excellent", "great", "awesome", "happy"]
+    negative_words = ["bad", "poor", "worst", "sad", "terrible"]
+
+    words = text.lower().split()
+
+    scores = []
+    for word in words:
+        if word in positive_words:
+            scores.append(1)
+        elif word in negative_words:
+            scores.append(-1)
+
+    total_score = sum(scores)
+
+    if total_score > 0:
+        sentiment = "Positive"
+    elif total_score < 0:
+        sentiment = "Negative"
+    else:
+        sentiment = "Neutral"
+
+    return scores, total_score, sentiment
+
+
 # ================= FILE HANDLING =================
 if uploaded_file:
 
     file_type = uploaded_file.name.split(".")[-1]
 
-    # ---------- CSV ----------
     if file_type == "csv":
         df = pd.read_csv(uploaded_file)
 
-    # ---------- Excel ----------
     elif file_type == "xlsx":
         df = pd.read_excel(uploaded_file)
 
-    # ---------- TXT ----------
     elif file_type == "txt":
         text = uploaded_file.read().decode("utf-8").splitlines()
         df = pd.DataFrame({"text": text})
-        
-        # Remove empty rows
-        df["text"] = df["text"].astype(str).str.strip()
-        df = df[df["text"] != ""]
 
-    if len(df) > 50000:
-        st.warning("⚠️ Processing 50K+ records. This may take some time.")
-
-    # Preview
+    # ===== PREVIEW =====
     st.subheader("📄 Data Preview")
-    
-    if len(df) > 1000:
-        st.warning("⚠️ Large dataset detected. Showing first 100 rows only.")
-        st.dataframe(df.head(100))
-    else:
-        st.dataframe(df)
+    if len(df) > 100:
+        st.caption("Showing first 100 sentences/rows")
+    st.dataframe(df.head(100))
 
     st.divider()
 
-    # ================= COLUMN SELECTION =================
+    # ===== COLUMN SELECTION =====
     if file_type in ["csv", "xlsx"]:
-
-        st.subheader("⚙️ Select Text Column")
-
-        # Select only text columns
         text_columns = df.select_dtypes(include=["object"]).columns
 
         if len(text_columns) == 0:
-           st.error("No text columns found ❌")
-           st.stop()
+            st.error("No text columns found ❌")
+            st.stop()
 
-        text_column = st.selectbox( "Choose column for analysis",text_columns)
-
+        text_column = st.selectbox("Select Text Column", text_columns)
         df = df.rename(columns={text_column: "text"})
 
-        start_button = st.button("🚀 Start Processing")
+    # ===== LIMIT LARGE DATA =====
+    MAX_ROWS = 100000
 
-    else:
-        start_button = st.button("🚀 Start Processing")
+    if len(df) > 50000:
+        st.warning("⚠️ Large dataset detected")
 
-    # ================= PROCESSING =================
-    if start_button:
-        progress = st.progress(0)
-        progress.progress(20)
+    if len(df) > MAX_ROWS:
+        st.warning(f"⚠️ Limiting to first {MAX_ROWS} rows")
+        df = df.head(MAX_ROWS)
 
-        if "text" not in df.columns:
-            st.error("No text column found ❌")
-            st.stop()
-            
-        df["text"] = df["text"].astype(str).str.strip()
-        df = df[df["text"] != ""]
+    # ===== PROCESS BUTTON =====
+    if st.button("🚀 Start Processing"):
 
         if df.empty:
-            st.error("❌ No valid text data found in selected column.")
+            st.error("No valid data ❌")
             st.stop()
 
-        if "id" not in df.columns:
-            df["id"] = range(len(df))
-
-            # Convert to list
-    
+        df["id"] = range(len(df))
         data = list(df[["id", "text"]].itertuples(index=False, name=None))
-        
-        if len(data) == 0:
-           st.error("❌ No data available to process. Please upload a valid file.")
-           st.stop()
-        # ================= AUTO CHUNK SIZE =================
-        data_size = len(data)
+
         cores = multiprocessing.cpu_count()
+        chunk_size = max(1000, len(data) // cores)
 
-        chunk_size = max(50, data_size // (cores * 2))
+        st.info(f"📦 Chunk Size: {chunk_size} | Cores: {cores}")
 
-        st.info(f"📦 Auto Chunk Size: {chunk_size} | Data Size: {data_size}")
-        start_time = time.time()
+        start = time.time()
 
-        # ✅ Spinner added
-        with st.spinner("Processing data... please wait ⏳"):
+        with st.spinner("Processing... ⏳"):
             results = run_processing(data, chunk_size)
 
-        progress.progress(80)
-
-        end_time = time.time()
-        total_time = round(end_time - start_time, 2)
-        cores_used = multiprocessing.cpu_count()
-
-        progress.progress(100)
+        end = time.time()
 
         st.success("Processing Completed ✅")
-        st.info(f"⚡ Processed in {total_time}s using {cores_used} cores")
+        st.info(f"⚡ Execution Time: {round(end - start, 2)} sec")
 
         results_df = pd.DataFrame(
             results,
@@ -134,36 +158,39 @@ if uploaded_file:
         )
 
         st.session_state["results_df"] = results_df
-        st.info(f"Processed {len(results_df)} records successfully 🚀")
 
-# ================= LOAD RESULTS =================
+
+# ================= RESULTS =================
 if "results_df" in st.session_state:
 
     results_df = st.session_state["results_df"]
 
-    # ================= METRICS =================
     total = len(results_df)
     pos = (results_df["sentiment"] == "Positive").sum()
     neg = (results_df["sentiment"] == "Negative").sum()
     neu = (results_df["sentiment"] == "Neutral").sum()
 
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Total", total)
-    col2.metric("Positive", pos)
-    col3.metric("Negative", neg)
-    col4.metric("Neutral", neu)
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Total", total)
+    c2.metric("Positive", pos)
+    c3.metric("Negative", neg)
+    c4.metric("Neutral", neu)
 
     st.divider()
 
-    # ================= TABS =================
-    tab1, tab2, tab3, tab4 = st.tabs(
-        ["Dashboard", "Search", "Export", "Saved Results"]
+    tabs = ["Dashboard", "Search", "Export", "Saved Results"]
+
+    active_tab = st.radio(
+        "Navigate",
+        tabs,
+        horizontal=True,
+        index=tabs.index(st.session_state["active_tab"])
     )
 
-    # ================= DASHBOARD =================
-    with tab1:
+    st.session_state["active_tab"] = active_tab
 
-        st.subheader("📊 Analysis Dashboard")
+    # ================= DASHBOARD =================
+    if active_tab == "Dashboard":
 
         chart_df = pd.DataFrame({
             "Sentiment": ["Positive", "Negative", "Neutral"],
@@ -172,40 +199,59 @@ if "results_df" in st.session_state:
 
         colA, colB = st.columns(2)
 
-        # Bar Chart
         with colA:
-            fig1, ax1 = plt.subplots(figsize=(4, 3))
+            fig1, ax1 = plt.subplots()
             chart_df.set_index("Sentiment").plot(kind="bar", ax=ax1)
             st.pyplot(fig1)
 
-        # Pie Chart
         with colB:
-            fig2, ax2 = plt.subplots(figsize=(4, 3))
+            fig2, ax2 = plt.subplots()
             ax2.pie(chart_df["Count"], labels=chart_df["Sentiment"], autopct="%1.1f%%")
             st.pyplot(fig2)
 
-        st.subheader("📋 Processed Data")
+        st.subheader("📊 Processed Data")
         st.dataframe(results_df)
 
+        st.subheader("🚨 Negative Alerts")
+
+        alerts = results_df[results_df["sentiment"] == "Negative"]
+
+        if not alerts.empty:
+            for _, row in alerts.head(5).iterrows():
+                st.error(row["text"])
+        else:
+            st.success("No negative feedback 🎉")
+
     # ================= SEARCH =================
-    with tab2:
+    elif active_tab == "Search":
 
-        st.subheader("🔍 Search & Filter")
+        keyword = st.text_input("Enter keywords")
 
-        keyword = st.text_input("Search keyword")
+        if keyword.strip():
+            scores, total_score, sentiment = calculate_score(keyword)
+
+            st.subheader("🧮 Keyword Sentiment Analysis")
+            st.write(f"Scores: {scores}")
+            st.write(f"Total Score: {total_score}")
+            st.write(f"Sentiment: {sentiment}")
 
         sentiment_filter = st.selectbox(
-            "Filter by Sentiment",
+            "Filter",
             ["All", "Positive", "Negative", "Neutral"]
         )
 
-        min_score = st.slider("Minimum Score", -5, 5, -5)
+        min_score = st.slider("Min Score", -5, 5, -5)
+
+        start_search = time.time()
 
         filtered = results_df.copy()
 
-        if keyword:
+        if keyword.strip():
+            words = list(set(keyword.lower().split()))
+            pattern = "|".join(map(re.escape, words))
+
             filtered = filtered[
-                filtered["text"].str.contains(keyword, case=False)
+                filtered["text"].str.lower().str.contains(pattern, regex=True)
             ]
 
         if sentiment_filter != "All":
@@ -213,59 +259,50 @@ if "results_df" in st.session_state:
                 filtered["sentiment"] == sentiment_filter
             ]
 
-        filtered = filtered[
-            filtered["score"] >= min_score
-        ]
+        filtered = filtered[filtered["score"] >= min_score]
+
+        end_search = time.time()
+
+        st.info(f"🔍 Search Time: {round(end_search - start_search, 3)} sec")
 
         if filtered.empty:
-            st.warning("No matching results found 🔍")
+            st.warning("No results found")
         else:
             st.dataframe(filtered)
 
-        if st.button("💾 Save Search Results"):
+        if st.button("💾 Save Results"):
             st.session_state["saved_search"] = filtered
-            if not filtered.empty:
-                st.success(f"✅ {len(filtered)} results saved successfully!")
-            else:
-                st.warning("No results to save ⚠️")
+            st.toast("Results saved successfully ✅")
 
     # ================= EXPORT =================
-    with tab3:
-
-        st.subheader("📥 Export Data")
+    elif active_tab == "Export":
 
         csv = results_df.to_csv(index=False).encode("utf-8")
 
         st.download_button(
-            label="Download Processed CSV",
-            data=csv,
-            file_name="processed_data.csv",
-            mime="text/csv"
+            "Download CSV",
+            csv,
+            "results.csv",
+            "text/csv"
         )
 
     # ================= SAVED RESULTS =================
-    with tab4:
-
-        st.subheader("📌 Saved Search Results")
+    elif active_tab == "Saved Results":
 
         if "saved_search" in st.session_state:
             st.dataframe(st.session_state["saved_search"])
         else:
-            st.info("No saved results yet")
+            st.info("No saved results")
 
-    # ================= ALERTS =================
-    st.subheader("🚨 Critical Negative Feedback Alerts")
+    # ================= RESET & CLEAR =================
+    col1, col2 = st.columns(2)
 
-    alerts = results_df[results_df["sentiment"] == "Negative"]
+    with col1:
+        if st.button("🔄 Reset"):
+            st.session_state.clear()
+            st.rerun()
 
-    st.write(f"Total Negative Feedback: {len(alerts)}")
-
-    if not alerts.empty:
-        for _, row in alerts.head(5).iterrows():
-            st.error(f"🔴 {row['text']}")
-    else:
-        st.success("No negative feedback found 🎉")
-
-# ================= FOOTER =================
-st.divider()
-st.caption("Developed for Parallel Text Processing Project 🚀")
+    with col2:
+        if st.button("🗑️ Clear Database"):
+            clear_table()
+            st.toast("Database cleared successfully ✅")

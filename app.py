@@ -7,7 +7,7 @@ import re
 
 # Backend modules
 from processor import run_processing
-from database import clear_table
+from database import fetch_all
 
 
 # ================= PAGE CONFIG =================
@@ -47,7 +47,6 @@ if "active_tab" not in st.session_state:
 st.title("📊 Text Analysis Dashboard")
 st.caption("Parallel Processing • Sentiment Analysis • Insights")
 
-
 # ================= FILE UPLOAD =================
 st.sidebar.markdown("🚀 Start by uploading your data file")
 
@@ -56,23 +55,63 @@ uploaded_file = st.sidebar.file_uploader(
     type=["csv", "txt", "xlsx"]
 )
 
+# Clear previous sentiment analysis results when new file is uploaded
+if "sentiment_form" in st.session_state:
+    del st.session_state["sentiment_form"]
+
 
 # ================= SENTIMENT SCORER =================
 def calculate_score(text):
     positive_words = ["good", "excellent", "great", "awesome", "happy"]
     negative_words = ["bad", "poor", "worst", "sad", "terrible"]
 
+    negations = ["not", "no", "never"]
+    intensifiers = ["very", "extremely", "super"]
+
     words = text.lower().split()
 
-    scores = []
-    for word in words:
+    total_score = 0
+    pos_count = 0
+    neg_count = 0
+
+    i = 0
+    while i < len(words):
+        word = words[i]
+
+        multiplier = 1
+        invert = False
+
+        # Check for negation
+        if word in negations and i + 1 < len(words):
+            invert = True
+            i += 1
+            word = words[i]
+
+        # Check for intensifier
+        if word in intensifiers and i + 1 < len(words):
+            multiplier = 2
+            i += 1
+            word = words[i]
+
+        # Apply scoring
         if word in positive_words:
-            scores.append(1)
+            score = 1 * multiplier
+            if invert:
+                score *= -1
+            total_score += score
+            pos_count += 1
+
         elif word in negative_words:
-            scores.append(-1)
+            score = -1 * multiplier
+            if invert:
+                score *= -1
+            total_score += score
+            neg_count += 1
+            #display as negative
 
-    total_score = sum(scores)
+        i += 1
 
+    # Final sentiment
     if total_score > 0:
         sentiment = "Positive"
     elif total_score < 0:
@@ -80,7 +119,63 @@ def calculate_score(text):
     else:
         sentiment = "Neutral"
 
-    return scores, total_score, sentiment
+    return pos_count, neg_count, total_score, sentiment
+
+# ---------------- Top Sentiment Score Analyzer ----------------
+
+# ================= TOP SENTIMENT ANALYZER =================
+st.subheader("🧮 Analyze Sentiment for Any Text (Independent of File Upload)")
+
+# Initialize session state
+if "sentiment_input" not in st.session_state:
+    st.session_state["sentiment_input"] = ""
+if "sentiment_result" not in st.session_state:
+    st.session_state["sentiment_result"] = None
+
+# Form for Analyze
+with st.form("sentiment_form", clear_on_submit=False):
+    st.session_state["sentiment_input"] = st.text_area(
+        "Enter a word, sentence, or paragraph:",
+        value=st.session_state["sentiment_input"],
+        placeholder="Type here..."
+    )
+    
+    # Align buttons horizontally
+    col1, col2 = st.columns([4, 1])
+    with col1:
+        analyze = st.form_submit_button("Analyze")  # Press Enter triggers this
+    with col2:
+        clear = st.form_submit_button("Clear")  # Right-end clear button
+
+# Handle Analyze
+if analyze and st.session_state["sentiment_input"].strip() != "":
+    text_input = st.session_state["sentiment_input"]
+    pos_count, neg_count, total_score, sentiment = calculate_score(text_input)
+    st.session_state["sentiment_result"] = (text_input, pos_count, neg_count, total_score, sentiment)
+
+# Handle Clear
+if clear:
+    st.session_state["sentiment_input"] = ""          # Clear input
+    st.session_state["sentiment_result"] = None       # Clear result
+
+# Display results
+if st.session_state["sentiment_result"]:
+    text_input, pos_count, neg_count, total_score, sentiment = st.session_state["sentiment_result"]
+
+    st.table(pd.DataFrame({
+        "Metric": ["Sentiment", "Positive Count", "Negative Count", "Total Score"],
+        "Value": [sentiment, pos_count, neg_count, total_score]
+    }))
+
+    fig, ax = plt.subplots(figsize=(10, 0.5))
+    ax.barh(
+        ["Sentiment Score"],
+        [total_score],
+        color="green" if total_score > 0 else "red" if total_score < 0 else "gray"
+    )
+    ax.set_xlim(-5, 5)
+    ax.set_xlabel("Score")
+    st.pyplot(fig)
 
 
 # ================= FILE HANDLING =================
@@ -97,6 +192,10 @@ if uploaded_file:
     elif file_type == "txt":
         text = uploaded_file.read().decode("utf-8").splitlines()
         df = pd.DataFrame({"text": text})
+    
+    if df.empty:
+      st.error("⚠️ File has no data. Please upload a valid file.")
+      st.stop()    
 
     # ===== PREVIEW =====
     st.subheader("📄 Data Preview")
@@ -138,20 +237,73 @@ if uploaded_file:
         data = list(df[["id", "text"]].itertuples(index=False, name=None))
 
         cores = multiprocessing.cpu_count()
-        chunk_size = max(1000, len(data) // cores)
 
+        # ✅ Better chunk size
+        if len(data) < 1000:
+            chunk_size = len(data)
+        else:
+            chunk_size = len(data)
         st.info(f"📦 Chunk Size: {chunk_size} | Cores: {cores}")
 
-        start = time.time()
+        # 🔹 NORMAL PROCESSING (ONLY FOR SMALL DATA)
+        if len(data) < 10000:
+
+            start_normal = time.time()
+
+            normal_results = []
+            POS = {"good", "excellent", "great", "awesome", "happy"}
+            NEG = {"bad", "poor", "worst", "sad", "terrible"}
+            for row in data:
+                id, text = row
+
+                score = 0
+                words = text.lower().split()
+
+                for word in words:
+                    if word in POS:
+                        score += 1
+                    elif word in NEG:
+                        score -= 1
+
+                if score > 0:
+                    sentiment = "Positive"
+                elif score < 0:
+                    sentiment = "Negative"
+                else:
+                    sentiment = "Neutral"
+
+                normal_results.append((id, text, score, sentiment))
+
+            end_normal = time.time()
+
+        else:
+            st.info("Skipping normal processing for large dataset")
+
+        # 🔹 PARALLEL PROCESSING
+        start_parallel = time.time()
 
         with st.spinner("Processing... ⏳"):
             results = run_processing(data, chunk_size)
 
-        end = time.time()
+        end_parallel = time.time()
 
         st.success("Processing Completed ✅")
-        st.info(f"⚡ Execution Time: {round(end - start, 2)} sec")
+        st.info(f"⚡ Parallel Time: {round(end_parallel - start_parallel, 2)} sec")
 
+        # 🔹 PERFORMANCE COMPARISON
+        st.subheader("⚡ Performance Comparison")
+
+        if len(data) < 10000:
+            st.write(f"Normal Processing Time: {round(end_normal - start_normal, 2)} sec")
+
+            if (end_parallel - start_parallel) < (end_normal - start_normal):
+                st.success("Parallel processing is faster 🚀")
+            else:
+                st.warning("Parallel processing slower for small data ⚠️")
+
+        st.write(f"Parallel Processing Time: {round(end_parallel - start_parallel, 2)} sec")
+
+        # 🔹 STORE RESULTS
         results_df = pd.DataFrame(
             results,
             columns=["id", "text", "score", "sentiment"]
@@ -192,6 +344,9 @@ if "results_df" in st.session_state:
     # ================= DASHBOARD =================
     if active_tab == "Dashboard":
 
+        st.divider()
+
+        # --- 2️⃣ Overall Sentiment Charts for Processed Data ---
         chart_df = pd.DataFrame({
             "Sentiment": ["Positive", "Negative", "Neutral"],
             "Count": [pos, neg, neu]
@@ -209,18 +364,9 @@ if "results_df" in st.session_state:
             ax2.pie(chart_df["Count"], labels=chart_df["Sentiment"], autopct="%1.1f%%")
             st.pyplot(fig2)
 
+        # --- 3️⃣ Processed Data Table ---
         st.subheader("📊 Processed Data")
         st.dataframe(results_df)
-
-        st.subheader("🚨 Negative Alerts")
-
-        alerts = results_df[results_df["sentiment"] == "Negative"]
-
-        if not alerts.empty:
-            for _, row in alerts.head(5).iterrows():
-                st.error(row["text"])
-        else:
-            st.success("No negative feedback 🎉")
 
     # ================= SEARCH =================
     elif active_tab == "Search":
@@ -228,10 +374,11 @@ if "results_df" in st.session_state:
         keyword = st.text_input("Enter keywords")
 
         if keyword.strip():
-            scores, total_score, sentiment = calculate_score(keyword)
+            pos_count, neg_count, total_score, sentiment = calculate_score(keyword)
 
             st.subheader("🧮 Keyword Sentiment Analysis")
-            st.write(f"Scores: {scores}")
+            st.write(f"Positive Count: {pos_count}")
+            st.write(f"Negative Count: {-neg_count}")
             st.write(f"Total Score: {total_score}")
             st.write(f"Sentiment: {sentiment}")
 
@@ -244,34 +391,49 @@ if "results_df" in st.session_state:
 
         start_search = time.time()
 
-        filtered = results_df.copy()
+        filtered = pd.DataFrame()
 
         if keyword.strip():
+            filtered = results_df.copy()
+
             words = list(set(keyword.lower().split()))
             pattern = "|".join(map(re.escape, words))
 
             filtered = filtered[
                 filtered["text"].str.lower().str.contains(pattern, regex=True)
             ]
+        else:
+            filtered = results_df.copy()   # ✅ IMPORTANT
 
         if sentiment_filter != "All":
             filtered = filtered[
                 filtered["sentiment"] == sentiment_filter
             ]
 
-        filtered = filtered[filtered["score"] >= min_score]
-
+        if "score" in filtered.columns:
+           filtered = filtered[filtered["score"] >= min_score]
+        
         end_search = time.time()
 
         st.info(f"🔍 Search Time: {round(end_search - start_search, 3)} sec")
 
-        if filtered.empty:
-            st.warning("No results found")
+        if keyword.strip():
+            if filtered.empty:
+                st.warning("No results found")
+            else:
+                st.dataframe(filtered)
         else:
-            st.dataframe(filtered)
+          st.info("Enter keyword to search")
 
-        if st.button("💾 Save Results"):
+        from database import insert_results
+
+        if not filtered.empty and st.button("💾 Save Results"):
             st.session_state["saved_search"] = filtered
+
+            # Save to DB
+            insert_results(
+               filtered[["id", "text", "score", "sentiment"]].values.tolist())
+            
             st.toast("Results saved successfully ✅")
 
     # ================= EXPORT =================
@@ -289,20 +451,18 @@ if "results_df" in st.session_state:
     # ================= SAVED RESULTS =================
     elif active_tab == "Saved Results":
 
-        if "saved_search" in st.session_state:
-            st.dataframe(st.session_state["saved_search"])
+        data = fetch_all()
+
+        if data:
+            df_saved = pd.DataFrame(data, columns=["id","text","score","sentiment"])
+            st.dataframe(df_saved)
         else:
             st.info("No saved results")
 
     # ================= RESET & CLEAR =================
-    col1, col2 = st.columns(2)
+    col1 = st.columns(1)[0]
 
     with col1:
         if st.button("🔄 Reset"):
             st.session_state.clear()
             st.rerun()
-
-    with col2:
-        if st.button("🗑️ Clear Database"):
-            clear_table()
-            st.toast("Database cleared successfully ✅")

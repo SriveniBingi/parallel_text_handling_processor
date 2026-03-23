@@ -4,7 +4,7 @@ import os
 # Import helper modules
 from text_loader import chunk_data
 from scorer import process_chunk
-from database import create_table, clear_table, insert_results
+from database import create_table, insert_results
 
 
 def run_processing(data, chunk_size):
@@ -37,7 +37,7 @@ def run_processing(data, chunk_size):
     with Pool(processes=num_processes) as pool:
 
         # map() distributes chunks across processes
-        results = pool.map(process_chunk, chunks)
+        results = list(pool.imap_unordered(process_chunk, chunks))
 
         # OPTIONAL (FASTER for large data)
         # results = list(pool.imap_unordered(process_chunk, chunks))
@@ -52,13 +52,13 @@ def run_processing(data, chunk_size):
 
     # ================= DATABASE OPERATIONS =================
     # Create table if not exists
-    create_table()
+    #create_table()
 
     # Clear previous data (fresh run)
-    clear_table()
+    #clear_table()
 
     # Insert new processed results
-    insert_results(flat_results)
+    #insert_results(flat_results)
 
     # ================= RETURN RESULTS =================
     return flat_results

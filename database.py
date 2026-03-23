@@ -39,32 +39,20 @@ def create_table():
     conn.close()
 
 
-# ================= CLEAR TABLE =================
-def clear_table():
-    """
-    Delete all existing data from table.
-    Used before inserting fresh processed results.
-    """
-
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute("DELETE FROM text_data")
-
-    conn.commit()
-    conn.close()
-
-
 # ================= INSERT DATA =================
 def insert_results(results):
     """
     Insert processed results into database using batch processing.
     Improves performance for large datasets.
     """
-
+    #ensures table exists
+    create_table()
     conn = get_connection()
     cursor = conn.cursor()
-
+    
+    # ✅ Clear old data before inserting new
+    cursor.execute("DELETE FROM text_data")
+    
     # Batch insertion
     batch_size = 1000
 
@@ -78,3 +66,13 @@ def insert_results(results):
 
     conn.commit()
     conn.close()
+    
+def fetch_all():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM text_data")
+    rows = cursor.fetchall()
+
+    conn.close()
+    return rows

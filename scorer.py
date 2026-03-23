@@ -6,6 +6,8 @@ from config import POSITIVE_WORDS, NEGATIVE_WORDS
 POS_SET = set(word.lower() for word in POSITIVE_WORDS)
 NEG_SET = set(word.lower() for word in NEGATIVE_WORDS)
 
+NEGATIONS = {"not", "no", "never"}
+INTENSIFIERS = {"very", "extremely", "super"}
 
 # ================= SCORE FUNCTION =================
 def score_feedback(row):
@@ -19,19 +21,45 @@ def score_feedback(row):
 
     # ================= CLEAN & TOKENIZE =================
     # Convert to lowercase and extract words
-    words = re.findall(r'\b\w+\b', text.lower())
+    words = text.lower().split()
 
     score = 0
+    i = 0
 
-    # ================= FAST COUNT =================
-    # Loop once instead of multiple regex calls
-    for word in words:
+    while i < len(words):
+        word = words[i]
+
+        multiplier = 1
+        invert = False
+
+        # 🔹 Handle negation (not good → negative)
+        if word in NEGATIONS and i + 1 < len(words):
+            invert = True
+            i += 1
+            word = words[i]
+
+        # 🔹 Handle intensifier (very good → strong positive)
+        if word in INTENSIFIERS and i + 1 < len(words):
+            multiplier = 2
+            i += 1
+            word = words[i]
+
+        # 🔹 Apply scoring
         if word in POS_SET:
-            score += 1
-        elif word in NEG_SET:
-            score -= 1
+            val = 1 * multiplier
+            if invert:
+                val *= -1
+            score += val
 
-    # ================= SENTIMENT DECISION =================
+        elif word in NEG_SET:
+            val = -1 * multiplier
+            if invert:
+                val *= -1
+            score += val
+
+        i += 1
+
+    # ================= FINAL SENTIMENT =================
     if score > 0:
         sentiment = "Positive"
     elif score < 0:

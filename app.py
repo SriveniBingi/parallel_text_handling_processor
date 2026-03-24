@@ -4,15 +4,15 @@ import time
 import multiprocessing
 import matplotlib.pyplot as plt
 import re
+from config import POSITIVE_WORDS, NEGATIVE_WORDS, NEGATIONS, INTENSIFIERS, DB_NAME
 
 # Backend modules
 from processor import run_processing
-from database import fetch_all
+from database import fetch_all, insert_results, clear_table
 
 
 # ================= PAGE CONFIG =================
-st.set_page_config(page_title="Text Analysis Dashboard", layout="wide")
-
+st.set_page_config(page_title="ParaSense", page_icon="📊", layout="wide")
 
 # ================= DARK THEME =================
 st.markdown("""
@@ -41,19 +41,36 @@ st.markdown("""
 # ================= SESSION STATE =================
 if "active_tab" not in st.session_state:
     st.session_state["active_tab"] = "Dashboard"
+    
+# ================= SIDEBAR NAVIGATION (LEFT SIDE) =================
+with st.sidebar:
+    st.title("🚀 Control Center")
+    
+   # 1.FILE UPLOAD 
+    st.sidebar.markdown("🚀 Start by uploading your data file")
+
+    uploaded_file = st.sidebar.file_uploader(
+        "Upload File",
+        type=["csv", "txt", "xlsx"]
+    )
+    
+    st.divider()
+
+    # 2. Navigation Radio Buttons
+    st.markdown("### Navigation")
+    active_tab = st.radio(
+        "Select View",
+        ["Dashboard", "Search", "Export", "Saved Results"],
+        index=["Dashboard", "Search", "Export", "Saved Results"].index(st.session_state["active_tab"])
+    )
+    st.session_state["active_tab"] = active_tab
 
 
 # ================= TITLE =================
-st.title("📊 Text Analysis Dashboard")
+st.title("📊 ParaSense")
+st.caption("High-Velocity Parallel Text Analytics")
 st.caption("Parallel Processing • Sentiment Analysis • Insights")
 
-# ================= FILE UPLOAD =================
-st.sidebar.markdown("🚀 Start by uploading your data file")
-
-uploaded_file = st.sidebar.file_uploader(
-    "Upload File",
-    type=["csv", "txt", "xlsx"]
-)
 
 # Clear previous sentiment analysis results when new file is uploaded
 if "sentiment_form" in st.session_state:
@@ -62,11 +79,6 @@ if "sentiment_form" in st.session_state:
 
 # ================= SENTIMENT SCORER =================
 def calculate_score(text):
-    positive_words = ["good", "excellent", "great", "awesome", "happy"]
-    negative_words = ["bad", "poor", "worst", "sad", "terrible"]
-
-    negations = ["not", "no", "never"]
-    intensifiers = ["very", "extremely", "super"]
 
     words = text.lower().split()
 
@@ -82,26 +94,26 @@ def calculate_score(text):
         invert = False
 
         # Check for negation
-        if word in negations and i + 1 < len(words):
+        if word in NEGATIONS and i + 1 < len(words):
             invert = True
             i += 1
             word = words[i]
 
         # Check for intensifier
-        if word in intensifiers and i + 1 < len(words):
+        if word in INTENSIFIERS and i + 1 < len(words):
             multiplier = 2
             i += 1
             word = words[i]
 
         # Apply scoring
-        if word in positive_words:
+        if word in POSITIVE_WORDS:
             score = 1 * multiplier
             if invert:
                 score *= -1
             total_score += score
             pos_count += 1
 
-        elif word in negative_words:
+        elif word in NEGATIVE_WORDS:
             score = -1 * multiplier
             if invert:
                 score *= -1
@@ -121,61 +133,21 @@ def calculate_score(text):
 
     return pos_count, neg_count, total_score, sentiment
 
-# ---------------- Top Sentiment Score Analyzer ----------------
+# ================= TOP SENTIMENT ANALYZER (MANUAL) =================
+st.subheader("🧮 Quick Sentiment Check")
+with st.form("sentiment_form"):
+    text_input = st.text_area("Enter text to test the logic:", placeholder="e.g., The service was not good but the food was amazing")
+    col1, col2 = st.columns([1, 5])
+    submit = col1.form_submit_button("Analyze")
+    clear = col2.form_submit_button("Clear")
 
-# ================= TOP SENTIMENT ANALYZER =================
-st.subheader("🧮 Analyze Sentiment for Any Text (Independent of File Upload)")
-
-# Initialize session state
-if "sentiment_input" not in st.session_state:
-    st.session_state["sentiment_input"] = ""
-if "sentiment_result" not in st.session_state:
-    st.session_state["sentiment_result"] = None
-
-# Form for Analyze
-with st.form("sentiment_form", clear_on_submit=False):
-    st.session_state["sentiment_input"] = st.text_area(
-        "Enter a word, sentence, or paragraph:",
-        value=st.session_state["sentiment_input"],
-        placeholder="Type here..."
-    )
-    
-    # Align buttons horizontally
-    col1, col2 = st.columns([4, 1])
-    with col1:
-        analyze = st.form_submit_button("Analyze")  # Press Enter triggers this
-    with col2:
-        clear = st.form_submit_button("Clear")  # Right-end clear button
-
-# Handle Analyze
-if analyze and st.session_state["sentiment_input"].strip() != "":
-    text_input = st.session_state["sentiment_input"]
-    pos_count, neg_count, total_score, sentiment = calculate_score(text_input)
-    st.session_state["sentiment_result"] = (text_input, pos_count, neg_count, total_score, sentiment)
-
-# Handle Clear
-if clear:
-    st.session_state["sentiment_input"] = ""          # Clear input
-    st.session_state["sentiment_result"] = None       # Clear result
-
-# Display results
-if st.session_state["sentiment_result"]:
-    text_input, pos_count, neg_count, total_score, sentiment = st.session_state["sentiment_result"]
-
-    st.table(pd.DataFrame({
-        "Metric": ["Sentiment", "Positive Count", "Negative Count", "Total Score"],
-        "Value": [sentiment, pos_count, neg_count, total_score]
-    }))
-
-    fig, ax = plt.subplots(figsize=(10, 0.5))
-    ax.barh(
-        ["Sentiment Score"],
-        [total_score],
-        color="green" if total_score > 0 else "red" if total_score < 0 else "gray"
-    )
-    ax.set_xlim(-5, 5)
-    ax.set_xlabel("Score")
-    st.pyplot(fig)
+if submit and text_input:
+    p, n, s, sent = calculate_score(text_input)
+    cols = st.columns(4)
+    cols[0].metric("Sentiment", sent)
+    cols[1].metric("Positives", p)
+    cols[2].metric("Negatives", n)
+    cols[3].metric("Total Score", s)
 
 
 # ================= FILE HANDLING =================
@@ -200,8 +172,8 @@ if uploaded_file:
     # ===== PREVIEW =====
     st.subheader("📄 Data Preview")
     if len(df) > 100:
-        st.caption("Showing first 100 sentences/rows")
-    st.dataframe(df.head(100))
+        st.caption("Showing first 5 sentences/rows")
+    st.dataframe(df.head(5))
 
     st.divider()
 
@@ -242,7 +214,7 @@ if uploaded_file:
         if len(data) < 1000:
             chunk_size = len(data)
         else:
-            chunk_size = len(data)
+           chunk_size = max(1, len(data) // (cores * 4))
         st.info(f"📦 Chunk Size: {chunk_size} | Cores: {cores}")
 
         # 🔹 NORMAL PROCESSING (ONLY FOR SMALL DATA)
@@ -283,6 +255,8 @@ if uploaded_file:
         start_parallel = time.time()
 
         with st.spinner("Processing... ⏳"):
+            from database import clear_table
+            clear_table()
             results = run_processing(data, chunk_size)
 
         end_parallel = time.time()
@@ -312,6 +286,7 @@ if uploaded_file:
         st.session_state["results_df"] = results_df
 
 
+
 # ================= RESULTS =================
 if "results_df" in st.session_state:
 
@@ -330,20 +305,9 @@ if "results_df" in st.session_state:
 
     st.divider()
 
-    tabs = ["Dashboard", "Search", "Export", "Saved Results"]
-
-    active_tab = st.radio(
-        "Navigate",
-        tabs,
-        horizontal=True,
-        index=tabs.index(st.session_state["active_tab"])
-    )
-
-    st.session_state["active_tab"] = active_tab
-
     # ================= DASHBOARD =================
     if active_tab == "Dashboard":
-
+        st.subheader("⚡ Dashboard")
         st.divider()
 
         # --- 2️⃣ Overall Sentiment Charts for Processed Data ---
@@ -370,7 +334,7 @@ if "results_df" in st.session_state:
 
     # ================= SEARCH =================
     elif active_tab == "Search":
-
+        st.subheader("⚡ Search & Filter")
         keyword = st.text_input("Enter keywords")
 
         if keyword.strip():
@@ -422,8 +386,6 @@ if "results_df" in st.session_state:
                 st.warning("No results found")
             else:
                 st.dataframe(filtered)
-        else:
-          st.info("Enter keyword to search")
 
         from database import insert_results
 
@@ -438,7 +400,7 @@ if "results_df" in st.session_state:
 
     # ================= EXPORT =================
     elif active_tab == "Export":
-
+        st.subheader("⚡ Export Results")
         csv = results_df.to_csv(index=False).encode("utf-8")
 
         st.download_button(
@@ -450,19 +412,26 @@ if "results_df" in st.session_state:
 
     # ================= SAVED RESULTS =================
     elif active_tab == "Saved Results":
-
+        st.subheader("⚡ Saved Results")
         data = fetch_all()
 
         if data:
             df_saved = pd.DataFrame(data, columns=["id","text","score","sentiment"])
             st.dataframe(df_saved)
+            
+            # Move the button inside the 'if data' block
+            st.download_button(
+                label="💾 Download Saved Results",
+                data=df_saved.to_csv(index=False).encode("utf-8"),
+                file_name="saved_results.csv",
+                mime="text/csv"
+            )
         else:
-            st.info("No saved results")
-
-    # ================= RESET & CLEAR =================
-    col1 = st.columns(1)[0]
-
-    with col1:
-        if st.button("🔄 Reset"):
-            st.session_state.clear()
-            st.rerun()
+            st.info("No saved results found in the database.")
+            
+# Reset Button (In Sidebar)
+with st.sidebar:
+    st.divider()
+    if st.button("🔄 Reset"):
+        st.session_state.clear()
+        st.rerun()

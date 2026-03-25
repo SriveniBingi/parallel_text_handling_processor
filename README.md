@@ -68,7 +68,6 @@ parallel_text_handling_processor/
 │
 ├── requirements.txt            # 📋 Dependencies
 ├── README.md                   # 📖 Project Documentation
-└── Agile_Log.md                # 📝 Milestone Tracking
 ```
 
 ---
@@ -78,7 +77,7 @@ The application operates as a linear, automated pipeline to ensure maximum data 
 
 | Step | Phase          | Action                                                                        |
 | :--- | :------------- | :---------------------------------------------------------------------------- |
-| **1** | **Ingestion** | `text_loader.py` streams the raw CSV and divides data into 1,000-row chunks. |
+| **1** | **Ingestion** | `text_loader.py` streams the raw CSV and divides data into chunks. |
 | **2** | **Distribution** | `processor.py` initializes a `multiprocessing.Pool` to assign chunks to cores. |
 | **3** | **Analysis** | `scorer.py` applies Regex heuristics to calculate sentiment scores per record. |
 | **4** | **Persistence** | `database.py` performs atomic batch inserts into the SQLite database.         |
@@ -126,22 +125,93 @@ The application operates as a linear, automated pipeline to ensure maximum data 
 ---
 
 ## **⚙️ Installation & Setup**
+
 1. Clone the repo
    
    ```
    git clone https://github.com/SriveniBingi/parallel_text_handling_processor.git
    cd parallel_text_handling_processor
    ```
+2. Create & Activate Virtual Environment
+
+   ```
+   python -m venv venv
+   source venv/bin/activate   # Mac/Linux
+   venv\Scripts\activate      # Windows
+   ```
+
 3. Install Dependencies
    
    ```
    pip install -r requirements.txt
    ```
+4. Run the Streamlit APP
+
+   ```
+   streamlit run app.py
+   ```
+   
 5. Run the Pipeline
    
    ```
    python main.py
    ```
+---
+## **📌 How It Works**
+
+1. Upload a dataset containing text data
+
+2. The system processes text using parallel workers
+
+3. Sentiment is calculated using keyword-based scoring
+
+4. Results are displayed in a table and charts
+
+5. Users can save results to the database
+
+6. Saved results can be viewed anytime
+---
+
+📊 Sentiment Logic
+
+* Uses predefined positive and negative word lists
+ 
+* Score is calculated based on word matches
+  
+* Output categories:
+       * Positive
+       * Negative
+       * Neutral
+---
+## **🧪 Testing**
+
+* Upload different datasets (student feedback, reviews, etc.)
+  
+* Verify sentiment accuracy
+  
+* Test save & retrieve functionality
+  
+* Check database clear operation
+---
+## **⚠️ Known Limitations**
+
+* Keyword-based sentiment may not be highly accurate
+  
+* Does not handle sarcasm or context deeply
+  
+* Performance depends on system resources
+---
+## **🔮 Future Enhancements**
+
+* 🤖 Machine Learning-based sentiment analysis
+  
+* 🌐 API integration
+
+* 📈 Advanced analytics dashboar
+  
+* 🔄 Real-time processing
+  
+* 🧠 Auto-learning word dictionary
 ---
 
 ## 🗺️ Milestone Roadmap
@@ -157,4 +227,3 @@ The application operates as a linear, automated pipeline to ensure maximum data 
 ### **👥 Author**
 
 * Sriveni Bingi
-* MCA Student 

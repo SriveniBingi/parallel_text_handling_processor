@@ -81,5 +81,5 @@ INTENSIFIERS = [
 ]
 
 # System Settings
-CHUNK_SIZE = 1000
+CHUNK_SIZE = 1000  # Number of records to process in one batch
 DB_NAME = "analysis_results.db"

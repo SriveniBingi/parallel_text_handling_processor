@@ -1,37 +1,37 @@
 import csv
-
 def read_csv(file_path):
-    """
-    Reads a CSV and returns a list of (id, text) tuples.
-    Attempts to find ID and Text columns dynamically.
-    """
     rows = []
     try:
         with open(file_path, "r", encoding="utf-8") as file:
-            reader = csv.DictReader(file)
-            
-            # Get fieldnames to check for column existence
-            cols = reader.fieldnames
-            
-            # Simple logic to find the 'text' column if the hardcoded one is missing
-            id_col = "student_id" if "student_id" in cols else cols[0]
-            text_col = "feedback" if "feedback" in cols else (cols[1] if len(cols) > 1 else cols[0])
+            # Check the first line to see if it's a standard CSV or the Kaggle format
+            first_line = file.readline()
+            file.seek(0) # Go back to start of file
 
-            for row in reader:
-                try:
-                    # We only need the ID and the Text for the scorer
-                    rows.append((
-                        row[id_col], 
-                        row[text_col]
-                    ))
-                except KeyError:
-                    continue # Skip malformed rows
-                    
+            # Case 1: Kaggle Sentiment Format (Sentence @sentiment)
+            if "@" in first_line and "," not in first_line:
+                for idx, line in enumerate(file):
+                    if "@" in line:
+                        # Split at the last '@' to get text and label
+                        parts = line.rsplit("@", 1)
+                        rows.append((f"K-{idx}", parts[0].strip()))
+            
+            # Case 2: Standard CSV (Your original logic)
+            else:
+                reader = csv.DictReader(file)
+                cols = reader.fieldnames
+                id_col = "student_id" if "student_id" in cols else cols[0]
+                text_col = "feedback" if "feedback" in cols else (cols[1] if len(cols) > 1 else cols[0])
+
+                for row in reader:
+                    try:
+                        rows.append((row[id_col], row[text_col]))
+                    except KeyError:
+                        continue
+                        
     except Exception as e:
-        print(f"Error reading CSV: {e}")
+        print(f"Error reading dataset: {e}")
         
     return rows
-
 
 def chunk_data(data, chunk_size):
     """

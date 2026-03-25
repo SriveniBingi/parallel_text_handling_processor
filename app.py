@@ -162,7 +162,8 @@ if uploaded_file:
         df = pd.read_excel(uploaded_file)
 
     elif file_type == "txt":
-        text = uploaded_file.read().decode("utf-8").splitlines()
+        # errors="ignore" prevents the 0xf1 Unicode error
+        text = uploaded_file.read().decode("utf-8", errors="ignore").splitlines()
         df = pd.DataFrame({"text": text})
     
     if df.empty:
@@ -184,7 +185,14 @@ if uploaded_file:
         if len(text_columns) == 0:
             st.error("No text columns found ❌")
             st.stop()
-
+        # Try to find a common name automatically
+        default_index = 0
+        targets = ["feedback", "headline", "text", "comment", "message"]
+        for i, col in enumerate(text_columns):
+            if col.lower() in targets:
+                default_index = i
+                break
+            
         text_column = st.selectbox("Select Text Column", text_columns)
         df = df.rename(columns={text_column: "text"})
 
@@ -335,7 +343,7 @@ if "results_df" in st.session_state:
     # ================= SEARCH =================
     elif active_tab == "Search":
         st.subheader("⚡ Search & Filter")
-        keyword = st.text_input("Enter keywords")
+        keyword = st.text_input("Enter keywords",placeholder="Search here")
 
         if keyword.strip():
             pos_count, neg_count, total_score, sentiment = calculate_score(keyword)

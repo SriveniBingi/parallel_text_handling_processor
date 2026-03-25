@@ -1,235 +1,160 @@
-## 🚀 Parallel Text Handling Processor
+# 🚀 ParaSense: Parallel Text Handling & Sentiment Engine
 
-A Python-based parallel text processing system designed to efficiently analyze large volumes of student feedback using multiprocessing, regex sentiment scoring, and SQLite database storage.
+A high-performance, scalable, multi-core **Text Processing, Rule-Based Scoring, and Relational Analytics System** built entirely in Python.
 
-The system reads a dataset, divides it into chunks, processes the chunks in parallel using CPU cores, and stores the results for search and export.
+This project is specifically designed for **fast batch processing**, **parallel text chunking**, and **rule-based compliance scoring**—all **optimized for large-scale text workflows** 
 
-## 📌 Project Overview
+---
 
-| Feature | Description |
-|--------|-------------|
-| Language | Python |
-| Processing | Parallel processing using multiprocessing |
-| Text Analysis | Regex-based sentiment scoring |
-| Database | SQLite |
-| Dataset | Student feedback records |
-| Output | Database storage + CSV export |
+## 📌 Features at a Glance
 
-🏗 System Architecture
+* ⚡ **Parallel Text Chunking** — Utilizes `multiprocessing.Pool` for concurrent execution.
+* 📚 **Rule-Based Sentiment Engine** — High-speed Regex-based scoring heuristics.
+* 🧠 **Advanced Logic** — Handles Negations (*not, never*) and Intensifiers (*very, highly*).
+* 🗃️ **SQLite Persistence** — Relational storage with indexed sub-second searching.
+* 🔍 **Power Search Interface** — Multi-parameter filtering (Name, Keyword, Sentiment).
+* 📊 **Interactive Analytics Dashboard** — Built with Streamlit for real-time visualization.
+* 🛠 **N-Tier Architecture** — Fully decoupled, modular design for maximum maintainability.
 
-                +----------------------+
-                |   students.csv       |
-                | (Feedback Dataset)   |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |    text_loader.py    |
-                | Load & Chunk Data    |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |   Multiprocessing    |
-                |   Pool (CPU cores)   |
-                +----+-----------+-----+
-                     |           |
-                     v           v
-              +-----------+ +-----------+
-              | Worker 1  | | Worker 2  |
-              |Chunk Proc.| |Chunk Proc.|
-              +-----+-----+ +-----+-----+
-                    |             |
-                    +------v------+
-                           |
-                           v
-                +----------------------+
-                |      scorer.py       |
-                | Sentiment Analysis   |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |     database.py      |
-                | SQLite Storage       |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |    search_module     |
-                | Search & CSV Export  |
-                +----------------------+
+---
 
-                +----------------------+
-                |   students.csv       |
-                | (Feedback Dataset)   |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |    text_loader.py    |
-                | Load & Chunk Data    |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |   Multiprocessing    |
-                |   Pool (CPU cores)   |
-                +----+-----------+-----+
-                     |           |
-                     v           v
-              +-----------+ +-----------+
-              | Worker 1  | | Worker 2  |
-              |Chunk Proc.| |Chunk Proc.|
-              +-----+-----+ +-----+-----+
-                    |             |
-                    +------v------+
-                           |
-                           v
-                +----------------------+
-                |      scorer.py       |
-                | Sentiment Analysis   |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |     database.py      |
-                | SQLite Storage       |
-                +----------+-----------+
-                           |
-                           v
-                +----------------------+
-                |    search_module     |
-                | Search & CSV Export  |
-                +----------------------+
+## 🏗️ System Architecture
 
-## 📂 Project Structure
+ParaSense follows a modular data pipeline, ensuring a clear separation between data ingestion, analytical logic, and the presentation layer.
 
-| File / Folder | Description |
-|---------------|-------------|
-| `main.py` | Main program that runs the entire workflow including loading data, parallel processing, database storage, and search/export |
-| `generate_students.py` | Script used to generate student feedback dataset |
-| `config.py` | Contains configuration settings such as chunk size and other constants |
-| `database.py` | Handles SQLite database operations like creating tables, inserting data, and searching records |
-| `scorer.py` | Performs sentiment scoring using regex-based rules |
-| `text_loader.py` | Loads CSV data and divides it into chunks for parallel processing |
-| `search_module.py` | Handles searching records and exporting results to CSV |
-| `data/` | Folder that stores dataset files |
-| `data/students.csv` | CSV file containing student feedback dataset |
-
-## ⚙️ System Workflow
-
-| Step | Process | Description |
-|-----|--------|-------------|
-| 1 | Load Data | Read student feedback data from CSV file |
-| 2 | Chunk Data | Split the dataset into smaller chunks |
-| 3 | Parallel Processing | Process chunks simultaneously using multiprocessing |
-| 4 | Sentiment Scoring | Apply regex rules to analyze feedback sentiment |
-| 5 | Store Results | Save processed results into SQLite database |
-| 6 | Search Records | Allow user to search feedback by student name |
-| 7 | Export Results | Export results to CSV file |
-
-## ⚡ Parallel Processing
-
-The system uses Python's multiprocessing module to process chunks in parallel.
-
-Example configuration:
-
-| Parameter | Value |
-|----------|-------------|
-| Dataset Size| 5000 records |
-| Chunk Size | 250 |
-| Total Chunks | 20 |
-| CPU Cores Used | 2|
-
-Each CPU core processes different chunks simultaneously, improving performamce.
-
-## 🧠 Sentiment Scoring (Regex)
-
-Sentiment scoring is performed using keyword-based regex matching.
-
-| Sentiment Type | Example Words |
-|---------------|---------------|
-| Positive | good, excellent, amazing, helpful |
-| Negative | bad, poor, terrible, boring |
-| Neutral | feedback without positive or negative keywords |
-
-| Score Condition | Sentiment Result |
-|----------------|------------------|
-| Score > 0 | Positive |
-| Score = 0 | Neutral |
-| Score < 0 | Negative |
-
-## 💾 Database Integration
-
-| Column  | Description |
-|----------|-------------|
-| student_id|Unique student ID |
-|student_name|Name of student |
-| feedback | Feedback text |
-| score | sentiment score |
-| sentiment | sentiment label |
-
-## 📊 Example Output
+```text
+       [ INPUT ]              [ PROCESSING ]             [ OUTPUT ]
+    +--------------+       +------------------+       +--------------+
+    | students.csv | ----> |  text_loader.py  | ----> |   app.py     |
+    | (50k Records)|       | (Chunking Logic) |       | (Streamlit)  |
+    +--------------+       +--------+---------+       +--------------+
+                                    |
+                                    v
+                           +------------------+       +--------------+
+                           |   processor.py   | ----> |   main.py    |
+                           | (Multiprocessing)|       |    (CLI)     |
+                           +--------+---------+       +--------------+
+                                    |
+            +-----------------------+-----------------------+
+            |                       |                       |
+            v                       v                       v
+    +--------------+       +------------------+       +--------------+
+    |  scorer.py   | <---> |   database.py    | <---> | analysis.db  |
+    | (Regex Logic)|       |  (SQL Engine)    |       | (Persistence)|
+    +--------------+       +------------------+       +--------------+
 ```
-===== Student Feedback Processing System =====
-
-Total records loaded: 5000
-Total chunks created: 20
-Processing feedback in parallel...
-Using 2 CPU cores
-
-Data stored in database successfully.
-Total records processed: 5000
-Processing completed in 2.1 seconds
+---
+## 📂 Project Folder Structure
+```
+parallel_text_handling_processor/
+│
+├── data/                       # 📁 Data Layer (CSV Input)
+│   └── students.csv
+│
+├── scripts/                    # 🛠️ Utility Layer
+│   └── generate_students.py    # Dataset generator
+│
+├── archive/                    # 📦 History Layer
+│   ├── cli_version.py          # Legacy Milestone 1/2 files
+│   └── search_module.py
+│
+├── config.py                   # ⚙️ Global Settings (Lexicons, DB Name)
+├── database.py                 # 🗄️ Persistence Layer (SQL Logic)
+├── scorer.py                   # 🧠 Analytical Layer (Regex Scoring)
+├── processor.py                # 🚀 Execution Engine (Multiprocessing)
+├── text_loader.py              # 📥 Ingestion Layer (Chunking)
+├── app.py                      # 🎨 Presentation Layer (Streamlit UI)
+├── main.py                     # 💻 Presentation Layer (CLI Engine)
+│
+├── requirements.txt            # 📋 Dependencies
+├── README.md                   # 📖 Project Documentation
+└── Agile_Log.md                # 📝 Milestone Tracking
 ```
 
-##  🛠 Installation
+---
+## ⚙️ System Workflow (The Pipeline)
 
-Clone the repository:
-```
-git clone https://github.com/SriveniBingi/parallel_text_handling_processor
-```
-Navigate to project folder:
-```
-cd parallel_text_handling_processor
-```
-Run the program:
-```
-python main.py
-```
+The application operates as a linear, automated pipeline to ensure maximum data integrity and processing speed:
 
-## 📈 Performance and Scalability
+| Step | Phase          | Action                                                                        |
+| :--- | :------------- | :---------------------------------------------------------------------------- |
+| **1** | **Ingestion** | `text_loader.py` streams the raw CSV and divides data into 1,000-row chunks. |
+| **2** | **Distribution** | `processor.py` initializes a `multiprocessing.Pool` to assign chunks to cores. |
+| **3** | **Analysis** | `scorer.py` applies Regex heuristics to calculate sentiment scores per record. |
+| **4** | **Persistence** | `database.py` performs atomic batch inserts into the SQLite database.         |
 
-| Feature | Explanation |
-|-------|-------------|
-| Parallel Processing | Multiple CPU cores process data simultaneously |
-| Chunking Strategy | Large datasets divided into smaller chunks |
-| Dataset Tested | 5000 student feedback records |
-| Performance Benefit | Reduced processing time |
-| Scalability | System can handle larger datasets efficiently |
+## 🖥️ Interfaces
 
-## 🗺 Milestone Implementation
-#Milestone 1
+### 1. Streamlit Dashboard
+**Run:** `streamlit run app.py`
 
-* Built modular project structure
+* **Real-time Metrics:** View processing time and core utilization.
+* **Visual Analytics:** Interactive Pie charts and Bar graphs of sentiment distribution.
+* **Data Browser:** Filter and search through processed records instantly.
 
-* Implemented dataset loading
+### 2. High-Performance CLI
+**Run:** `python main.py`
 
-* Developed regex sentiment scoring
+   * Designed for server-side processing and quick administrative searches.
 
-* Added SQLite database integration
+---
+## 🧩 Module Breakdown
 
-#Milestone 2
+| Module | Responsibility |
+| :--- | :--- |
+| **`app.py`** | **Presentation Layer:** The interactive Streamlit dashboard for visual data mining. |
+| **`processor.py`** | **Execution Layer:** Manages parallel worker processes and cross-core communication. |
+| **`scorer.py`** | **Analytical Layer:** Contains the Regex "Brain" for sentiment and negation logic. |
+| **`database.py`** | **Persistence Layer:** Handles all SQL operations, table indexing, and search queries. |
+| **`text_loader.py`** | **Ingestion Layer:** Efficiently streams large files without consuming excess RAM. |
+| **`config.py`** | **Configuration Layer:** Centralized storage for lexicons, file paths, and settings. |
+---
 
-* Implemented chunk-based processing
+## 🧱 Tech Stack
 
-* Added multiprocessing support
+| Category         | Technology               | Purpose                                     |
+| ---------------- | ------------------------ | ------------------------------------------- |
+| Language         | Python 3.11+             | Core application logic and processing.      |
+| Parallelism      | Multiprocessing          | Concurrent execution across CPU cores.      |
+| Data Handling    | Pandas                   | Efficient CSV ingestion and cleaning.       |
+| Persistence      | SQLite 3                 | Indexed relational storage for fast search. |
+| Web UI           | Streamlit                | Interactive dashboard and visualization.    |
+| Analytics        | Plotly / Matplotlib      | Sentiment and performance charts.           |
+| Logic Engine     | Regex (re)               | Sentiment heuristics (Negation handling).   |
+| Logging          | Python Logging           | System monitoring and error tracking.       |
 
-* Tested with 5000 feedback records
+---
 
-* Improved processing performance
+## **⚙️ Installation & Setup**
+1. Clone the repo
+   
+   ```
+   git clone https://github.com/SriveniBingi/parallel_text_handling_processor.git
+   cd parallel_text_handling_processor
+   ```
+3. Install Dependencies
+   
+   ```
+   pip install -r requirements.txt
+   ```
+5. Run the Pipeline
+   
+   ```
+   python main.py
+   ```
+---
 
-## 👩‍💻 Author
+## 🗺️ Milestone Roadmap
 
-Sriveni Bingi
+| Milestone     | Status | Description                                                    |
+| ------------- | ------ | ---------------------------------------------------------------|
+| M1:Setup      | ✅     | Environment setup, Database schema, and Regex Lexicon.         |
+| M2:Loader     | ✅     | Built parallel chuncking; tested with 5000 records             |
+| M3:Scorer     | ✅     | Integrated SQLite & Regex Engine; scaled to 50k records        |
+| M4:Launch     | 🚀     | Streamlit Dashboard & Final Optimization, Documentation Launch.|
+
+---
+### **👥 Author**
+
+* Sriveni Bingi
+* MCA Student 

@@ -398,7 +398,8 @@ if "results_df" in st.session_state:
 
         # ===== DISPLAY =====
         st.info(f"🔍 {len(filtered)} results found")
-        st.dataframe(filtered)
+        
+        st.dataframe(filtered[["id", "text", "score", "sentiment"]])
 
         # ===== SAVE =====
         from database import insert_results
@@ -407,16 +408,18 @@ if "results_df" in st.session_state:
             st.session_state["saved_search"] = filtered
             insert_results(filtered[["id", "text", "score", "sentiment"]].values.tolist())
             st.toast("Results saved successfully ✅")
-        # ================= EXPORT =================
-        elif active_tab == "Export":
-            st.subheader("⚡ Export Results")
-            csv = results_df.to_csv(index=False).encode("utf-8")
+            
+            
+    # ================= EXPORT =================
+    elif active_tab == "Export":
+        st.subheader("⚡ Export Results")
+        csv = results_df.to_csv(index=False).encode("utf-8")
 
-            st.download_button(
-                "Download CSV",
-                csv,
-                "results.csv",
-                "text/csv"
+        st.download_button(
+            "Download CSV",
+            csv,
+            "results.csv",
+            "text/csv"
             )
 
     # ================= SAVED RESULTS =================

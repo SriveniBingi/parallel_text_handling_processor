@@ -270,12 +270,12 @@ if uploaded_file:
         end_parallel = time.time()
 
         st.success("Processing Completed ✅")
-        st.info(f"⚡ Parallel Time: {round(end_parallel - start_parallel, 2)} sec")
+        #st.info(f"⚡ Parallel Time: {round(end_parallel - start_parallel, 2)} sec")
 
         # 🔹 PERFORMANCE COMPARISON
-        st.subheader("⚡ Performance Comparison")
-
+       
         if len(data) < 10000:
+            st.subheader("⚡ Performance Comparison")
             st.write(f"Normal Processing Time: {round(end_normal - start_normal, 2)} sec")
 
             if (end_parallel - start_parallel) < (end_normal - start_normal):
@@ -343,80 +343,81 @@ if "results_df" in st.session_state:
     # ================= SEARCH =================
     elif active_tab == "Search":
         st.subheader("⚡ Search & Filter")
-        keyword = st.text_input("Enter keywords",placeholder="Search here")
+
+        keyword = st.text_input("Enter keywords or sentence", placeholder="Search here")
+
+        filtered = results_df.copy()
 
         if keyword.strip():
+
+        
+            # ===== CLEAN INPUT =====
+            clean_keyword = re.sub(r'[^\w\s]', '', keyword.lower())
+
+            # Remove useless words
+            stopwords = {"the", "is", "are", "was", "were", "i", "am", "a", "an", "and"}
+            words = [w for w in clean_keyword.split() if w not in stopwords]
+
+            # Clean dataset
+            filtered["clean_text"] = filtered["text"].str.lower().str.replace(r'[^\w\s]', '', regex=True)
+
+            # ===== MATCH LOGIC =====
+            def match_text(text):
+                for word in words:
+                    if word in text:   # simple but powerful
+                        return True
+                return False
+
+            filtered = filtered[filtered["clean_text"].apply(match_text)]
+
+            # ===== FALLBACK =====
+            if filtered.empty:
+                filtered = results_df.copy()
+
+            # ===== KEYWORD SENTIMENT =====
             pos_count, neg_count, total_score, sentiment = calculate_score(keyword)
 
             st.subheader("🧮 Keyword Sentiment Analysis")
             st.write(f"Positive Count: {pos_count}")
-            st.write(f"Negative Count: {-neg_count}")
+            st.write(f"Negative Count: {neg_count}")
             st.write(f"Total Score: {total_score}")
             st.write(f"Sentiment: {sentiment}")
 
+        # ===== FILTERS =====
         sentiment_filter = st.selectbox(
-            "Filter",
+            "Filter by Sentiment",
             ["All", "Positive", "Negative", "Neutral"]
         )
 
-        min_score = st.slider("Min Score", -5, 5, -5)
-
-        start_search = time.time()
-
-        filtered = pd.DataFrame()
-
-        if keyword.strip():
-            filtered = results_df.copy()
-
-            words = list(set(keyword.lower().split()))
-            pattern = "|".join(map(re.escape, words))
-
-            filtered = filtered[
-                filtered["text"].str.lower().str.contains(pattern, regex=True)
-            ]
-        else:
-            filtered = results_df.copy()   # ✅ IMPORTANT
-
         if sentiment_filter != "All":
-            filtered = filtered[
-                filtered["sentiment"] == sentiment_filter
-            ]
+            filtered = filtered[filtered["sentiment"] == sentiment_filter]
 
-        if "score" in filtered.columns:
-           filtered = filtered[filtered["score"] >= min_score]
-        
-        end_search = time.time()
+        # ===== SCORE FILTER =====
+        min_score = st.slider("Min Score", -10, 10, -10)
+        filtered = filtered[filtered["score"] >= min_score]
 
-        st.info(f"🔍 Search Time: {round(end_search - start_search, 3)} sec")
+        # ===== DISPLAY =====
+        st.info(f"🔍 {len(filtered)} results found")
+        st.dataframe(filtered)
 
-        if keyword.strip():
-            if filtered.empty:
-                st.warning("No results found")
-            else:
-                st.dataframe(filtered)
-
+        # ===== SAVE =====
         from database import insert_results
 
         if not filtered.empty and st.button("💾 Save Results"):
             st.session_state["saved_search"] = filtered
-
-            # Save to DB
-            insert_results(
-               filtered[["id", "text", "score", "sentiment"]].values.tolist())
-            
+            insert_results(filtered[["id", "text", "score", "sentiment"]].values.tolist())
             st.toast("Results saved successfully ✅")
+        # ================= EXPORT =================
+        elif active_tab == "Export":
+            st.subheader("⚡ Export Results")
+            csv = results_df.to_csv(index=False).encode("utf-8")
 
-    # ================= EXPORT =================
-    elif active_tab == "Export":
-        st.subheader("⚡ Export Results")
-        csv = results_df.to_csv(index=False).encode("utf-8")
-
-        st.download_button(
-            "Download CSV",
-            csv,
-            "results.csv",
-            "text/csv"
-        )
+            st.download_button(
+                "Download CSV",
+                csv,
+                "results.csv",
+                "text/csv"
+            )
 
     # ================= SAVED RESULTS =================
     elif active_tab == "Saved Results":

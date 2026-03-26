@@ -7,7 +7,8 @@ POSITIVE_WORDS = [
     "like", "fortunate", "fabulous", "cool", "brilliant", "perfect", "pleasure",
     "delight", "kind", "friendly", "helpful", "clear","outstanding", "high-quality", "durable", "fast", "seamless", "innovative", 
     "recommend", "value", "authentic", "premium", "smooth", "satisfied", "responsive", "intuitive", "user-friendly", "secure", "encrypted",
-    "reliable", "polished", "cutting-edge", "optimized", "compatible", "versatile", "powerful",
+    "reliable", "polished", "cutting-edge", "optimized", "compatible", "versatile", "powerful", "submission", "feedback", "grade", 
+    "score", "improvement", "progress", "achievement", "success", "growth", "recovery",
     
     # Business, News & Finance (Economic Sector)
     "success", "growth", "recovery", "agreement", "victory", "stable", "progress", 

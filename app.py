@@ -345,35 +345,27 @@ if "results_df" in st.session_state:
         st.subheader("⚡ Search & Filter")
 
         keyword = st.text_input("Enter keywords or sentence", placeholder="Search here")
-
         filtered = results_df.copy()
-
-        if keyword.strip():
-
+        filtered["score"] = pd.to_numeric(filtered["score"], errors='coerce')
         
-            # ===== CLEAN INPUT =====
-            clean_keyword = re.sub(r'[^\w\s]', '', keyword.lower())
-
-            # Remove useless words
-            stopwords = {"the", "is", "are", "was", "were", "i", "am", "a", "an", "and"}
-            words = [w for w in clean_keyword.split() if w not in stopwords]
-
-            # Clean dataset
-            filtered["clean_text"] = filtered["text"].str.lower().str.replace(r'[^\w\s]', '', regex=True)
-
-            # ===== MATCH LOGIC =====
-            def match_text(text):
-                for word in words:
-                    if word in text:   # simple but powerful
-                        return True
-                return False
-
-            filtered = filtered[filtered["clean_text"].apply(match_text)]
-
-            # ===== FALLBACK =====
-            if filtered.empty:
-                filtered = results_df.copy()
-
+        if keyword.strip():
+            
+            clean_kw = re.sub(r'[^\w\s]', '', keyword.lower())
+            
+            # 2. FILTERING: Only keep "Meaningful" words (longer than 3 letters)
+            # This automatically ignores "is", "the", "and", "are", "am"
+            search_words = [w for w in clean_kw.split() if len(w) > 3]
+            
+            if search_words:
+                # 2. Use a "Broad Search" (OR logic)
+                # This finds "teaching" OR "good" OR "bad"
+                pattern = "|".join(map(re.escape, search_words))
+                
+                # 3. Apply the filter
+                # Pandas will naturally keep these rows in their original sequential order
+                filtered = filtered[filtered["text"].str.lower().str.contains(pattern, na=False)]
+          
+                
             # ===== KEYWORD SENTIMENT =====
             pos_count, neg_count, total_score, sentiment = calculate_score(keyword)
 
@@ -394,12 +386,17 @@ if "results_df" in st.session_state:
 
         # ===== SCORE FILTER =====
         min_score = st.slider("Min Score", -10, 10, -10)
-        filtered = filtered[filtered["score"] >= min_score]
-
+        if min_score != -10:
+            filtered = filtered[filtered["score"] == min_score]
+        else:
+            filtered = filtered[filtered["score"] >= min_score]
+        
+        st.divider()
+        
         # ===== DISPLAY =====
         st.info(f"🔍 {len(filtered)} results found")
         
-        st.dataframe(filtered[["id", "text", "score", "sentiment"]])
+        st.dataframe(filtered[["id", "text", "score", "sentiment"]],use_container_width=True)
 
         # ===== SAVE =====
         from database import insert_results

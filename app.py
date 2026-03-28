@@ -4,6 +4,7 @@ import time
 import multiprocessing
 import matplotlib.pyplot as plt
 import re
+
 from config import POSITIVE_WORDS, NEGATIVE_WORDS, NEGATIONS, INTENSIFIERS, DB_NAME
 
 # Backend modules
@@ -156,7 +157,7 @@ if uploaded_file:
     file_type = uploaded_file.name.split(".")[-1]
 
     if file_type == "csv":
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(uploaded_file, low_memory=False, engine="c")
 
     elif file_type == "xlsx":
         df = pd.read_excel(uploaded_file)
@@ -165,37 +166,30 @@ if uploaded_file:
         # errors="ignore" prevents the 0xf1 Unicode error
         text = uploaded_file.read().decode("utf-8", errors="ignore").splitlines()
         df = pd.DataFrame({"text": text})
+        
+    # 2. DYNAMIC COLUMN MAPPING (Only happens once now)
+    st.subheader("🎯 Data Configuration")
+    all_cols = df.columns.tolist()
+    
+    # We use a unique key 'col_selector' to prevent Streamlit duplicate errors
+    text_column = st.selectbox("Select Feedback/Text Column", all_cols, key="col_selector")
+    
+    # Rename and Clean
+    df = df.rename(columns={text_column: "text"})
+    df["text"] = df["text"].astype(str).fillna("").str.strip()
+
+    # 3. MEMORY OPTIMIZATION (Critical for 1M Rows)
+    # Downcast numeric columns to save RAM
+    for col in df.columns:
+        if df[col].dtype == 'float64':
+            df[col] = pd.to_numeric(df[col], downcast='float')
+        if df[col].dtype == 'int64':
+            df[col] = pd.to_numeric(df[col], downcast='integer')
     
     if df.empty:
       st.error("⚠️ File has no data. Please upload a valid file.")
-      st.stop()    
-
-    # ===== PREVIEW =====
-    st.subheader("📄 Data Preview")
-    if len(df) > 100:
-        st.caption("Showing first 5 sentences/rows")
-    st.dataframe(df.head(5))
-
-    st.divider()
-
-    # ===== COLUMN SELECTION =====
-    if file_type in ["csv", "xlsx"]:
-        text_columns = df.select_dtypes(include=["object"]).columns
-
-        if len(text_columns) == 0:
-            st.error("No text columns found ❌")
-            st.stop()
-        # Try to find a common name automatically
-        default_index = 0
-        targets = ["feedback", "headline", "text", "comment", "message"]
-        for i, col in enumerate(text_columns):
-            if col.lower() in targets:
-                default_index = i
-                break
-            
-        text_column = st.selectbox("Select Text Column", text_columns)
-        df = df.rename(columns={text_column: "text"})
-
+      st.stop()   
+   
     # ===== LIMIT LARGE DATA =====
     MAX_ROWS = 100000
 
@@ -291,6 +285,10 @@ if uploaded_file:
             columns=["id", "text", "score", "sentiment"]
         )
 
+        # Optimization: Categorical types save ~80% RAM on 1M rows
+        results_df["sentiment"] = results_df["sentiment"].astype("category")
+        results_df["score"] = results_df["score"].astype("int16")
+        
         st.session_state["results_df"] = results_df
 
 

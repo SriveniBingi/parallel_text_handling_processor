@@ -4,6 +4,8 @@ A high-performance, scalable, multi-core **Text Processing, Rule-Based Scoring, 
 
 This project is specifically designed for **fast batch processing**, **parallel text chunking**, and **rule-based compliance scoring**—all **optimized for large-scale text workflows** 
 
+Parallel processing reduces execution time by distrubuting workload across CPU cores, improving performance for large datasets.
+
 ---
 
 ## 📌 Features at a Glance
@@ -55,7 +57,7 @@ parallel_text_handling_processor/
 │   └── generate_students.py    # Dataset generator
 │
 ├── archive/                    # 📦 History Layer
-│   ├── cli_version.py          # Legacy Milestone 1/2 files
+│   ├── main.py                 # Legacy Milestone 1/2 files(CLI_version.py)
 │   └── search_module.py
 │
 ├── config.py                   # ⚙️ Global Settings (Lexicons, DB Name)
@@ -95,7 +97,40 @@ The application operates as a linear, automated pipeline to ensure maximum data 
 **Run:** `python main.py`
 
    * Designed for server-side processing and quick administrative searches.
+---
+## **Sample Output**
+```
+* User Input:
+   >> The Teaching was good 
+* Sentiment Metrics:
+  * Positive Words: 1
+  * Negative Words: 0
+  * Total Score:0
+  * Final Sentiment: Positive  
+* Summary Cards ( Streamlit UI):
 
+   Metrics                 Value
+   _________________________________
+   Sentiment               Positive 
+   Score                   -1
+   Positive Count           1
+   Negative Count           0
+
+*Dataset Result Table:
+|_______________________________________________________________________________|
+|ID       |      Text                    |    Score          |    Sentiment     |
+|_________|______________________________|___________________|__________________|
+|101      |      The teaching was good   |      1            |     Positive     |
+|_________|______________________________|___________________|__________________|
+|105      |      The teaching was good   |      1            |     Positive     |
+|_________|______________________________|___________________|__________________|
+
+🔹 Performance Metrics:
+   * Processing Time: ~1.2 seconds (10,000 records)
+   * Mode: Parallel Processing
+   * CPU Usage: Multi-core execution
+
+```
 ---
 ## 🧩 Module Breakdown
 
@@ -200,6 +235,8 @@ The application operates as a linear, automated pipeline to ensure maximum data 
 * Does not handle sarcasm or context deeply
   
 * Performance depends on system resources
+
+* Depends on word dictionary 
 ---
 ## **🔮 Future Enhancements**
 
@@ -207,7 +244,7 @@ The application operates as a linear, automated pipeline to ensure maximum data 
   
 * 🌐 API integration
 
-* 📈 Advanced analytics dashboar
+* 📈 Advanced analytics dashboard
   
 * 🔄 Real-time processing
   
@@ -219,8 +256,8 @@ The application operates as a linear, automated pipeline to ensure maximum data 
 | Milestone     | Status | Description                                                    |
 | ------------- | ------ | ---------------------------------------------------------------|
 | M1:Setup      | ✅     | Environment setup, Database schema, and Regex Lexicon.         |
-| M2:Loader     | ✅     | Built parallel chuncking; tested with 5000 records             |
-| M3:Scorer     | ✅     | Integrated SQLite & Regex Engine; scaled to 50k records        |
+| M2:Loader     | ✅     | Built parallel chunking; tested with 5000 records             |
+| M3:Scorer     | ✅     | Integrated SQLite & Regex Engine; scaled to 50k+ records        |
 | M4:Launch     | 🚀     | Streamlit Dashboard & Final Optimization, Documentation Launch.|
 
 ---

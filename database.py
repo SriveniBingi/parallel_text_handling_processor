@@ -7,7 +7,7 @@ def get_connection():
     """
     Create and return a connection to the SQLite database.
     """
-    return sqlite3.connect(DB_NAME)
+    return sqlite3.connect(DB_NAME, check_same_thread=False)
 
 
 # ================= CREATE TABLE =================
@@ -23,7 +23,7 @@ def create_table():
     # Create table structure
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS text_data(
-        id INTEGER,
+        id INTEGER PRIMARY KEY,
         text TEXT,
         score INTEGER,
         sentiment TEXT
@@ -82,7 +82,6 @@ def fetch_all():
     conn = get_connection()
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM text_data")
     rows = cursor.fetchall()
 
     conn.close()

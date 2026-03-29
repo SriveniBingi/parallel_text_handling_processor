@@ -1,6 +1,6 @@
 # config.py
 
-POSITIVE_WORDS = [
+POSITIVE_WORDS = set([
     # General & Emotions
     "good", "great", "excellent", "awesome", "amazing", "fantastic", "happy", "joy", 
     "love", "wonderful", "best", "beautiful", "positive", "smile", "nice", "enjoy", 
@@ -28,9 +28,9 @@ POSITIVE_WORDS = [
     "recommend", "value", "authentic", "premium", "smooth", "satisfied", "responsive",
     "intuitive", "user-friendly", "secure", "encrypted", "reliable", "polished",
     "cutting-edge", "optimized", "compatible", "versatile", "powerful"
-]
+])
 
-NEGATIVE_WORDS = [
+NEGATIVE_WORDS = set([
     # General & Emotions
     "bad", "poor", "worst", "terrible", "awful", "horrible", "sad", "hate", "ugly", 
     "negative", "failure", "pain", "disappointing", "angry", "unhappy", "annoying", 
@@ -40,10 +40,10 @@ NEGATIVE_WORDS = [
     "laggy", "vulnerable", "exposed", "outdated", "complex", "useless","waste", "slow", "defective",
     "broken", "expensive", "overpriced","scam", "fragile", "terrible", "noisy","malware", "slowdown", 
     "clunky", "unstable", "inefficient","disappointing", "angry", "unhappy", "annoying", "problem","nasty",
-    "boring", "unfortunate", "mad", "dislike", "worried","difficult", "confusing", "unorganized", "slow", "vague", "hard", "useless", "rude", "harsh",
-    "noisy", "distracted", "ignored", "irrelevant","sick", "ill", "infected", "deteriorated", "unresponsive", "inaccurate",
-    "plagiarism", "dropout", "fail", "incomplete", "demotivated","defective", "broken", "expensive", "cheap", "waste", "slow", "buggy",
-    "crash", "flawed", "overpriced", "scam", "fragile", "terrible", "noisy",
+    "boring", "unfortunate", "mad", "dislike", "worried", "confusing", "unorganized", "vague", "hard", "useless", "rude", "harsh",
+ "distracted", "ignored", "irrelevant","sick", "ill", "infected", "deteriorated", "unresponsive", "inaccurate",
+    "plagiarism", "dropout", "fail", "incomplete", "demotivated","defective", "broken", "expensive", "cheap", "waste", "buggy",
+    "crash", "flawed", "overpriced", "scam", "fragile", "noisy",
     "laggy", "vulnerable", "exposed", "outdated", "glitchy", "complex", "useless","malware", "slowdown", "clunky", "unstable", "inefficient",
     
     # Business, News & Finance (Economic Sector)
@@ -65,21 +65,23 @@ NEGATIVE_WORDS = [
     "crash", "flawed", "overpriced", "scam", "fragile", "terrible", "noisy",
     "laggy", "vulnerable", "exposed", "outdated", "glitchy", "complex", "useless",
     "malware", "slowdown", "clunky", "unstable", "inefficient"
-]
+])
 
-NEGATIONS = [
+NEGATIONS = set([
     "not", "no", "never", "none", "cannot", "can't", "won't", "neither", "nor",
     "didn't", "doesn't", "isn't", "aren't", "shouldn't", "wouldn't", "couldn't",
     "don't", "wasn't", "weren't", "hardly", "barely", "scarcely", "lack", "lacked",
     "without", "fails", "failed", "refused", "denied"
-]
+])
 
-INTENSIFIERS = [
+INTENSIFIERS = set([
     "very", "extremely", "really", "so", "quite", "highly", "too", "super",
     "completely", "absolutely", "totally", "deeply", "fully", "incredibly",
     "exceptionally", "extraordinarily", "definitely", "certainly", "massively",
     "strongly", "vastly", "immensely", "remarkably", "wildly"
-]
+])
+
+
 
 # System Settings
 CHUNK_SIZE = 1000  # Number of records to process in one batch

@@ -9,6 +9,7 @@ from config import POSITIVE_WORDS, NEGATIVE_WORDS, NEGATIONS, INTENSIFIERS, DB_N
 
 # Backend modules
 from processor import run_processing
+from scorer import calculate_score
 from database import fetch_all, insert_results, clear_table
 
 
@@ -16,24 +17,79 @@ from database import fetch_all, insert_results, clear_table
 st.set_page_config(page_title="ParaSense", page_icon="📊", layout="wide")
 
 # ================= DARK THEME =================
+# ================= SUBDUED BLUE THEME (MINIMAL SHADOW) =================
 st.markdown("""
     <style>
+    /* Global App Background */
     .stApp {
         background-color: #0e1117;
-        color: white;
+        color: #e0e0e0;
+        font-family: 'Inter', sans-serif;
     }
 
+    /* Sidebar - Professional Dark */
     section[data-testid="stSidebar"] {
-        background-color: #161a23;
-        color: white;
+        background-color: #11141c !important;
+        border-right: 1px solid #1f2937;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-        color: white !important;
+    /* Metric Cards - Flat Professional Style */
+    div[data-testid="stMetric"] {
+        background: #161a23 !important;
+        border: 1px solid #2d343f !important;
+        padding: 20px !important;
+        border-radius: 8px !important;
+        box-shadow: none !important; /* Removed heavy shadow */
+        transition: border-color 0.2s ease;
+    }
+    
+    div[data-testid="stMetric"]:hover {
+        border-color: #0072ff !important;
     }
 
-    .stMetric label, .stMetric div {
+    /* Header Text */
+    h1 {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.5px;
+    }
+
+    /* Buttons - Solid Blue with Minimal Shadow */
+    .stButton>button {
+        width: 100%;
+        border-radius: 6px !important;
+        height: 3em;
+        background-color: #0072ff !important; /* Solid Blue */
         color: white !important;
+        font-weight: 600 !important;
+        border: none !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important; /* Very minimal shadow */
+        transition: background-color 0.2s ease-in-out !important;
+    }
+
+    .stButton>button:hover {
+        background-color: #0056cc !important; /* Darker blue on hover */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important; /* Subtle lift */
+        border: none !important;
+    }
+
+    /* Dataframe & Tables */
+    .stDataFrame {
+        border: 1px solid #1f2937;
+        border-radius: 8px;
+    }
+
+    /* Input Fields */
+    .stTextArea textarea, .stTextInput input {
+        background-color: #161a23 !important;
+        border: 1px solid #2d343f !important;
+        color: #ffffff !important;
+        border-radius: 6px !important;
+    }
+
+    /* Loading Spinner Color */
+    .stSpinner > div {
+        border-top-color: #0072ff !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -78,62 +134,6 @@ if "sentiment_form" in st.session_state:
     del st.session_state["sentiment_form"]
 
 
-# ================= SENTIMENT SCORER =================
-def calculate_score(text):
-
-    words = text.lower().split()
-
-    total_score = 0
-    pos_count = 0
-    neg_count = 0
-
-    i = 0
-    while i < len(words):
-        word = words[i]
-
-        multiplier = 1
-        invert = False
-
-        # Check for negation
-        if word in NEGATIONS and i + 1 < len(words):
-            invert = True
-            i += 1
-            word = words[i]
-
-        # Check for intensifier
-        if word in INTENSIFIERS and i + 1 < len(words):
-            multiplier = 2
-            i += 1
-            word = words[i]
-
-        # Apply scoring
-        if word in POSITIVE_WORDS:
-            score = 1 * multiplier
-            if invert:
-                score *= -1
-            total_score += score
-            pos_count += 1
-
-        elif word in NEGATIVE_WORDS:
-            score = -1 * multiplier
-            if invert:
-                score *= -1
-            total_score += score
-            neg_count += 1
-            #display as negative
-
-        i += 1
-
-    # Final sentiment
-    if total_score > 0:
-        sentiment = "Positive"
-    elif total_score < 0:
-        sentiment = "Negative"
-    else:
-        sentiment = "Neutral"
-
-    return pos_count, neg_count, total_score, sentiment
-
 # ================= TOP SENTIMENT ANALYZER (MANUAL) =================
 st.subheader("🧮 Quick Sentiment Check")
 with st.form("sentiment_form"):
@@ -143,13 +143,15 @@ with st.form("sentiment_form"):
     clear = col2.form_submit_button("Clear")
 
 if submit and text_input:
-    p, n, s, sent = calculate_score(text_input)
-    cols = st.columns(4)
-    cols[0].metric("Sentiment", sent)
-    cols[1].metric("Positives", p)
-    cols[2].metric("Negatives", n)
-    cols[3].metric("Total Score", s)
+    pos_count, neg_count, total_score, sentiment = calculate_score(text_input)
 
+    cols = st.columns(4)
+    cols[0].metric("Sentiment", sentiment)
+    cols[1].metric("Positives", pos_count)
+    cols[2].metric("Negatives", neg_count)
+    cols[3].metric("Total Score", total_score)
+
+st.divider()
 
 # ================= FILE HANDLING =================
 if uploaded_file:
@@ -225,27 +227,9 @@ if uploaded_file:
             start_normal = time.time()
 
             normal_results = []
-            POS = {"good", "excellent", "great", "awesome", "happy"}
-            NEG = {"bad", "poor", "worst", "sad", "terrible"}
             for row in data:
                 id, text = row
-
-                score = 0
-                words = text.lower().split()
-
-                for word in words:
-                    if word in POS:
-                        score += 1
-                    elif word in NEG:
-                        score -= 1
-
-                if score > 0:
-                    sentiment = "Positive"
-                elif score < 0:
-                    sentiment = "Negative"
-                else:
-                    sentiment = "Neutral"
-
+                pos, neg, score, sentiment = calculate_score(text)
                 normal_results.append((id, text, score, sentiment))
 
             end_normal = time.time()
@@ -347,22 +331,26 @@ if "results_df" in st.session_state:
         filtered["score"] = pd.to_numeric(filtered["score"], errors='coerce')
         
         if keyword.strip():
-            
-            clean_kw = re.sub(r'[^\w\s]', '', keyword.lower())
-            
-            # 2. FILTERING: Only keep "Meaningful" words (longer than 3 letters)
-            # This automatically ignores "is", "the", "and", "are", "am"
-            search_words = [w for w in clean_kw.split() if len(w) > 3]
-            
-            if search_words:
-                # 2. Use a "Broad Search" (OR logic)
-                # This finds "teaching" OR "good" OR "bad"
-                pattern = "|".join(map(re.escape, search_words))
-                
-                # 3. Apply the filter
-                # Pandas will naturally keep these rows in their original sequential order
-                filtered = filtered[filtered["text"].str.lower().str.contains(pattern, na=False)]
-          
+    
+            clean_kw = keyword.lower().strip()
+
+            # 🔥 If full sentence → strict match
+            if len(clean_kw.split()) > 2:
+                filtered = filtered[
+                    filtered["text"].str.lower().str.contains(clean_kw, na=False)
+                ]
+            else:
+                # 🔹 keyword search
+                search_words = [
+                    w for w in clean_kw.split()
+                    if len(w) > 2
+                ]
+
+                if search_words:
+                    pattern = "|".join(map(re.escape, search_words))
+                    filtered = filtered[
+                        filtered["text"].str.contains(pattern, case=False, na=False)
+                    ]
                 
             # ===== KEYWORD SENTIMENT =====
             pos_count, neg_count, total_score, sentiment = calculate_score(keyword)

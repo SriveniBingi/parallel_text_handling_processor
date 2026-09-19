@@ -322,81 +322,92 @@ if "results_df" in st.session_state:
         st.subheader("📊 Processed Data")
         st.dataframe(results_df)
 
-    # ================= SEARCH =================
+  # ================= SEARCH =================
     elif active_tab == "Search":
         st.subheader("⚡ Search & Filter")
 
-        keyword = st.text_input("Enter keywords or sentence", placeholder="Search here")
-        filtered = results_df.copy()
-        filtered["score"] = pd.to_numeric(filtered["score"], errors='coerce')
+        # 1. Inputs inside a form or with an explicit button
+        col_input, col_btn = st.columns([4, 1])
+        with col_input:
+            keyword = st.text_input("Enter keywords or sentence", placeholder="Type keywords...", label_visibility="collapsed")
+        with col_btn:
+            search_clicked = st.button("🔍 Search", use_container_width=True)
 
-        if keyword.strip():
-            clean_kw = keyword.lower().strip()
+        # Filters
+        c1, c2 = st.columns(2)
+        with c1:
+            sentiment_filter = st.selectbox(
+                "Filter by Sentiment",
+                ["All", "Positive", "Negative", "Neutral"]
+            )
+        with c2:
+            min_score = st.slider("Min Score", -10, 10, -10)
 
-            STOP_WORDS = {"the", "is", "was", "were", "are", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "of", "it"}
+        # Save search state in session_state so results don't vanish on filter tweaks
+        if search_clicked:
+            st.session_state["has_searched"] = True
+            st.session_state["last_query"] = keyword
 
-            # Extract distinct search terms
-            search_words = list({
-                w for w in re.findall(r'\b\w+\b', clean_kw)
-                if len(w) > 2 and w not in STOP_WORDS
-            })
-
-            if search_words:
-                # 1. Count how many keywords appear in each row
-                def count_matches(text):
-                    text_lower = str(text).lower()
-                    return sum(1 for w in search_words if w in text_lower)
-
-                filtered["match_count"] = filtered["text"].apply(count_matches)
-
-                # 2. Keep only rows that have at least 1 keyword match
-                filtered = filtered[filtered["match_count"] > 0]
-
-                # 3. Sort by highest relevance (most keyword matches first)
-                filtered = filtered.sort_values(by="match_count", ascending=False)
-            else:
-                filtered = filtered[
-                    filtered["text"].str.contains(re.escape(clean_kw), case=False, na=False)
-                ]
-
-            # ===== KEYWORD SENTIMENT =====
-            pos_count, neg_count, total_score, sentiment = calculate_score(keyword)
-
-            st.subheader("🧮 Keyword Sentiment Analysis")
-            cols = st.columns(4)
-            cols[0].metric("Positive Count", pos_count)
-            cols[1].metric("Negative Count", neg_count)
-            cols[2].metric("Total Score", total_score)
-            cols[3].metric("Sentiment", sentiment)
-
-        # ===== FILTERS =====
-        sentiment_filter = st.selectbox(
-            "Filter by Sentiment",
-            ["All", "Positive", "Negative", "Neutral"]
-        )
-
-        if sentiment_filter != "All":
-            filtered = filtered[filtered["sentiment"] == sentiment_filter]
-
-        # ===== SCORE FILTER =====
-        min_score = st.slider("Min Score", -10, 10, -10)
-        filtered = filtered[filtered["score"] >= min_score]
-
-        st.divider()
-
-        # ===== DISPLAY =====
-        st.info(f"🔍 {len(filtered)} results found")
-
-        # Display table (drop match_count helper column from final view)
-        display_cols = ["id", "text", "score", "sentiment"]
-        st.dataframe(filtered[display_cols], use_container_width=True)
-
-        # ===== SAVE =====
-        if not filtered.empty and st.button("💾 Save Results"):
-            st.session_state["saved_search"] = filtered
-            insert_results(filtered[display_cols].values.tolist())
-            st.toast("Results saved successfully ✅")            
+        # 2. Only run and display if user has triggered a search
+        if st.session_state.get("has_searched", False):
+            active_keyword = st.session_state.get("last_query", "").strip()
             
+            filtered = results_df.copy()
+            filtered["score"] = pd.to_numeric(filtered["score"], errors='coerce')
+
+            if active_keyword:
+                clean_kw = active_keyword.lower().strip()
+                STOP_WORDS = {"the", "is", "was", "were", "are", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "of", "it"}
+                
+                search_words = list({
+                    w for w in re.findall(r'\b\w+\b', clean_kw)
+                    if len(w) > 2 and w not in STOP_WORDS
+                })
+
+                if search_words:
+                    def count_matches(text):
+                        text_lower = str(text).lower()
+                        return sum(1 for w in search_words if w in text_lower)
+
+                    filtered["match_count"] = filtered["text"].apply(count_matches)
+                    filtered = filtered[filtered["match_count"] > 0]
+                    filtered = filtered.sort_values(by="match_count", ascending=False)
+                else:
+                    filtered = filtered[
+                        filtered["text"].str.contains(re.escape(clean_kw), case=False, na=False)
+                    ]
+
+                # Keyword sentiment breakdown metrics
+                pos_count, neg_count, total_score, sentiment = calculate_score(active_keyword)
+                st.subheader("🧮 Keyword Sentiment Analysis")
+                cols = st.columns(4)
+                cols[0].metric("Positive Count", pos_count)
+                cols[1].metric("Negative Count", neg_count)
+                cols[2].metric("Total Score", total_score)
+                cols[3].metric("Sentiment", sentiment)
+
+            # Apply Dropdown & Slider Filters
+            if sentiment_filter != "All":
+                filtered = filtered[filtered["sentiment"] == sentiment_filter]
+
+            filtered = filtered[filtered["score"] >= min_score]
+
+            st.divider()
+
+            # Results Display
+            display_cols = ["id", "text", "score", "sentiment"]
+            if not filtered.empty:
+                st.info(f"🔍 {len(filtered)} results found")
+                st.dataframe(filtered[display_cols], use_container_width=True)
+
+                if st.button("💾 Save Results"):
+                    st.session_state["saved_search"] = filtered
+                    insert_results(filtered[display_cols].values.tolist())
+                    st.toast("Results saved successfully ✅")
+            else:
+                st.warning("No matching records found for this query.")
+        else:
+            st.info("💡 Enter a keyword or sentence above and click **Search** to view matching results.")
     # ================= EXPORT =================
     elif active_tab == "Export":
         st.subheader("⚡ Export Results")

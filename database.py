@@ -10,10 +10,7 @@ def get_connection():
 
 # ================= CREATE TABLE =================
 def create_table():
-    """Create table if it does not exist.
-    
-    Also creates an index on 'sentiment' for faster filtering/search.
-    """
+    """Create table if it does not exist."""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -46,9 +43,9 @@ def clear_table():
 
 # ================= INSERT DATA =================
 def insert_results(results, overwrite=False):
-    """Insert processed results into database using batch processing.
+    """Insert processed results into database.
     
-    Uses INSERT OR REPLACE to prevent sqlite3.IntegrityError on duplicate IDs.
+    If overwrite is True, old saves are cleared first.
     """
     create_table()
     conn = get_connection()
@@ -60,8 +57,6 @@ def insert_results(results, overwrite=False):
     batch_size = 1000
     for i in range(0, len(results), batch_size):
         batch = results[i:i + batch_size]
-
-        # INSERT OR REPLACE handles existing IDs without crashing
         cursor.executemany("""
         INSERT OR REPLACE INTO text_data (id, text, score, sentiment)
         VALUES (?, ?, ?, ?)
@@ -73,7 +68,7 @@ def insert_results(results, overwrite=False):
 
 # ================= FETCH DATA =================
 def fetch_all():
-    """Fetches all records, ensuring the table exists and executing the query first."""
+    """Fetches all records."""
     create_table()
     conn = get_connection()
     cursor = conn.cursor()
@@ -87,40 +82,31 @@ def fetch_all():
 
 # ================= SEARCH FUNCTIONS =================
 def search_by_name(name):
-    """Search by ID or substring in the text."""
     conn = get_connection()
     cursor = conn.cursor()
-
     clean_name = name.lower().replace("student_", "").replace("id_", "").strip()
     query = "SELECT * FROM text_data WHERE CAST(id AS TEXT) = ? OR text LIKE ?"
     cursor.execute(query, (clean_name, f"%{name}%"))
-
     results = cursor.fetchall()
     conn.close()
     return results
 
 
 def search_by_sentiment(sentiment):
-    """Filters records by sentiment, ignoring case sensitivity."""
     conn = get_connection()
     cursor = conn.cursor()
-
     query = "SELECT * FROM text_data WHERE LOWER(sentiment) = LOWER(?)"
     cursor.execute(query, (sentiment.strip(),))
-
     results = cursor.fetchall()
     conn.close()
     return results
 
 
 def search_by_keyword(keyword):
-    """Finds records where the keyword exists anywhere in the text."""
     conn = get_connection()
     cursor = conn.cursor()
-
     query = "SELECT * FROM text_data WHERE LOWER(text) LIKE LOWER(?)"
     search_term = f"%{keyword.strip()}%"
-
     cursor.execute(query, (search_term,))
     results = cursor.fetchall()
     conn.close()
@@ -128,10 +114,8 @@ def search_by_keyword(keyword):
 
 
 def search_by_score(min_score):
-    """Filters records with a score greater than or equal to input."""
     conn = get_connection()
     cursor = conn.cursor()
-
     cursor.execute("SELECT * FROM text_data WHERE score >= ?", (min_score,))
     results = cursor.fetchall()
     conn.close()

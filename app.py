@@ -156,7 +156,7 @@ st.divider()
 # ================= FILE HANDLING =================
 if uploaded_file:
 
-    file_type = uploaded_file.name.split(".")[-1]
+    file_type = uploaded_file.name.split(".")[-1].lower()
 
     if file_type == "csv":
         df = pd.read_csv(uploaded_file, low_memory=False, engine="c")
@@ -326,7 +326,7 @@ if "results_df" in st.session_state:
 
         # --- 3️⃣ Processed Data Table ---
         st.subheader("📊 Processed Data")
-        st.dataframe(results_df)
+        st.dataframe(results_df, use_container_width=True, hide_index=True)
 
 # ================= SEARCH =================
     elif active_tab == "Search":
@@ -413,7 +413,7 @@ if "results_df" in st.session_state:
 
             if not filtered.empty:
                 st.info(f"🔍 {len(filtered)} results found")
-                st.dataframe(filtered[display_cols], use_container_width=True)
+                st.dataframe(filtered[display_cols], use_container_width=True, hide_index=True)
 
                 # Save Button with immediate session persistence
                 if st.button("💾 Save Results"):

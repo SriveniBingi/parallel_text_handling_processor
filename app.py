@@ -329,39 +329,45 @@ if "results_df" in st.session_state:
         keyword = st.text_input("Enter keywords or sentence", placeholder="Search here")
         filtered = results_df.copy()
         filtered["score"] = pd.to_numeric(filtered["score"], errors='coerce')
-        
+
         if keyword.strip():
             clean_kw = keyword.lower().strip()
-            
-            # Common filler words to ignore when searching
-            STOP_WORDS = {"the", "is", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "of", "it"}
-            
-            # Extract meaningful words (> 2 chars and not common stop words)
-            search_words = [
-                re.escape(w) for w in re.findall(r'\b\w+\b', clean_kw)
+
+            STOP_WORDS = {"the", "is", "was", "were", "are", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "of", "it"}
+
+            # Extract distinct search terms
+            search_words = list({
+                w for w in re.findall(r'\b\w+\b', clean_kw)
                 if len(w) > 2 and w not in STOP_WORDS
-            ]
+            })
 
             if search_words:
-                # Matches rows containing ANY of the meaningful keywords
-                pattern = "|".join(search_words)
-                filtered = filtered[
-                    filtered["text"].str.contains(pattern, case=False, na=False)
-                ]
+                # 1. Count how many keywords appear in each row
+                def count_matches(text):
+                    text_lower = str(text).lower()
+                    return sum(1 for w in search_words if w in text_lower)
+
+                filtered["match_count"] = filtered["text"].apply(count_matches)
+
+                # 2. Keep only rows that have at least 1 keyword match
+                filtered = filtered[filtered["match_count"] > 0]
+
+                # 3. Sort by highest relevance (most keyword matches first)
+                filtered = filtered.sort_values(by="match_count", ascending=False)
             else:
-                # Fallback if only short words were provided
                 filtered = filtered[
                     filtered["text"].str.contains(re.escape(clean_kw), case=False, na=False)
                 ]
-                
+
             # ===== KEYWORD SENTIMENT =====
             pos_count, neg_count, total_score, sentiment = calculate_score(keyword)
 
             st.subheader("🧮 Keyword Sentiment Analysis")
-            st.write(f"Positive Count: {pos_count}")
-            st.write(f"Negative Count: {neg_count}")
-            st.write(f"Total Score: {total_score}")
-            st.write(f"Sentiment: {sentiment}")
+            cols = st.columns(4)
+            cols[0].metric("Positive Count", pos_count)
+            cols[1].metric("Negative Count", neg_count)
+            cols[2].metric("Total Score", total_score)
+            cols[3].metric("Sentiment", sentiment)
 
         # ===== FILTERS =====
         sentiment_filter = st.selectbox(
@@ -373,21 +379,22 @@ if "results_df" in st.session_state:
             filtered = filtered[filtered["sentiment"] == sentiment_filter]
 
         # ===== SCORE FILTER =====
-        # Note: Changed to '>=' so it behaves as an actual threshold
         min_score = st.slider("Min Score", -10, 10, -10)
         filtered = filtered[filtered["score"] >= min_score]
-        
+
         st.divider()
-        
+
         # ===== DISPLAY =====
         st.info(f"🔍 {len(filtered)} results found")
-        
-        st.dataframe(filtered[["id", "text", "score", "sentiment"]], use_container_width=True)
+
+        # Display table (drop match_count helper column from final view)
+        display_cols = ["id", "text", "score", "sentiment"]
+        st.dataframe(filtered[display_cols], use_container_width=True)
 
         # ===== SAVE =====
         if not filtered.empty and st.button("💾 Save Results"):
             st.session_state["saved_search"] = filtered
-            insert_results(filtered[["id", "text", "score", "sentiment"]].values.tolist())
+            insert_results(filtered[display_cols].values.tolist())
             st.toast("Results saved successfully ✅")            
             
     # ================= EXPORT =================

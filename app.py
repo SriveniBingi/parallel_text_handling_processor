@@ -326,14 +326,18 @@ if "results_df" in st.session_state:
     elif active_tab == "Search":
         st.subheader("⚡ Search & Filter")
 
-        # 1. Inputs inside a form or with an explicit button
+        # 1. Search Bar & Button Layout
         col_input, col_btn = st.columns([4, 1])
         with col_input:
-            keyword = st.text_input("Enter keywords or sentence", placeholder="Type keywords...", label_visibility="collapsed")
+            keyword = st.text_input(
+                "Enter keywords or sentence",
+                placeholder="e.g., teaching is good, difficult assignments...",
+                label_visibility="collapsed"
+            )
         with col_btn:
             search_clicked = st.button("🔍 Search", use_container_width=True)
 
-        # Filters
+        # 2. Filters
         c1, c2 = st.columns(2)
         with c1:
             sentiment_filter = st.selectbox(
@@ -343,28 +347,35 @@ if "results_df" in st.session_state:
         with c2:
             min_score = st.slider("Min Score", -10, 10, -10)
 
-        # Save search state in session_state so results don't vanish on filter tweaks
-        if search_clicked:
+        # Track search state so page reruns don't wipe your results
+        if search_clicked or keyword.strip():
             st.session_state["has_searched"] = True
             st.session_state["last_query"] = keyword
+        elif not keyword.strip() and not search_clicked:
+            st.session_state["has_searched"] = False
 
-        # 2. Only run and display if user has triggered a search
+        # 3. Only process and display table IF a search was performed
         if st.session_state.get("has_searched", False):
             active_keyword = st.session_state.get("last_query", "").strip()
-            
+
             filtered = results_df.copy()
-            filtered["score"] = pd.to_numeric(filtered["score"], errors='coerce')
+            filtered["score"] = pd.to_numeric(filtered["score"], errors="coerce")
 
             if active_keyword:
                 clean_kw = active_keyword.lower().strip()
-                STOP_WORDS = {"the", "is", "was", "were", "are", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "of", "it"}
-                
+                STOP_WORDS = {
+                    "the", "is", "was", "were", "are", "a", "an", "and", "or",
+                    "but", "in", "on", "at", "to", "for", "of", "it"
+                }
+
+                # Extract meaningful keywords (> 2 chars and non-stop words)
                 search_words = list({
                     w for w in re.findall(r'\b\w+\b', clean_kw)
                     if len(w) > 2 and w not in STOP_WORDS
                 })
 
                 if search_words:
+                    # Count keyword occurrences and sort by best match
                     def count_matches(text):
                         text_lower = str(text).lower()
                         return sum(1 for w in search_words if w in text_lower)
@@ -394,12 +405,14 @@ if "results_df" in st.session_state:
 
             st.divider()
 
-            # Results Display
+            # 4. Display Results
             display_cols = ["id", "text", "score", "sentiment"]
+
             if not filtered.empty:
                 st.info(f"🔍 {len(filtered)} results found")
                 st.dataframe(filtered[display_cols], use_container_width=True)
 
+                # Save Button
                 if st.button("💾 Save Results"):
                     st.session_state["saved_search"] = filtered
                     insert_results(filtered[display_cols].values.tolist())
@@ -407,8 +420,7 @@ if "results_df" in st.session_state:
             else:
                 st.warning("No matching records found for this query.")
         else:
-            st.info("💡 Enter a keyword or sentence above and click **Search** to view matching results.")
-    # ================= EXPORT =================
+            st.info("💡 Enter keywords or a phrase and click **Search** to view matching results.")    # ================= EXPORT =================
     elif active_tab == "Export":
         st.subheader("⚡ Export Results")
         csv = results_df.to_csv(index=False).encode("utf-8")

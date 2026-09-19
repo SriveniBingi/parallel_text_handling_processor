@@ -337,7 +337,7 @@ if "results_df" in st.session_state:
         with col_input:
             keyword = st.text_input(
                 "Enter keywords or sentence",
-                placeholder="e.g., teaching good, difficult assignments...",
+                placeholder="Enter any keyword or sentence",
                 label_visibility="collapsed"
             )
         with col_btn:

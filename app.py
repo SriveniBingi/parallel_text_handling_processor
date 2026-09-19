@@ -203,13 +203,19 @@ if uploaded_file:
         df = df.head(MAX_ROWS)
 
     # ===== PROCESS BUTTON =====
+    # ===== PROCESS BUTTON =====
     if st.button("🚀 Start Processing"):
 
         if df.empty:
             st.error("No valid data ❌")
             st.stop()
 
-        df["id"] = range(len(df))
+        # ✅ Keep original student_id if available
+        if "student_id" in df.columns:
+            df["id"] = df["student_id"]
+        elif "id" not in df.columns:
+            df["id"] = range(1, len(df) + 1)
+
         data = list(df[["id", "text"]].itertuples(index=False, name=None))
 
         cores = multiprocessing.cpu_count()
@@ -402,18 +408,19 @@ if "results_df" in st.session_state:
 
             st.divider()
 
-            # 4. Display Results
+           # 4. Display Results
             display_cols = ["id", "text", "score", "sentiment"]
 
             if not filtered.empty:
                 st.info(f"🔍 {len(filtered)} results found")
                 st.dataframe(filtered[display_cols], use_container_width=True)
 
-                # Save Button (Clears old database entries and saves this exact view)
+                # Save Button with immediate session persistence
                 if st.button("💾 Save Results"):
-                    st.session_state["saved_search"] = filtered
+                    from database import insert_results
                     insert_results(filtered[display_cols].values.tolist(), overwrite=True)
-                    st.toast("Results saved successfully (previous saves overwritten) ✅")
+                    st.session_state["just_saved"] = True
+                    st.success("✅ Results saved successfully! Go to 'Saved Results' to view them.")
             else:
                 st.warning("No matching records found for this query.")
         else:
@@ -430,23 +437,24 @@ if "results_df" in st.session_state:
             "results.csv",
             "text/csv"
         )
-
-    # ================= SAVED RESULTS =================
+   # ================= SAVED RESULTS =================
     elif active_tab == "Saved Results":
         st.subheader("⚡ Saved Results")
 
         col_view, col_clear = st.columns([4, 1])
         with col_clear:
-            if st.button("🗑️ Clear All Saved Results", use_container_width=True):
+            from database import clear_table
+            if st.button("🗑️ Clear Database", use_container_width=True):
                 clear_table()
-                st.toast("Saved records cleared! 🗑️")
+                st.toast("Database cleared!")
                 st.rerun()
 
         data = fetch_all()
 
         if data:
             df_saved = pd.DataFrame(data, columns=["id", "text", "score", "sentiment"])
-            st.dataframe(df_saved, use_container_width=True)
+            # Format display so index and ID are visually distinct
+            st.dataframe(df_saved, use_container_width=True, hide_index=True)
 
             st.download_button(
                 label="💾 Download Saved Results",
@@ -455,7 +463,7 @@ if "results_df" in st.session_state:
                 mime="text/csv"
             )
         else:
-            st.info("No saved results found in the database.")            
+            st.info("No saved results found in the database. Go to 'Search' tab and click '💾 Save Results'.")       
 # Reset Button (In Sidebar)
 with st.sidebar:
     st.divider()

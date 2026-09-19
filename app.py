@@ -331,26 +331,28 @@ if "results_df" in st.session_state:
         filtered["score"] = pd.to_numeric(filtered["score"], errors='coerce')
         
         if keyword.strip():
-    
             clean_kw = keyword.lower().strip()
+            
+            # Common filler words to ignore when searching
+            STOP_WORDS = {"the", "is", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for", "of", "it"}
+            
+            # Extract meaningful words (> 2 chars and not common stop words)
+            search_words = [
+                re.escape(w) for w in re.findall(r'\b\w+\b', clean_kw)
+                if len(w) > 2 and w not in STOP_WORDS
+            ]
 
-            # 🔥 If full sentence → strict match
-            if len(clean_kw.split()) > 2:
+            if search_words:
+                # Matches rows containing ANY of the meaningful keywords
+                pattern = "|".join(search_words)
                 filtered = filtered[
-                    filtered["text"].str.lower().str.contains(clean_kw, na=False)
+                    filtered["text"].str.contains(pattern, case=False, na=False)
                 ]
             else:
-                # 🔹 keyword search
-                search_words = [
-                    w for w in clean_kw.split()
-                    if len(w) > 2
+                # Fallback if only short words were provided
+                filtered = filtered[
+                    filtered["text"].str.contains(re.escape(clean_kw), case=False, na=False)
                 ]
-
-                if search_words:
-                    pattern = "|".join(map(re.escape, search_words))
-                    filtered = filtered[
-                        filtered["text"].str.contains(pattern, case=False, na=False)
-                    ]
                 
             # ===== KEYWORD SENTIMENT =====
             pos_count, neg_count, total_score, sentiment = calculate_score(keyword)
@@ -371,27 +373,22 @@ if "results_df" in st.session_state:
             filtered = filtered[filtered["sentiment"] == sentiment_filter]
 
         # ===== SCORE FILTER =====
+        # Note: Changed to '>=' so it behaves as an actual threshold
         min_score = st.slider("Min Score", -10, 10, -10)
-        if min_score != -10:
-            filtered = filtered[filtered["score"] == min_score]
-        else:
-            filtered = filtered[filtered["score"] >= min_score]
+        filtered = filtered[filtered["score"] >= min_score]
         
         st.divider()
         
         # ===== DISPLAY =====
         st.info(f"🔍 {len(filtered)} results found")
         
-        st.dataframe(filtered[["id", "text", "score", "sentiment"]],use_container_width=True)
+        st.dataframe(filtered[["id", "text", "score", "sentiment"]], use_container_width=True)
 
         # ===== SAVE =====
-        from database import insert_results
-
         if not filtered.empty and st.button("💾 Save Results"):
             st.session_state["saved_search"] = filtered
             insert_results(filtered[["id", "text", "score", "sentiment"]].values.tolist())
-            st.toast("Results saved successfully ✅")
-            
+            st.toast("Results saved successfully ✅")            
             
     # ================= EXPORT =================
     elif active_tab == "Export":

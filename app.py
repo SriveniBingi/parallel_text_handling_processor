@@ -322,7 +322,7 @@ if "results_df" in st.session_state:
         st.subheader("📊 Processed Data")
         st.dataframe(results_df)
 
-  # ================= SEARCH =================
+# ================= SEARCH =================
     elif active_tab == "Search":
         st.subheader("⚡ Search & Filter")
 
@@ -331,7 +331,7 @@ if "results_df" in st.session_state:
         with col_input:
             keyword = st.text_input(
                 "Enter keywords or sentence",
-                placeholder="e.g., teaching is good, difficult assignments...",
+                placeholder="e.g., teaching good, difficult assignments...",
                 label_visibility="collapsed"
             )
         with col_btn:
@@ -347,14 +347,14 @@ if "results_df" in st.session_state:
         with c2:
             min_score = st.slider("Min Score", -10, 10, -10)
 
-        # Track search state so page reruns don't wipe your results
+        # Track search state so UI updates properly
         if search_clicked or keyword.strip():
             st.session_state["has_searched"] = True
             st.session_state["last_query"] = keyword
         elif not keyword.strip() and not search_clicked:
             st.session_state["has_searched"] = False
 
-        # 3. Only process and display table IF a search was performed
+        # 3. Only run and display if user has searched
         if st.session_state.get("has_searched", False):
             active_keyword = st.session_state.get("last_query", "").strip()
 
@@ -368,27 +368,24 @@ if "results_df" in st.session_state:
                     "but", "in", "on", "at", "to", "for", "of", "it"
                 }
 
-                # Extract meaningful keywords (> 2 chars and non-stop words)
+                # Extract key words
                 search_words = list({
                     w for w in re.findall(r'\b\w+\b', clean_kw)
                     if len(w) > 2 and w not in STOP_WORDS
                 })
 
                 if search_words:
-                    # Count keyword occurrences and sort by best match
-                    def count_matches(text):
-                        text_lower = str(text).lower()
-                        return sum(1 for w in search_words if w in text_lower)
-
-                    filtered["match_count"] = filtered["text"].apply(count_matches)
-                    filtered = filtered[filtered["match_count"] > 0]
-                    filtered = filtered.sort_values(by="match_count", ascending=False)
+                    # Require ALL key search words to match (e.g. teaching AND good)
+                    for w in search_words:
+                        filtered = filtered[
+                            filtered["text"].str.contains(r'\b' + re.escape(w) + r'\b', case=False, na=False)
+                        ]
                 else:
                     filtered = filtered[
                         filtered["text"].str.contains(re.escape(clean_kw), case=False, na=False)
                     ]
 
-                # Keyword sentiment breakdown metrics
+                # Keyword sentiment breakdown
                 pos_count, neg_count, total_score, sentiment = calculate_score(active_keyword)
                 st.subheader("🧮 Keyword Sentiment Analysis")
                 cols = st.columns(4)
@@ -412,15 +409,17 @@ if "results_df" in st.session_state:
                 st.info(f"🔍 {len(filtered)} results found")
                 st.dataframe(filtered[display_cols], use_container_width=True)
 
-                # Save Button
+                # Save Button (Clears old database entries and saves this exact view)
                 if st.button("💾 Save Results"):
                     st.session_state["saved_search"] = filtered
-                    insert_results(filtered[display_cols].values.tolist())
-                    st.toast("Results saved successfully ✅")
+                    insert_results(filtered[display_cols].values.tolist(), overwrite=True)
+                    st.toast("Results saved successfully (previous saves overwritten) ✅")
             else:
                 st.warning("No matching records found for this query.")
         else:
-            st.info("💡 Enter keywords or a phrase and click **Search** to view matching results.")    # ================= EXPORT =================
+            st.info("💡 Enter keywords and click **Search** to view matching results.")
+
+    # ================= EXPORT =================
     elif active_tab == "Export":
         st.subheader("⚡ Export Results")
         csv = results_df.to_csv(index=False).encode("utf-8")
@@ -430,18 +429,25 @@ if "results_df" in st.session_state:
             csv,
             "results.csv",
             "text/csv"
-            )
+        )
 
     # ================= SAVED RESULTS =================
     elif active_tab == "Saved Results":
         st.subheader("⚡ Saved Results")
+
+        col_view, col_clear = st.columns([4, 1])
+        with col_clear:
+            if st.button("🗑️ Clear All Saved Results", use_container_width=True):
+                clear_table()
+                st.toast("Saved records cleared! 🗑️")
+                st.rerun()
+
         data = fetch_all()
 
         if data:
-            df_saved = pd.DataFrame(data, columns=["id","text","score","sentiment"])
-            st.dataframe(df_saved)
-            
-            # Move the button inside the 'if data' block
+            df_saved = pd.DataFrame(data, columns=["id", "text", "score", "sentiment"])
+            st.dataframe(df_saved, use_container_width=True)
+
             st.download_button(
                 label="💾 Download Saved Results",
                 data=df_saved.to_csv(index=False).encode("utf-8"),
@@ -449,8 +455,7 @@ if "results_df" in st.session_state:
                 mime="text/csv"
             )
         else:
-            st.info("No saved results found in the database.")
-            
+            st.info("No saved results found in the database.")            
 # Reset Button (In Sidebar)
 with st.sidebar:
     st.divider()
